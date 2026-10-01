@@ -1,12 +1,28 @@
-/* Farklin Masterclass - Custom UI/UX Pro Max Styles */
+/* Clinical Pharmacy Hub - Unified UI/UX Pro Max Styles */
 
 :root {
   --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  --dili-gradient: linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #fb7185 100%);
+  --diki-gradient: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+  --portal-hero-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
   --renal-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   --liver-gradient: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
   --geriatric-gradient: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   --maternal-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --lactation-gradient: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'Outfit', sans-serif;
+}
+
+code, kbd, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* Custom Scrollbar */
@@ -15,61 +31,122 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.05);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.5);
+  background: rgba(99, 102, 241, 0.4);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.8);
+  background: rgba(139, 92, 246, 0.7);
 }
 
-/* Glassmorphism Cards */
-.glass-panel {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Background Gradients */
+.bg-gradient-dili {
+  background: linear-gradient(135deg, #881337 0%, #be123c 40%, #431407 100%);
 }
 
-.glass-panel-interactive {
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.bg-gradient-portal {
+  background: var(--portal-hero-gradient);
 }
 
-.glass-panel-interactive:hover {
-  transform: translateY(-3px);
-  border-color: rgba(139, 92, 246, 0.4);
-  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.25);
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
 }
 
-/* Pulse Glowing Badge */
-.pulse-badge {
-  box-shadow: 0 0 15px rgba(217, 70, 239, 0.4);
-  animation: pulseGlow 2.5s infinite ease-in-out;
+.bg-gradient-danger {
+  background: linear-gradient(135deg, #dc2626 0%, #e11d48 100%) !important;
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 12px rgba(217, 70, 239, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(217, 70, 239, 0.6);
-  }
+/* Light Badges & Containers */
+.bg-primary-light { background-color: rgba(99, 102, 241, 0.12); }
+.bg-danger-light { background-color: rgba(239, 68, 68, 0.12); }
+.bg-warning-light { background-color: rgba(245, 158, 11, 0.14); }
+.bg-success-light { background-color: rgba(16, 185, 129, 0.12); }
+.bg-info-light { background-color: rgba(14, 165, 233, 0.12); }
+.bg-secondary-light { background-color: rgba(100, 116, 139, 0.12); }
+.bg-dark-light { background-color: rgba(15, 23, 42, 0.5); }
+
+/* Portal Track Cards */
+.portal-card {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.portal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15) !important;
+  border-color: rgba(99, 102, 241, 0.3);
 }
 
-/* Hero Gradient Mesh */
-.bg-mesh {
-  background-color: #0f172a;
-  background-image: 
-    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.18) 0px, transparent 50%),
-    radial-gradient(at 90% 10%, rgba(217, 70, 239, 0.18) 0px, transparent 50%),
-    radial-gradient(at 50% 80%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
-    radial-gradient(at 80% 80%, rgba(244, 63, 94, 0.15) 0px, transparent 50%);
+/* Icon Box */
+.icon-box-lg {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* DILI Mechanism Cards */
+.mech-card {
+  display: flex;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+  margin-bottom: 1.25rem;
+}
+.mech-card:hover {
+  border-color: #f43f5e;
+  box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.15);
+  transform: translateY(-2px);
+}
+.mech-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #e11d48;
+  background: rgba(225, 29, 72, 0.08);
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.25rem;
+  flex-shrink: 0;
+}
+.mech-content {
+  flex-grow: 1;
+}
+
+/* Quiz Matrix Grid */
+.quiz-matrix-cell {
+  transition: all 0.2s ease;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.quiz-matrix-cell:hover {
+  transform: scale(1.08);
+}
+
+/* Hy's Law Pulsing Alert */
+.hys-law-box {
+  animation: pulseAlert 2s infinite ease-in-out;
+}
+@keyframes pulseAlert {
+  0%, 100% { box-shadow: 0 0 0 rgba(220, 38, 38, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.5); }
+}
+
+/* KaTeX Formula Display */
+.katex-display {
+  margin: 0.75em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem;
 }
 
 /* Gradient Text */
@@ -79,80 +156,15 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Interactive Tabs */
-.nav-tab.active {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(217, 70, 239, 0.25) 100%);
-  border-color: rgba(168, 85, 247, 0.6);
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
-}
-
-/* KaTeX in Cards */
-.katex-display {
-  margin: 0.75em 0 !important;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0.5rem;
-}
-
-/* Cascade Tree Node */
-.cascade-step {
-  position: relative;
-}
-.cascade-step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 20px;
-  background: linear-gradient(to bottom, #ef4444, #f59e0b);
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
-}
-
-/* Quiz Option Hover & Selection */
-.quiz-option {
-  transition: all 0.2s ease-in-out;
-}
-.quiz-option:hover {
-  background-color: rgba(51, 65, 85, 0.9);
-  border-color: rgba(147, 197, 253, 0.5);
-}
-.quiz-option.correct-answer {
-  background-color: rgba(16, 185, 129, 0.2) !important;
-  border-color: #10b981 !important;
-  color: #34d399 !important;
-}
-.quiz-option.wrong-answer {
-  background-color: rgba(239, 68, 68, 0.2) !important;
-  border-color: #ef4444 !important;
-  color: #f87171 !important;
-}
-
-/* Sliders Styling */
-input[type="range"] {
-  accent-color: #8b5cf6;
+.gradient-text-dili {
+  background: var(--dili-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Print Friendly */
 @media print {
-  .no-print {
+  .no-print, nav, footer, .btn {
     display: none !important;
   }
   body {
