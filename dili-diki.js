@@ -1,12 +1,17 @@
 /**
- * DILI & DIKI Interactive Script Engine
+ * DILI & DIKI Masterclass Engine
  * Modul 02: Monitoring Keamanan Terapi: DILI & DIKI
- * Dosen: Apt. Vania Denise Djunaidy, S.Farm., M.Farm.Klin.
+ * Dosen Pengampu: Apt. Vania Denise Djunaidy, S.Farm., M.Farm.Klin.
  * Fakultas Farmasi UKWMS
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initNavbar();
+  // Initialize Lucide icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  initDiliTabs();
   initRRatioCalculator();
   initOatStepper();
   initHemodynamicSimulator();
@@ -15,51 +20,70 @@ document.addEventListener('DOMContentLoaded', () => {
   renderContentCards();
 });
 
-// 1. Navigation & Scrollspy
-function initNavbar() {
-  const navLinks = document.querySelectorAll('.nav-link');
+// 1. Tab Navigation System (Identical to Farklin Masterclass)
+function initDiliTabs() {
+  const tabs = document.querySelectorAll('.nav-tab');
   const sections = document.querySelectorAll('.content-section');
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.getAttribute('data-target');
+      
+      // Update active tab
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+      // Update sections visibility
+      sections.forEach(sec => {
+        if (sec.id === targetId) {
+          sec.classList.remove('hidden');
+          sec.classList.add('animate-fade-in');
+        } else {
+          sec.classList.add('hidden');
+          sec.classList.remove('animate-fade-in');
+        }
+      });
+
+      // Re-initialize icons for newly shown section
+      if (window.lucide) {
+        window.lucide.createIcons();
       }
     });
   });
 }
 
-// 2. Render Lore & Content Cards from Dataset
+// 2. Render Lore & Mechanisms from Dataset
 function renderContentCards() {
   const data = window.DILI_DIKI_DATA;
   if (!data) return;
 
-  // Render Mechanisms DILI
+  // Render 5 DILI Mechanisms
   const dMechanismsContainer = document.getElementById('dili-mechanisms-container');
   if (dMechanismsContainer && data.dili && data.dili.mechanisms) {
     dMechanismsContainer.innerHTML = data.dili.mechanisms.map(m => `
-      <div class="mech-card">
-        <div class="mech-badge">${m.number}</div>
-        <div class="mech-content">
-          <h4>${m.title}</h4>
-          <p class="mech-desc">${m.desc}</p>
-          <div class="mech-key-drug">
-            <span class="badge-pill bg-danger-light"><i class="fa-solid fa-capsules me-1"></i> Key Drug: ${m.keyDrug}</span>
+      <div class="glass-panel-interactive rounded-3xl p-6 sm:p-7 border border-slate-800 space-y-4">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center justify-center font-bold text-sm">
+              ${m.number}
+            </div>
+            <div>
+              <h4 class="text-lg sm:text-xl font-bold text-white">${m.title}</h4>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-rose-500/20 text-rose-300 mt-1">
+                Key Drug: ${m.keyDrug}
+              </span>
+            </div>
           </div>
-          <div class="mech-flow-box mt-2">
-            <small class="text-muted d-block fw-semibold mb-1"><i class="fa-solid fa-route me-1"></i> Clinical Mechanism & Action:</small>
-            <div class="flow-text">${m.detailFlow ? m.detailFlow.replace(/\\n/g, '<br>') : ''}</div>
+        </div>
+
+        <p class="text-slate-300 text-sm leading-relaxed">${m.desc}</p>
+
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700/80 text-xs text-slate-300 space-y-2">
+          <div class="font-bold text-rose-300 flex items-center gap-1.5">
+            <i data-lucide="route" class="w-4 h-4"></i> Alur Patofisiologi & Penatalaksanaan:
           </div>
-          ${m.otherDrugs ? `<div class="mt-2"><small class="text-muted"><strong>Contoh Lain:</strong> ${m.otherDrugs}</small></div>` : ''}
+          <div class="leading-relaxed text-slate-300">${m.detailFlow ? m.detailFlow.replace(/\\n/g, '<br>') : ''}</div>
+          ${m.otherDrugs ? `<div class="pt-1 text-slate-400"><strong>Contoh Lain:</strong> ${m.otherDrugs}</div>` : ''}
         </div>
       </div>
     `).join('');
@@ -69,21 +93,23 @@ function renderContentCards() {
   const stewContainer = document.getElementById('stewardship-pillars-container');
   if (stewContainer && data.diki && data.diki.stewardship && data.diki.stewardship.pillars) {
     stewContainer.innerHTML = data.diki.stewardship.pillars.map((p, idx) => `
-      <div class="col-md-6 mb-3">
-        <div class="stew-card h-100 p-3 rounded-3 shadow-sm border">
-          <h5 class="stew-title fw-bold text-primary mb-3">
-            <i class="fa-solid fa-shield-halved me-2 text-warning"></i>${p.title}
-          </h5>
-          <ul class="stew-list ps-3 mb-0">
-            ${p.points.map(pt => `<li class="mb-2 text-secondary">${pt}</li>`).join('')}
-          </ul>
-        </div>
+      <div class="glass-panel rounded-3xl p-6 border border-slate-800 space-y-3">
+        <h5 class="text-base font-bold text-cyan-300 flex items-center gap-2">
+          <i data-lucide="shield-check" class="w-5 h-5 text-cyan-400"></i> ${p.title}
+        </h5>
+        <ul class="space-y-2 text-xs text-slate-300 ps-4 list-disc">
+          ${p.points.map(pt => `<li>${pt}</li>`).join('')}
+        </ul>
       </div>
     `).join('');
   }
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
-// 3. R-Ratio & Hy's Law Interactive Calculator
+// 3. R-Ratio & Hy's Law Calculator
 function initRRatioCalculator() {
   const altInput = document.getElementById('calc-alt');
   const ulnAltInput = document.getElementById('calc-uln-alt');
@@ -94,7 +120,6 @@ function initRRatioCalculator() {
 
   const btnCalc = document.getElementById('btn-calc-r-ratio');
   const resultBox = document.getElementById('r-ratio-result-box');
-
   const presets = document.querySelectorAll('.preset-btn-dili');
 
   presets.forEach(btn => {
@@ -125,21 +150,26 @@ function initRRatioCalculator() {
     btnCalc.addEventListener('click', calculateRRatio);
   }
 
-  // Auto calculate on enter/change
   [altInput, ulnAltInput, alpInput, ulnAlpInput, tbilInput, ulnTbilInput].forEach(inp => {
     if (inp) inp.addEventListener('input', calculateRRatio);
   });
 
   function calculateRRatio() {
-    const alt = parseFloat(altInput.value);
-    const ulnAlt = parseFloat(ulnAltInput.value) || 40;
-    const alp = parseFloat(alpInput.value);
-    const ulnAlp = parseFloat(ulnAlpInput.value) || 120;
-    const tbil = parseFloat(tbilInput.value) || 0.8;
-    const ulnTbil = parseFloat(ulnTbilInput.value) || 1.0;
+    const alt = parseFloat(altInput?.value || 0);
+    const ulnAlt = parseFloat(ulnAltInput?.value || 40);
+    const alp = parseFloat(alpInput?.value || 0);
+    const ulnAlp = parseFloat(ulnAlpInput?.value || 120);
+    const tbil = parseFloat(tbilInput?.value || 0.8);
+    const ulnTbil = parseFloat(ulnTbilInput?.value || 1.0);
 
     if (!alt || !alp || alt <= 0 || alp <= 0) {
-      if (resultBox) resultBox.innerHTML = `<div class="alert alert-info mb-0"><i class="fa-solid fa-calculator me-2"></i>Masukkan nilai ALT & ALP untuk menghitung R-Ratio!</div>`;
+      if (resultBox) {
+        resultBox.innerHTML = `
+          <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 text-xs text-slate-400">
+            Masukkan nilai ALT dan ALP untuk kalkulasi Rasio R.
+          </div>
+        `;
+      }
       return;
     }
 
@@ -155,97 +185,89 @@ function initRRatioCalculator() {
 
     if (rRatio >= 5.0) {
       pattern = 'Hepatoseluler (Hepatocellular)';
-      badgeClass = 'bg-danger';
-      patternDesc = 'Kerusakan dan nekrosis sel hepatosit dominan. Sering disebabkan oleh Parasetamol, Isoniazid, Pirazinamid, Statin.';
+      badgeClass = 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+      patternDesc = 'Nekrosis sel hepatosit dominan. Sering disebabkan oleh Parasetamol, Isoniazid, Pirazinamid, Statin.';
       clinicalRec = 'Waspada peningkatan bilirubin progresif. Evaluasi Hy\'s Law dan pantau INR/PT serta tanda ensefalopati hepatik.';
     } else if (rRatio <= 2.0) {
       pattern = 'Kolestatik (Cholestatic)';
-      badgeClass = 'bg-warning text-dark';
-      patternDesc = 'Gangguan ekskresi empedu / kerusakan epitel duktus biliaris dominan. Sering disebabkan oleh Amoksisilin-Klavulanat, Steroid Anabolik, Eritromisin, Klorpromazin.';
-      clinicalRec = 'Pertimbangkan terapi suportif Asam Ursodeoksikolat (UDCA) dan Kolestiramin bila pasien mengalami pruritus berat. Resolusi klinis cenderung lebih lambat.';
+      badgeClass = 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+      patternDesc = 'Gangguan ekskresi empedu / kerusakan duktus biliaris dominan. Sering oleh Amoksisilin-Klavulanat, Steroid Anabolik, Eritromisin.';
+      clinicalRec = 'Pertimbangkan terapi suportif Asam Ursodeoksikolat (UDCA) dan Kolestiramin bila pasien mengalami pruritus berat.';
     } else {
       pattern = 'Campuran (Mixed)';
-      badgeClass = 'bg-primary';
-      patternDesc = 'Pola cedera kombinasi antara kerusakan hepatosit dan stasis empedu biliaris. Sering pada paparan Fenitoin, Sulfonamida, Ko-amoksiklav fase lanjut.';
-      clinicalRec = 'Evaluasi kemungkinan pajanan polifarmasi. Pantau kedua panel enzim serial tiap 48-72 jam.';
+      badgeClass = 'bg-blue-500/20 text-blue-300 border-blue-500/40';
+      patternDesc = 'Kombinasi kerusakan hepatosit dan stasis empedu. Sering pada paparan Fenitoin, Sulfonamida, Ko-amoksiklav fase lanjut.';
+      clinicalRec = 'Evaluasi polifarmasi dan pantau kedua panel enzim serial tiap 48-72 jam hingga fase resolusi.';
     }
 
-    // Hy's Law Check
     // Hy's Law Criteria: ALT >= 3x ULN, Total Bilirubin >= 2x ULN, ALP < 2x ULN
     const isHysLaw = (altRatio >= 3.0) && (tbilRatio >= 2.0) && (alpRatio < 2.0);
 
     let hysLawAlert = '';
     if (isHysLaw) {
       hysLawAlert = `
-        <div class="hys-law-box alert alert-danger border-danger mt-3 animate__animated animate__pulse">
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-triangle-exclamation fa-2x me-3 text-danger"></i>
-            <div>
-              <h5 class="fw-bold text-danger mb-1"><i class="fa-solid fa-skull-crossbones me-1"></i> ALERT: HY'S LAW POSITIF! (RED FLAG)</h5>
-              <p class="mb-1"><strong>Kriteria Terpenuhi:</strong> ALT ≥ 3x ULN (${altRatio.toFixed(1)}x), Bilirubin Total ≥ 2x ULN (${tbilRatio.toFixed(1)}x), tanpa kolestasis awal (ALP < 2x ULN: ${alpRatio.toFixed(1)}x).</p>
-              <p class="mb-0 text-dark fw-bold">⚠️ Pasien memiliki risiko MORTALITAS 10% - 50% akibat Gagal Hati Akut (Acute Liver Failure)! HENTIKAN SEGERA OBAT PENYEBAB & RAWAT INTENSIF!</p>
-            </div>
+        <div class="hys-law-box p-4 rounded-2xl bg-rose-950/80 border border-rose-500/60 text-rose-200 space-y-2 mt-4">
+          <div class="flex items-center gap-2 text-rose-400 font-bold text-sm">
+            <i data-lucide="triangle-alert" class="w-5 h-5 text-rose-400"></i>
+            <span>ALERT: HY'S LAW POSITIF! (RED FLAG HEPATOTOKSISITAS)</span>
           </div>
-        </div>
-      `;
-    } else if (altRatio >= 3.0 && tbilRatio >= 2.0 && alpRatio >= 2.0) {
-      hysLawAlert = `
-        <div class="alert alert-warning mt-3">
-          <i class="fa-solid fa-circle-exclamation me-2"></i><strong>Catatan Kolestasis:</strong> ALT dan Bilirubin meningkat tinggi, namun disertai kenaikan ALP tinggi (ALP ≥ 2x ULN: ${alpRatio.toFixed(1)}x). Menunjukkan komponen kolestatik/obstruktif signifikan (Bukan Pure Hy's Law).
+          <p class="text-xs leading-relaxed">
+            <strong>Kriteria Terpenuhi:</strong> ALT ≥ 3x ULN (${altRatio.toFixed(1)}x), Bilirubin Total ≥ 2x ULN (${tbilRatio.toFixed(1)}x), tanpa kolestasis awal (ALP < 2x ULN: ${alpRatio.toFixed(1)}x).
+          </p>
+          <div class="text-xs font-bold text-rose-300 bg-rose-900/50 p-2.5 rounded-xl border border-rose-500/40">
+            ⚠️ Risiko MORTALITAS 10% - 50% akibat Gagal Hati Akut! Hentikan segera obat penyebab & rawat intensif!
+          </div>
         </div>
       `;
     }
 
     if (resultBox) {
       resultBox.innerHTML = `
-        <div class="p-3 bg-light rounded-3 border">
-          <div class="d-flex justify-content-between align-items-center flex-wrap mb-2">
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
             <div>
-              <span class="text-muted">R-Value:</span>
-              <h2 class="fw-bold text-dark mb-0">${rRatio.toFixed(2)}</h2>
+              <span class="text-xs text-slate-400">Nilai Rasio R (R-Value):</span>
+              <div class="text-3xl font-extrabold text-white">${rRatio.toFixed(2)}</div>
             </div>
-            <div>
-              <span class="badge ${badgeClass} fs-6 px-3 py-2 rounded-pill">${pattern}</span>
+            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-bold border ${badgeClass}">
+              ${pattern}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700">
+              <span class="text-slate-400 block text-[11px]">ALT / ULN</span>
+              <strong class="text-rose-400 text-sm">${altRatio.toFixed(1)}x</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700">
+              <span class="text-slate-400 block text-[11px]">ALP / ULN</span>
+              <strong class="text-amber-400 text-sm">${alpRatio.toFixed(1)}x</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700">
+              <span class="text-slate-400 block text-[11px]">TBil / ULN</span>
+              <strong class="text-cyan-400 text-sm">${tbilRatio.toFixed(1)}x</strong>
             </div>
           </div>
 
-          <div class="row g-2 text-center my-2">
-            <div class="col-4">
-              <div class="p-2 bg-white rounded border">
-                <small class="text-muted d-block">ALT / ULN</small>
-                <strong>${altRatio.toFixed(2)}x</strong>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="p-2 bg-white rounded border">
-                <small class="text-muted d-block">ALP / ULN</small>
-                <strong>${alpRatio.toFixed(2)}x</strong>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="p-2 bg-white rounded border">
-                <small class="text-muted d-block">TBil / ULN</small>
-                <strong>${tbilRatio.toFixed(2)}x</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-3">
-            <p class="mb-1 text-secondary"><strong>Patofisiologi:</strong> ${patternDesc}</p>
-            <p class="mb-0 text-primary"><strong>Rekomendasi Farmasi:</strong> ${clinicalRec}</p>
+          <div class="space-y-1.5 text-xs">
+            <p class="text-slate-300"><strong class="text-slate-200">Patofisiologi:</strong> ${patternDesc}</p>
+            <p class="text-cyan-300"><strong class="text-cyan-200">Rekomendasi Farmasi:</strong> ${clinicalRec}</p>
           </div>
 
           ${hysLawAlert}
         </div>
       `;
     }
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   }
 
-  // Initial calculation
   calculateRRatio();
 }
 
-// 4. OAT Reintroduction Interactive Stepper
+// 4. OAT Reintroduction Stepper
 function initOatStepper() {
   const steps = [
     {
@@ -292,22 +314,29 @@ function initOatStepper() {
     if (!stepperContainer) return;
     const s = steps[idx];
     stepperContainer.innerHTML = `
-      <div class="card border-primary-light shadow-sm">
-        <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center">
-          <span class="fw-bold"><i class="fa-solid fa-vial-circle-check me-2"></i>${s.badge}: ${s.title}</span>
-          <span class="badge bg-light text-primary">Step ${idx + 1} of ${steps.length}</span>
+      <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-700 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+            ${s.badge}: ${s.title}
+          </span>
+          <span class="text-xs text-slate-400">Step ${idx + 1} of ${steps.length}</span>
         </div>
-        <div class="card-body">
-          <div class="alert alert-info py-2 mb-3">
-            <strong><i class="fa-solid fa-hand-point-right me-2"></i>Instruksi Klinis:</strong> ${s.action}
+
+        <div class="p-3.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-slate-200">
+          <strong class="text-indigo-300">Instruksi Klinis:</strong> ${s.action}
+        </div>
+
+        ${s.criteria ? `<p class="text-xs text-rose-300"><strong>Kriteria Stop:</strong> ${s.criteria}</p>` : ''}
+        ${s.why ? `<p class="text-xs text-emerald-300"><strong>Rasional Farmakologi:</strong> ${s.why}</p>` : ''}
+        ${s.warning ? `<p class="text-xs text-amber-300"><strong>Peringatan Toksisitas:</strong> ${s.warning}</p>` : ''}
+        ${s.regimenRule ? `
+          <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs font-semibold">
+            🌟 Golden Rule Rejimen: ${s.regimenRule}
           </div>
-          ${s.criteria ? `<p class="text-danger mb-2"><strong><i class="fa-solid fa-circle-exclamation me-1"></i>Kriteria Stop:</strong> ${s.criteria}</p>` : ''}
-          ${s.why ? `<p class="text-success mb-2"><strong><i class="fa-solid fa-lightbulb me-1"></i>Rasional Farmakologi:</strong> ${s.why}</p>` : ''}
-          ${s.warning ? `<p class="text-danger fw-bold mb-2"><strong><i class="fa-solid fa-triangle-exclamation me-1"></i>Peringatan Toksisitas:</strong> ${s.warning}</p>` : ''}
-          ${s.regimenRule ? `<div class="p-2 bg-warning-light rounded border border-warning text-dark fw-semibold mb-2"><i class="fa-solid fa-calendar-days me-1"></i><strong>Golden Rule Rejimen:</strong> ${s.regimenRule}</div>` : ''}
-          <div class="text-muted mt-3 pt-2 border-top">
-            <small><i class="fa-solid fa-clock-rotate-left me-1"></i><strong>Monitoring:</strong> ${s.status || 'Evaluasi berkala setiap perubahan dosis.'}</small>
-          </div>
+        ` : ''}
+
+        <div class="pt-2 text-[11px] text-slate-400 border-t border-slate-800">
+          <strong>Monitoring:</strong> ${s.status || 'Evaluasi berkala serial LFT.'}
         </div>
       </div>
     `;
@@ -317,16 +346,17 @@ function initOatStepper() {
 
     stepIndicators.forEach((ind, i) => {
       if (i === idx) {
-        ind.classList.add('active', 'btn-primary');
-        ind.classList.remove('btn-outline-primary');
+        ind.className = "oat-step-item w-8 h-8 rounded-lg text-xs font-bold bg-indigo-600 text-white shadow-lg shadow-indigo-600/30";
       } else if (i < idx) {
-        ind.classList.remove('active', 'btn-primary');
-        ind.classList.add('btn-success');
+        ind.className = "oat-step-item w-8 h-8 rounded-lg text-xs font-bold bg-emerald-600 text-white";
       } else {
-        ind.classList.remove('active', 'btn-primary', 'btn-success');
-        ind.classList.add('btn-outline-primary');
+        ind.className = "oat-step-item w-8 h-8 rounded-lg text-xs font-bold bg-slate-800 text-slate-400 border border-slate-700";
       }
     });
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   }
 
   if (btnPrev) {
@@ -357,7 +387,7 @@ function initOatStepper() {
   renderOatStep(0);
 }
 
-// 5. Glomerular Hemodynamic Autoregulation Visualizer (DIKI)
+// 5. Glomerular Hemodynamic Visualizer
 function initHemodynamicSimulator() {
   const scenarioBtns = document.querySelectorAll('.hemo-btn');
   const afferentStatus = document.getElementById('hemo-afferent-status');
@@ -371,7 +401,7 @@ function initHemodynamicSimulator() {
       afferent: "Normal (Dilatasi Seimbang via PGE2/PGI2)",
       efferent: "Normal (Tonus Seimbang via AT-II)",
       gfrValue: 100,
-      gfrClass: "bg-success",
+      gfrColor: "from-emerald-500 to-teal-400",
       gfrLabel: "Normal GFR (~100%)",
       explanation: "Kondisi fisiologis normal: Prostaglandin menjaga arteriol aferen terbuka lebar, sementara Angiotensin II menjaga tonus arteriol eferen sehingga tekanan hidrostatik kapiler glomerulus optimal untuk filtrasi."
     },
@@ -379,7 +409,7 @@ function initHemodynamicSimulator() {
       afferent: "VASOKONSTRIKSI (Inhibisi PGE2/PGI2)",
       efferent: "Normal (Dimediasi AT-II)",
       gfrValue: 45,
-      gfrClass: "bg-warning text-dark",
+      gfrColor: "from-amber-500 to-orange-500",
       gfrLabel: "GFR Drop (~45%)",
       explanation: "NSAID menghambat COX-1/2 -> sintesis prostaglandin renal anjlok -> arteriol aferen menyempit hebat -> aliran darah masuk ke glomerulus tercekik -> GFR anjlok!"
     },
@@ -387,7 +417,7 @@ function initHemodynamicSimulator() {
       afferent: "Normal (Dimediasi PGE2)",
       efferent: "VASODILATASI (Inhibisi Angiotensin II)",
       gfrValue: 55,
-      gfrClass: "bg-warning text-dark",
+      gfrColor: "from-indigo-500 to-blue-500",
       gfrLabel: "GFR Drop (~55%)",
       explanation: "ACE-Inhibitor / ARB memblokade AT-II -> arteriol eferen membuka lebar -> tekanan hidrostatik kapiler intraglomerular lolos bocor keluar -> laju filtrasi turun (SCr naik hingga 30% masih wajar)."
     },
@@ -395,7 +425,7 @@ function initHemodynamicSimulator() {
       afferent: "SEMPIT TOTAL (Deplesi Volume + NSAID)",
       efferent: "BOCOR LEBAR (ACEI/ARB)",
       gfrValue: 15,
-      gfrClass: "bg-danger",
+      gfrColor: "from-rose-600 to-pink-600",
       gfrLabel: "Severe Pre-Renal AKI (~15%)",
       explanation: "TRIPLE WHAMMY (Diuretik + NSAID + ACEI/ARB): Diuretik bikin hipovolemia, NSAID mencekik pintu masuk aferen, ACEI membuka pintu keluar eferen -> Tekanan kapiler glomerulus kolaps total -> Gagal Ginjal Akut mendadak!"
     },
@@ -403,7 +433,7 @@ function initHemodynamicSimulator() {
       afferent: "Vasokonstriksi Fisiologis via TGF",
       efferent: "Normal",
       gfrValue: 75,
-      gfrClass: "bg-info text-dark",
+      gfrColor: "from-cyan-500 to-blue-500",
       gfrLabel: "Initial 'eGFR Dip' (~75-80%)",
       explanation: "SGLT2 Inhibitor meningkatkan hantaran Na+ ke Macula Densa -> mengaktifkan Tubuloglomerular Feedback (TGF) -> vasokonstriksi aferen fisiologis -> menurunkan hiperfiltrasi podosit (nefroprotektif jangka panjang!)."
     },
@@ -411,7 +441,7 @@ function initHemodynamicSimulator() {
       afferent: "Spasme Berat (Endotelin & NO Block)",
       efferent: "Normal",
       gfrValue: 35,
-      gfrClass: "bg-danger",
+      gfrColor: "from-purple-600 to-rose-600",
       gfrLabel: "CNI Nephrotoxicity (~35%)",
       explanation: "Siklosporin / Takrolimus memicu pelepasan endotelin dan vasokonstriksi aferen poten. Terapi rescue: Penyesuaian TDM & pemberian CCB Dihidropiridin (Amlodipin) untuk membuka kembali arteriol aferen."
     }
@@ -419,27 +449,27 @@ function initHemodynamicSimulator() {
 
   scenarioBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      scenarioBtns.forEach(b => b.classList.remove('active', 'btn-primary'));
-      scenarioBtns.forEach(b => b.classList.add('btn-outline-primary'));
-      btn.classList.remove('btn-outline-primary');
-      btn.classList.add('active', 'btn-primary');
+      scenarioBtns.forEach(b => {
+        b.className = "hemo-btn w-full text-left p-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition";
+      });
+      btn.className = "hemo-btn w-full text-left p-3 rounded-2xl bg-indigo-600 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition flex items-center justify-between";
 
       const mode = btn.dataset.scenario;
       const sc = scenarios[mode] || scenarios.normal;
 
-      if (afferentStatus) afferentStatus.innerHTML = `<strong>Arteriol Aferen:</strong> ${sc.afferent}`;
-      if (efferentStatus) efferentStatus.innerHTML = `<strong>Arteriol Eferen:</strong> ${sc.efferent}`;
+      if (afferentStatus) afferentStatus.innerText = sc.afferent;
+      if (efferentStatus) efferentStatus.innerText = sc.efferent;
       if (gfrGauge) {
         gfrGauge.style.width = `${sc.gfrValue}%`;
-        gfrGauge.className = `progress-bar ${sc.gfrClass}`;
+        gfrGauge.className = `h-full rounded-full bg-gradient-to-r ${sc.gfrColor} transition-all duration-500`;
       }
       if (gfrText) gfrText.innerText = sc.gfrLabel;
-      if (hemoExplanation) hemoExplanation.innerHTML = `<i class="fa-solid fa-circle-info text-primary me-2"></i>${sc.explanation}`;
+      if (hemoExplanation) hemoExplanation.innerText = sc.explanation;
     });
   });
 }
 
-// 6. KDIGO AKI Stager & Stewardship Tool
+// 6. KDIGO AKI Stager
 function initKdigoStager() {
   const baseScrInput = document.getElementById('kdigo-base-scr');
   const currScrInput = document.getElementById('kdigo-curr-scr');
@@ -457,30 +487,23 @@ function initKdigoStager() {
   });
 
   function stageKdigo() {
-    const baseScr = parseFloat(baseScrInput.value);
-    const currScr = parseFloat(currScrInput.value);
-    const uo = parseFloat(urineOutputInput.value) || 1.0;
-    const uoHrs = parseFloat(urineHoursInput.value) || 0;
-
-    if (!baseScr || !currScr || baseScr <= 0 || currScr <= 0) {
-      if (resultBox) resultBox.innerHTML = `<div class="alert alert-secondary mb-0"><i class="fa-solid fa-calculator me-2"></i>Masukkan SCr Baseline dan SCr Saat Ini untuk staging KDIGO!</div>`;
-      return;
-    }
+    const baseScr = parseFloat(baseScrInput?.value || 0.9);
+    const currScr = parseFloat(currScrInput?.value || 2.8);
+    const uo = parseFloat(urineOutputInput?.value || 0.4);
+    const uoHrs = parseFloat(urineHoursInput?.value || 14);
 
     const scrDiff = currScr - baseScr;
     const scrRatio = currScr / baseScr;
 
     let stage = 0;
     let stageTitle = "Tidak Memenuhi Kriteria AKI";
-    let stageClass = "bg-success text-white";
+    let badgeClass = "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
     let plan = [];
 
-    // KDIGO Criteria
-    // Stage 3: SCr >= 3.0x baseline OR SCr >= 4.0 mg/dL OR UO < 0.3 mL/kg/h for >= 24h OR Anuria >= 12h
     if (scrRatio >= 3.0 || currScr >= 4.0 || (uo < 0.3 && uoHrs >= 24) || (uo === 0 && uoHrs >= 12)) {
       stage = 3;
       stageTitle = "KDIGO Stage 3 (Severe AKI)";
-      stageClass = "bg-danger text-white";
+      badgeClass = "bg-rose-500/20 text-rose-300 border-rose-500/40";
       plan = [
         "Hentikan SEMUA nefrotoksin non-esensial.",
         "Konsultasi Nefrologi cito untuk evaluasi Terapi Pengganti Ginjal (Dialisis / CRRT).",
@@ -491,7 +514,7 @@ function initKdigoStager() {
     } else if (scrRatio >= 2.0 || (uo < 0.5 && uoHrs >= 12)) {
       stage = 2;
       stageTitle = "KDIGO Stage 2 (Moderate AKI)";
-      stageClass = "bg-warning text-dark";
+      badgeClass = "bg-amber-500/20 text-amber-300 border-amber-500/40";
       plan = [
         "Hentikan obat pemicu utama (NSAID, Aminoglikosida, dll).",
         "Optimalkan status volume cairan dengan hidrasi kristaloid isotonik.",
@@ -501,7 +524,7 @@ function initKdigoStager() {
     } else if (scrDiff >= 0.3 || scrRatio >= 1.5 || (uo < 0.5 && uoHrs >= 6)) {
       stage = 1;
       stageTitle = "KDIGO Stage 1 (Mild AKI)";
-      stageClass = "bg-info text-dark";
+      badgeClass = "bg-cyan-500/20 text-cyan-300 border-cyan-500/40";
       plan = [
         "Evaluasi riwayat obat nefrotoksik 7 hari terakhir (Triple Whammy, antibiotik).",
         "Pastikan hidrasi adekuat dan hindari agen kontras radiologi.",
@@ -517,20 +540,21 @@ function initKdigoStager() {
 
     if (resultBox) {
       resultBox.innerHTML = `
-        <div class="p-3 bg-light rounded-3 border">
-          <div class="d-flex justify-content-between align-items-center flex-wrap mb-2">
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
             <div>
-              <span class="text-muted">Kenaikan Rasio SCr:</span>
-              <h3 class="fw-bold text-dark mb-0">${scrRatio.toFixed(2)}x (${scrDiff >= 0 ? '+' : ''}${scrDiff.toFixed(2)} mg/dL)</h3>
+              <span class="text-xs text-slate-400">Rasio Kenaikan SCr:</span>
+              <div class="text-2xl font-extrabold text-white">${scrRatio.toFixed(2)}x (${scrDiff >= 0 ? '+' : ''}${scrDiff.toFixed(2)} mg/dL)</div>
             </div>
-            <div>
-              <span class="badge ${stageClass} fs-6 px-3 py-2 rounded-pill">${stageTitle}</span>
-            </div>
+            <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-bold border ${badgeClass}">
+              ${stageTitle}
+            </span>
           </div>
-          <div class="mt-3">
-            <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-list-check me-2"></i>Rencana Asuhan Farmasi & Stewardship:</h6>
-            <ul class="ps-3 mb-0">
-              ${plan.map(p => `<li class="mb-1 text-secondary">${p}</li>`).join('')}
+
+          <div class="space-y-2 text-xs">
+            <div class="font-bold text-cyan-300">Rencana Asuhan Farmasi & Stewardship:</div>
+            <ul class="space-y-1.5 text-slate-300 ps-4 list-disc">
+              ${plan.map(p => `<li>${p}</li>`).join('')}
             </ul>
           </div>
         </div>
@@ -541,7 +565,7 @@ function initKdigoStager() {
   stageKdigo();
 }
 
-// 7. 30 HOTS Quiz Engine
+// 7. 30 HOTS Quiz Engine (With Category Filters, Matrix Grid & Confetti)
 function initDiliDikiQuiz() {
   const data = window.DILI_DIKI_DATA;
   if (!data || !data.quizQuestions) return;
@@ -549,7 +573,7 @@ function initDiliDikiQuiz() {
   const questions = data.quizQuestions;
   let currentIdx = 0;
   let selectedCategory = 'all';
-  let userAnswers = {}; // { qId: selectedOptionIndex }
+  let userAnswers = {};
 
   const questionCard = document.getElementById('quiz-question-card');
   const gridContainer = document.getElementById('quiz-grid-container');
@@ -560,51 +584,44 @@ function initDiliDikiQuiz() {
   const btnNext = document.getElementById('btn-quiz-next');
   const btnReset = document.getElementById('btn-quiz-reset');
 
-  // Filter Categories
   categoryFilters.forEach(btn => {
     btn.addEventListener('click', () => {
-      categoryFilters.forEach(b => b.classList.remove('active', 'btn-primary'));
-      categoryFilters.forEach(b => b.classList.add('btn-outline-primary'));
-      btn.classList.remove('btn-outline-primary');
-      btn.classList.add('active', 'btn-primary');
+      categoryFilters.forEach(b => {
+        b.className = "quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition";
+      });
+      btn.className = "quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-rose-600 text-white border border-rose-500 shadow-lg shadow-rose-600/30 transition";
 
       selectedCategory = btn.dataset.category;
-      // find first question matching category
-      const firstMatchIdx = questions.findIndex(q => selectedCategory === 'all' || q.category.toLowerCase().includes(selectedCategory.toLowerCase()));
-      currentIdx = firstMatchIdx !== -1 ? firstMatchIdx : 0;
+      const firstMatch = questions.findIndex(q => selectedCategory === 'all' || q.category.toLowerCase().includes(selectedCategory.toLowerCase()));
+      currentIdx = firstMatch !== -1 ? firstMatch : 0;
       renderQuiz();
     });
   });
-
-  function getFilteredQuestions() {
-    if (selectedCategory === 'all') return questions;
-    return questions.filter(q => q.category.toLowerCase().includes(selectedCategory.toLowerCase()));
-  }
 
   function renderQuizGrid() {
     if (!gridContainer) return;
     gridContainer.innerHTML = questions.map((q, idx) => {
       const isAnswered = userAnswers[q.id] !== undefined;
       const isCurrent = idx === currentIdx;
-      let btnClass = 'btn-outline-secondary';
+      let btnStyle = 'bg-slate-800 text-slate-400 border border-slate-700';
 
       if (isAnswered) {
         const isCorrect = q.options[userAnswers[q.id]]?.correct;
-        btnClass = isCorrect ? 'btn-success text-white' : 'btn-danger text-white';
+        btnStyle = isCorrect ? 'bg-emerald-600 text-white border-emerald-500 font-bold' : 'bg-rose-600 text-white border-rose-500 font-bold';
       }
 
       if (isCurrent) {
-        btnClass += ' border-3 border-dark fw-bold shadow-sm';
+        btnStyle += ' ring-2 ring-purple-400 scale-105';
       }
 
       return `
-        <button class="btn btn-sm ${btnClass} quiz-matrix-cell m-1" style="width: 40px; height: 40px;" data-idx="${idx}">
+        <button class="w-9 h-9 rounded-xl text-xs font-semibold flex items-center justify-center transition quiz-grid-btn ${btnStyle}" data-idx="${idx}">
           ${idx + 1}
         </button>
       `;
     }).join('');
 
-    gridContainer.querySelectorAll('.quiz-matrix-cell').forEach(btn => {
+    gridContainer.querySelectorAll('.quiz-grid-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         currentIdx = parseInt(btn.dataset.idx);
         renderQuiz();
@@ -626,10 +643,14 @@ function initDiliDikiQuiz() {
     });
 
     if (scoreBadge) {
-      scoreBadge.innerHTML = `<i class="fa-solid fa-trophy text-warning me-1"></i>Skor: <strong>${correctCount * 10}</strong> (${correctCount}/${questions.length} Benar)`;
+      scoreBadge.innerText = `Skor: ${correctCount * 10} (${correctCount}/${questions.length} Benar)`;
     }
     if (progressText) {
       progressText.innerText = `Terjawab ${answeredCount} dari ${questions.length} Soal`;
+    }
+
+    if (answeredCount === questions.length && window.confetti) {
+      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
     }
   }
 
@@ -642,64 +663,57 @@ function initDiliDikiQuiz() {
     const isAnswered = answeredIdx !== undefined;
 
     questionCard.innerHTML = `
-      <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center flex-wrap">
-          <div>
-            <span class="badge bg-primary-light text-primary fw-bold px-3 py-2 rounded-pill me-2">
-              <i class="fa-solid fa-tag me-1"></i>${q.category}
-            </span>
-            <span class="badge bg-secondary-light text-secondary fw-semibold px-3 py-2 rounded-pill">
-              Soal ${currentIdx + 1} / ${questions.length}
-            </span>
-          </div>
-          <span class="text-muted small"><i class="fa-solid fa-brain me-1"></i>HOTS Clinical Vignette</span>
+      <div class="space-y-6">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">
+            ${q.category}
+          </span>
+          <span class="text-xs text-slate-400 font-mono">Soal ${currentIdx + 1} / ${questions.length}</span>
         </div>
-        <div class="card-body p-4">
-          <h5 class="card-title fw-bold text-dark lh-base mb-4">${q.question}</h5>
-          
-          <div class="quiz-options-list">
-            ${q.options.map((opt, optIdx) => {
-              let optClass = 'btn-outline-light border text-dark';
-              let optIcon = `<span class="badge bg-light text-dark me-2">${opt.label}</span>`;
 
-              if (isAnswered) {
-                if (opt.correct) {
-                  optClass = 'btn-success text-white shadow-sm';
-                  optIcon = `<i class="fa-solid fa-circle-check me-2"></i>`;
-                } else if (optIdx === answeredIdx) {
-                  optClass = 'btn-danger text-white shadow-sm';
-                  optIcon = `<i class="fa-solid fa-circle-xmark me-2"></i>`;
-                } else {
-                  optClass = 'btn-outline-secondary opacity-50';
-                }
+        <h4 class="text-lg sm:text-xl font-bold text-white leading-relaxed">
+          ${q.question}
+        </h4>
+
+        <div class="space-y-3">
+          ${q.options.map((opt, optIdx) => {
+            let optStyle = "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:border-slate-600";
+            let iconMarkup = `<span class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-700 text-slate-400 flex items-center justify-center font-bold text-xs flex-shrink-0">${opt.label}</span>`;
+
+            if (isAnswered) {
+              if (opt.correct) {
+                optStyle = "bg-emerald-500/20 border-emerald-500/60 text-emerald-200";
+                iconMarkup = `<span class="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">&check;</span>`;
+              } else if (optIdx === answeredIdx) {
+                optStyle = "bg-rose-500/20 border-rose-500/60 text-rose-200";
+                iconMarkup = `<span class="w-6 h-6 rounded-lg bg-rose-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">&times;</span>`;
+              } else {
+                optStyle = "bg-slate-900/40 border-slate-800 text-slate-500 opacity-50";
               }
+            }
 
-              return `
-                <button class="btn ${optClass} w-100 text-start p-3 mb-2 rounded-3 quiz-option-btn d-flex align-items-start" 
-                  data-opt-idx="${optIdx}" ${isAnswered ? 'disabled' : ''}>
-                  <div class="mt-1">${optIcon}</div>
-                  <div class="flex-grow-1">${opt.text}</div>
-                </button>
-              `;
-            }).join('')}
-          </div>
-
-          ${isAnswered ? `
-            <div class="quiz-explanation-box alert ${q.options[answeredIdx]?.correct ? 'alert-success border-success' : 'alert-danger border-danger'} mt-4 rounded-3 animate__animated animate__fadeIn">
-              <h6 class="fw-bold mb-2">
-                <i class="fa-solid ${q.options[answeredIdx]?.correct ? 'fa-circle-check text-success' : 'fa-triangle-exclamation text-danger'} me-2"></i>
-                ${q.options[answeredIdx]?.correct ? 'Jawaban Benar!' : 'Jawaban Kurang Tepat!'}
-              </h6>
-              <p class="mb-0 text-dark small lh-base"><strong>Pembahasan Klinis:</strong> ${q.explanation}</p>
-            </div>
-          ` : ''}
+            return `
+              <button class="w-full text-left p-4 rounded-2xl border text-sm transition flex items-start gap-3 quiz-opt-btn ${optStyle}" data-opt-idx="${optIdx}" ${isAnswered ? 'disabled' : ''}>
+                ${iconMarkup}
+                <span class="leading-relaxed flex-grow">${opt.text}</span>
+              </button>
+            `;
+          }).join('')}
         </div>
+
+        ${isAnswered ? `
+          <div class="p-4 rounded-2xl ${q.options[answeredIdx]?.correct ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-200' : 'bg-rose-500/10 border border-rose-500/30 text-rose-200'} text-xs space-y-1.5 animate-fade-in">
+            <div class="font-bold flex items-center gap-1.5 text-sm">
+              ${q.options[answeredIdx]?.correct ? '🎉 Jawaban Benar!' : '⚠️ Jawaban Kurang Tepat!'}
+            </div>
+            <p class="leading-relaxed text-slate-300"><strong>Pembahasan Klinis:</strong> ${q.explanation}</p>
+          </div>
+        ` : ''}
       </div>
     `;
 
-    // Attach click handlers to option buttons
     if (!isAnswered) {
-      questionCard.querySelectorAll('.quiz-option-btn').forEach(btn => {
+      questionCard.querySelectorAll('.quiz-opt-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const optIdx = parseInt(btn.dataset.optIdx);
           userAnswers[q.id] = optIdx;
@@ -737,7 +751,7 @@ function initDiliDikiQuiz() {
 
   if (btnReset) {
     btnReset.addEventListener('click', () => {
-      if (confirm('Apakah kamu yakin ingin mengulang seluruh kuis DILI & DIKI?')) {
+      if (confirm('Apakah kamu ingin mengulang seluruh kuis DILI & DIKI?')) {
         userAnswers = {};
         currentIdx = 0;
         renderQuiz();
@@ -745,6 +759,5 @@ function initDiliDikiQuiz() {
     });
   }
 
-  // Initial render
   renderQuiz();
 }

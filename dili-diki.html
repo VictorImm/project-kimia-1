@@ -1,758 +1,762 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DILI & DIKI | Monitoring Keamanan Terapi - Farmasi Klinik UKWMS</title>
+  <title>DILI & DIKI Masterclass: Monitoring Keamanan Terapi</title>
   
-  <!-- Google Fonts: Inter & Outfit -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              900: '#4c1d95',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  
-  <!-- KaTeX for crisp math formula rendering -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- KaTeX for beautiful math formulas -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
 </head>
-<body class="bg-light text-dark">
 
-  <!-- TOP NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-2">
-    <div class="container-fluid px-lg-5">
-      <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
-        <span class="badge bg-danger me-2 p-2"><i class="fa-solid fa-triangle-exclamation"></i></span>
-        <span class="d-none d-sm-inline">PharmacoVigilance Lab</span>
-        <span class="badge bg-warning text-dark ms-2 fs-7">MODUL 02: DILI & DIKI</span>
-      </a>
+<body class="bg-mesh min-h-screen text-slate-100 antialiased selection:bg-rose-500 selection:text-white">
 
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#diliNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-rose-950/70 via-slate-900/80 to-purple-950/70 border-b border-rose-500/20 py-2 px-4 text-center text-xs md:text-sm font-medium text-rose-200">
+    🎓 <span class="font-bold text-white">Fakultas Farmasi UKWMS</span> • S1 Farmasi Klinis Terintegrasi • Modul Monitoring Keamanan Terapi: DILI & DIKI (Apt. Vania Denise Djunaidy, S.Farm., M.Farm.Klin.)
+  </div>
 
-      <div class="collapse navbar-collapse" id="diliNavbar">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
-          <li class="nav-item">
-            <a class="nav-link active" href="#overview"><i class="fa-solid fa-house-chimney-medical me-1"></i>Overview</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#dili-section"><i class="fa-solid fa-heart-pulse me-1"></i>Part 1: DILI</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#r-ratio-calc"><i class="fa-solid fa-calculator me-1"></i>R-Ratio Lab</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#oat-rechallenge"><i class="fa-solid fa-vial-virus me-1"></i>OAT Rechallenge</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#diki-section"><i class="fa-solid fa-filter me-1"></i>Part 2: DIKI</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#hemodynamic-sim"><i class="fa-solid fa-gauge-high me-1"></i>Glomerular Sim</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#kdigo-section"><i class="fa-solid fa-shield-halved me-1"></i>KDIGO & Stewardship</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#quiz-section"><i class="fa-solid fa-circle-question me-1"></i>30 HOTS Quiz</a>
-          </li>
-        </ul>
-
-        <div class="d-flex align-items-center gap-2">
-          <a href="farklin-populasi-khusus.html" class="btn btn-outline-info btn-sm text-nowrap rounded-pill">
-            <i class="fa-solid fa-arrow-left me-1"></i>Modul 1 (Farklin)
-          </a>
-          <a href="index.html" class="btn btn-primary btn-sm text-nowrap rounded-pill">
-            <i class="fa-solid fa-grip me-1"></i>Portal Utama
-          </a>
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-xl border-b border-slate-800/80 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-pink-500 flex items-center justify-center shadow-md shadow-rose-500/30">
+          <i data-lucide="shield-alert" class="w-6 h-6 text-white"></i>
         </div>
+        <div>
+          <h1 class="font-bold text-base md:text-lg tracking-tight gradient-text-dili">DILI & DIKI Masterclass</h1>
+          <p class="text-[11px] text-slate-400">Drug-Induced Liver & Kidney Injury</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 md:space-x-3">
+        <a href="./index.html" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white transition">
+          <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 text-rose-400"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="./farklin-populasi-khusus.html" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-600/20 text-purple-300 border border-purple-500/30 hover:bg-purple-600/40 hover:text-white transition">
+          <i data-lucide="users-viewfinder" class="w-3.5 h-3.5 text-purple-400"></i>
+          <span>Modul 1: Populasi Khusus</span>
+        </a>
+        <button onclick="document.querySelector('[data-target=\'tab-r-ratio\']').click(); window.scrollTo({top: 0, behavior: 'smooth'});" class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-600/20 text-rose-300 border border-rose-500/30 hover:bg-rose-600/40 transition">
+          <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+          <span>R-Ratio Lab</span>
+        </button>
+        <button onclick="document.querySelector('[data-target=\'tab-quiz\']').click(); window.scrollTo({top: 0, behavior: 'smooth'});" class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/30 hover:opacity-95 transition">
+          <i data-lucide="award" class="w-3.5 h-3.5"></i>
+          <span>30 Soal HOTS</span>
+        </button>
       </div>
     </div>
-  </nav>
 
-  <!-- HERO BANNER -->
-  <header class="hero-section bg-gradient-dili text-white py-5 px-3">
-    <div class="container py-4">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-8 animate__animated animate__fadeInLeft">
-          <div class="d-inline-flex align-items-center bg-white bg-opacity-25 px-3 py-1 rounded-pill mb-3 text-warning fw-semibold">
-            <i class="fa-solid fa-shield-virus me-2"></i>Monitoring Keamanan Terapi & Farmakovigilans Klinis
-          </div>
-          <h1 class="display-4 fw-extrabold mb-2">Drug-Induced Liver & Kidney Injury (DILI & DIKI)</h1>
-          <p class="lead text-light opacity-90 mb-3">
-            Ketika obat penyelamat jiwa berbalik merusak organ vital: Kenali patogenesis molekuler, kalkulasi pola R-Ratio, sentimen Hy's Law, dan stewardship nefroproteksi terintegrasi!
-          </p>
-          <div class="d-flex flex-wrap gap-2 align-items-center text-light small mb-4">
-            <span class="badge bg-dark bg-opacity-50 px-3 py-2 rounded-pill"><i class="fa-solid fa-user-doctor me-1 text-info"></i>Dosen: Apt. Vania Denise Djunaidy, S.Farm., M.Farm.Klin.</span>
-            <span class="badge bg-dark bg-opacity-50 px-3 py-2 rounded-pill"><i class="fa-solid fa-graduation-cap me-1 text-warning"></i>Farmasi Klinik UKWMS 2026/2027</span>
-            <span class="badge bg-dark bg-opacity-50 px-3 py-2 rounded-pill"><i class="fa-solid fa-circle-check me-1 text-success"></i>30 HOTS Clinical Vignettes</span>
-          </div>
-          <div class="d-flex flex-wrap gap-3">
-            <a href="#r-ratio-calc" class="btn btn-warning btn-lg fw-bold rounded-pill px-4 shadow">
-              <i class="fa-solid fa-calculator me-2"></i>Buka R-Ratio Lab
-            </a>
-            <a href="#quiz-section" class="btn btn-outline-light btn-lg fw-bold rounded-pill px-4">
-              <i class="fa-solid fa-play me-2"></i>Mulai 30 Soal HOTS
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-4 text-center animate__animated animate__fadeInRight">
-          <div class="card bg-white text-dark shadow-lg border-0 rounded-4 p-4 text-start">
-            <div class="d-flex align-items-center mb-3">
-              <div class="avatar-circle bg-danger-light text-danger me-3">
-                <i class="fa-solid fa-quote-left fa-lg"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-0 text-dark">Gen Z Clinical Insight</h6>
-                <small class="text-muted">Apt. Vania's Safety Quote</small>
-              </div>
-            </div>
-            <p class="text-secondary small fst-italic mb-3">
-              "Hepar adalah dapur biotransformasi dan ginjal adalah saringan ekskresi utama tubuh kita. Karena peran sentral inilah mereka paling rentan kena 'friendly fire' dari metabolit obat! Yuk kuasai trik deteksi dininya!"
-            </p>
-            <div class="d-grid">
-              <a href="#dili-section" class="btn btn-sm btn-outline-danger rounded-pill fw-semibold">
-                Pelajari Patogenesis <i class="fa-solid fa-arrow-down ms-1"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Navigation Tabs Bar (Scrollable) -->
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 border-t border-slate-800/60 overflow-x-auto no-scrollbar py-2">
+      <nav class="flex space-x-1 sm:space-x-2 text-xs md:text-sm font-semibold whitespace-nowrap" id="diliTabNavContainer">
+        <button class="nav-tab active px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-organ-vulnerability">
+          <i data-lucide="activity" class="w-4 h-4 text-rose-400"></i>
+          <span>00 · Kerentanan Organ</span>
+        </button>
+        <button class="nav-tab px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-dili-mechanisms">
+          <i data-lucide="heart-pulse" class="w-4 h-4 text-pink-400"></i>
+          <span>01 · Patogenesis DILI</span>
+        </button>
+        <button class="nav-tab px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-r-ratio">
+          <i data-lucide="calculator" class="w-4 h-4 text-amber-400"></i>
+          <span>02 · R-Ratio & Hy's Law</span>
+        </button>
+        <button class="nav-tab px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-oat-rechallenge">
+          <i data-lucide="git-merge" class="w-4 h-4 text-indigo-400"></i>
+          <span>03 · Reintroduksi OAT</span>
+        </button>
+        <button class="nav-tab px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-diki-spectrum">
+          <i data-lucide="filter" class="w-4 h-4 text-cyan-400"></i>
+          <span>04 · Spektrum DIKI</span>
+        </button>
+        <button class="nav-tab px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-hemodynamic-sim">
+          <i data-lucide="gauge" class="w-4 h-4 text-emerald-400"></i>
+          <span>05 · Simulator Glomerulus</span>
+        </button>
+        <button class="nav-tab px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-kdigo-stewardship">
+          <i data-lucide="shield-check" class="w-4 h-4 text-blue-400"></i>
+          <span>06 · KDIGO & Stewardship</span>
+        </button>
+        <button class="nav-tab px-3.5 py-1.5 rounded-lg border border-transparent text-slate-300 hover:text-white transition flex items-center gap-1.5" data-target="tab-quiz">
+          <i data-lucide="help-circle" class="w-4 h-4 text-purple-300"></i>
+          <span>07 · 30 Soal HOTS</span>
+        </button>
+      </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTAINER -->
-  <main class="container py-5">
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
 
-    <!-- 1. OVERVIEW: KENAPA HEPAR & GINJAL RENTAN? -->
-    <section id="overview" class="content-section mb-5">
-      <div class="section-header text-center mb-4">
-        <span class="badge bg-danger-light text-danger fw-bold px-3 py-2 rounded-pill">DASAR PATOFISIOLOGI</span>
-        <h2 class="fw-bold mt-2">Mengapa Hepar & Ginjal Paling Sering Menjadi Korban?</h2>
-        <p class="text-muted">Dua organ dengan perfusi darah tertinggi dan beban biokimia terberat di tubuh manusia.</p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-organ">
-            <div class="card-body p-4">
-              <div class="d-flex align-items-center mb-3">
-                <div class="icon-box-lg bg-danger text-white rounded-circle me-3">
-                  <i class="fa-solid fa-heart-pulse fa-2x"></i>
-                </div>
-                <div>
-                  <h4 class="fw-bold mb-0 text-danger">Liver (Hepar)</h4>
-                  <small class="text-muted">Pusat Metabolisme & Biotransformasi</small>
-                </div>
-              </div>
-              <ul class="list-unstyled text-secondary mb-0">
-                <li class="mb-3 d-flex align-items-start">
-                  <i class="fa-solid fa-circle-arrow-right text-danger me-2 mt-1"></i>
-                  <span><strong>Bioaktivasi CYP450:</strong> Metabolisme Fase I (Oksidasi) sering menghasilkan metabolit elektrofilik reaktif (misal NAPQI) & Reactive Oxygen Species (ROS).</span>
-                </li>
-                <li class="mb-3 d-flex align-items-start">
-                  <i class="fa-solid fa-circle-arrow-right text-danger me-2 mt-1"></i>
-                  <span><strong>Stres Oksidatif & Deplesi Glutation (GSH):</strong> Bila kapasitas glutation habis, metabolit toksik berikatan kovalen dengan makromolekul hepatosit.</span>
-                </li>
-                <li class="d-flex align-items-start">
-                  <i class="fa-solid fa-circle-arrow-right text-danger me-2 mt-1"></i>
-                  <span><strong>Konsentrasi Asam Empedu:</strong> Kerusakan transporter ekskresi (BSEP) memicu penumpukan asam empedu hidrofobik sitotoksik.</span>
-                </li>
-              </ul>
-            </div>
+    <!-- ========================================================================= -->
+    <!-- TAB 0: KERENTANAN ORGAN (HEPAR VS GINJAL) -->
+    <!-- ========================================================================= -->
+    <section id="tab-organ-vulnerability" class="content-section space-y-8 animate-fade-in">
+      <!-- Lecturer Persona Hero Banner -->
+      <div class="relative overflow-hidden rounded-3xl glass-panel p-6 sm:p-10 border border-rose-500/30">
+        <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-rose-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-16 -top-16 w-80 h-80 bg-pink-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-3xl space-y-4">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 pulse-badge">
+            <span>🛡️ Modul 02: Monitoring Keamanan Terapi</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Drug-Induced <span class="gradient-text-dili">Liver & Kidney Injury</span>
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+            "Hai calon apoteker keren! Hepar dan ginjal adalah dua pahlawan utama metabolisme dan ekskresi di tubuh kita. Tapi justru karena peran sentral itu, kedua organ ini paling sering jadi korban tembakan ramah (friendly fire) dari obat-obatan. Yuk kita bedah cara deteksi dini, kalkulasi R-ratio, kriteria Hy's Law, dan stewardship nefroproteksinya!"
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2 items-center text-xs text-slate-400">
+            <span class="flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4 text-rose-400"></i> Rujukan: RUCAM, KDIGO Guidelines, Hy's Law Criteria</span>
+            <span class="hidden md:inline">•</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Dosen: Apt. Vania Denise Djunaidy, S.Farm., M.Farm.Klin.</span>
           </div>
         </div>
+      </div>
 
-        <div class="col-md-6">
-          <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-organ">
-            <div class="card-body p-4">
-              <div class="d-flex align-items-center mb-3">
-                <div class="icon-box-lg bg-primary text-white rounded-circle me-3">
-                  <i class="fa-solid fa-filter fa-2x"></i>
-                </div>
-                <div>
-                  <h4 class="fw-bold mb-0 text-primary">Kidney (Ginjal)</h4>
-                  <small class="text-muted">Pusat Filtrasi & Pemekatan Urin</small>
-                </div>
+      <!-- Kenapa Hepar & Ginjal Rentan? -->
+      <div class="space-y-6">
+        <div>
+          <div class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+            <i data-lucide="zap" class="w-4 h-4"></i> Fundamental Concepts
+          </div>
+          <h3 class="text-2xl font-bold text-white">Mengapa Hepar & Ginjal Paling Rentan Mengalami Cedera Obat?</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Card Liver -->
+          <div class="glass-panel-interactive rounded-3xl p-6 sm:p-8 border border-rose-500/30 space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center">
+                <i data-lucide="heart-pulse" class="w-6 h-6"></i>
               </div>
-              <ul class="list-unstyled text-secondary mb-0">
-                <li class="mb-3 d-flex align-items-start">
-                  <i class="fa-solid fa-circle-arrow-right text-primary me-2 mt-1"></i>
-                  <span><strong>Menerima 20-25% Cardiac Output:</strong> Paparan total massa obat per satuan waktu sangat masif dibanding organ lain.</span>
-                </li>
-                <li class="mb-3 d-flex align-items-start">
-                  <i class="fa-solid fa-circle-arrow-right text-primary me-2 mt-1"></i>
-                  <span><strong>Proses Pemekatan di Tubulus:</strong> Reabsorpsi air masif di nefron meningkatkan konsentrasi obat intratubular hingga puluhan kali lipat dari plasma.</span>
-                </li>
-                <li class="d-flex align-items-start">
-                  <i class="fa-solid fa-circle-arrow-right text-primary me-2 mt-1"></i>
-                  <span><strong>Endositosis & Toksisitas Epitel:</strong> Sel epitel tubulus proksimal secara aktif menginternalisasi obat bermuatan (misal Aminoglikosida via megalin).</span>
-                </li>
-              </ul>
+              <div>
+                <h4 class="text-xl font-bold text-white">Liver (Hepar)</h4>
+                <p class="text-xs text-rose-300">Pusat Komando Biotransformasi & Klirens</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-rose-400 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Bioaktivasi Enzimatis CYP450:</strong> Metabolisme Fase I sering menghasilkan metabolit elektrofilik reaktif (misal NAPQI) & Reactive Oxygen Species (ROS).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-rose-400 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Stres Oksidatif & Deplesi Glutation (GSH):</strong> Bila cadangan GSH habis, metabolit toksik berikatan kovalen dengan protein esensial hepatosit.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-rose-400 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Konsentrasi Asam Empedu:</strong> Kerusakan transporter biliaris (BSEP) memicu stasis asam empedu sitotoksik dan nekrosis kolangiosit.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card Kidney -->
+          <div class="glass-panel-interactive rounded-3xl p-6 sm:p-8 border border-cyan-500/30 space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 flex items-center justify-center">
+                <i data-lucide="filter" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-white">Kidney (Ginjal)</h4>
+                <p class="text-xs text-cyan-300">Pusat Filtrasi Glomerulus & Pemekatan Urin</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Menerima 20-25% Cardiac Output:</strong> Beban massa obat terlarut per satuan waktu sangat tinggi dibandingkan organ perifer.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Pemekatan Intratubular:</strong> Reabsorpsi cairan masif di sepanjang nefron melipatgandakan konsentrasi zat toksik di lumen tubulus.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="chevron-right" class="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Endositosis Seluler Selektif:</strong> Sel epitel tubulus proksimal secara aktif menginternalisasi obat bermuatan (seperti Aminoglikosida via megalin).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 1: 5 PILAR PATOGENESIS DILI -->
+    <!-- ========================================================================= -->
+    <section id="tab-dili-mechanisms" class="content-section space-y-8 hidden">
+      <div>
+        <div class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <i data-lucide="heart-pulse" class="w-4 h-4"></i> Molecular Pathology
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">5 Pilar Patogenesis & Mekanisme DILI</h3>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4" id="dili-mechanisms-container">
+        <!-- Rendered by dili-diki.js -->
+      </div>
+
+      <!-- Intrinsic vs Idiosyncratic Comparison Card -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+        <h4 class="text-xl font-bold text-white flex items-center gap-2">
+          <i data-lucide="code-2" class="w-5 h-5 text-amber-400"></i> Klasifikasi Fundamental: Intrinsic vs Idiosyncratic DILI
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/30 space-y-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300">
+              Direct / Intrinsic DILI
+            </span>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li><strong>Dose-dependent:</strong> Risiko toksisitas berbanding lurus dengan dosis toksik yang tertelan.</li>
+              <li><strong>Predictable:</strong> Dapat diprediksi dan direproduksi pada hewan uji coba.</li>
+              <li><strong>Onset Cepat:</strong> Terjadi dalam hitungan jam hingga hari pasca pajanan masif.</li>
+              <li><strong>Contoh Utama:</strong> Overdosis Parasetamol (> 10-15 gram), CCl4.</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300">
+              Idiosyncratic DILI
+            </span>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li><strong>Dose-independent:</strong> Terjadi pada rentang dosis terapeutik lazim normal.</li>
+              <li><strong>Unpredictable:</strong> Bergantung pada kerentanan imunogenetik pejamu (HLA polymorphism).</li>
+              <li><strong>Onset Bervariasi:</strong> Berkembang perlahan setelah 1 hingga 24 minggu konsumsi.</li>
+              <li><strong>Contoh Utama:</strong> Isoniazid, Amoksisilin-Klavulanat, Flukonazol.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 2: R-RATIO CALCULATOR & HY'S LAW SENTINEL -->
+    <!-- ========================================================================= -->
+    <section id="tab-r-ratio" class="content-section space-y-8 hidden">
+      <div>
+        <div class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <i data-lucide="calculator" class="w-4 h-4"></i> Interactive Diagnostic Tool
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">Kalkulator Rasio R & Sentinel Hy's Law</h3>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Left: Form Inputs -->
+        <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Preset Kasus Uji Cepat:</label>
+            <div class="flex flex-wrap gap-2">
+              <button class="preset-btn-dili px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white transition" data-preset="paracetamol">
+                Parasetamol (Hepatoseluler)
+              </button>
+              <button class="preset-btn-dili px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white transition" data-preset="amoxclav">
+                Ko-Amoksiklav (Kolestatik)
+              </button>
+              <button class="preset-btn-dili px-3 py-1.5 rounded-xl text-xs font-semibold bg-rose-950/60 text-rose-300 border border-rose-500/40 hover:bg-rose-900/60 transition" data-preset="hyslaw">
+                Hy's Law (Red Flag)
+              </button>
+              <button class="preset-btn-dili px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white transition" data-preset="mixed">
+                Fenitoin (Campuran)
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-slate-300">Serum ALT [U/L]:</label>
+              <input type="number" id="calc-alt" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500" value="1600" min="1">
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-slate-300">ULN ALT [U/L]:</label>
+              <input type="number" id="calc-uln-alt" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500" value="40" min="1">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-slate-300">Serum ALP [U/L]:</label>
+              <input type="number" id="calc-alp" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500" value="130" min="1">
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-slate-300">ULN ALP [U/L]:</label>
+              <input type="number" id="calc-uln-alp" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500" value="120" min="1">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-slate-300">Total Bilirubin [mg/dL]:</label>
+              <input type="number" id="calc-tbil" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500" value="1.2" step="0.1" min="0.1">
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-slate-300">ULN Total Bilirubin:</label>
+              <input type="number" id="calc-uln-tbil" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500" value="1.0" step="0.1" min="0.1">
+            </div>
+          </div>
+
+          <button id="btn-calc-r-ratio" class="w-full py-3 px-4 rounded-xl text-sm font-bold bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-600/30 hover:opacity-95 transition">
+            Hitung Rasio R & Evaluasi Hy's Law
+          </button>
+        </div>
+
+        <!-- Right: Results & Output -->
+        <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div class="flex items-center justify-between">
+            <h4 class="text-lg font-bold text-white">Hasil Analisis & Klasifikasi Kerusakan Liver</h4>
+            <span class="text-xs font-mono text-slate-400">RUCAM Formula</span>
+          </div>
+
+          <div id="r-ratio-result-box">
+            <!-- Injected by dili-diki.js -->
+          </div>
+
+          <!-- Formula Info Box -->
+          <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700 text-xs text-slate-300 space-y-2">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <i data-lucide="info" class="w-4 h-4 text-cyan-400"></i> Standar Baku Rasio R (R-Value):
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+              <div class="p-2 rounded-xl bg-slate-900/80 border border-rose-500/30 text-rose-300">
+                <strong>R ≥ 5.0:</strong> Hepatoseluler
+              </div>
+              <div class="p-2 rounded-xl bg-slate-900/80 border border-amber-500/30 text-amber-300">
+                <strong>R ≤ 2.0:</strong> Kolestatik
+              </div>
+              <div class="p-2 rounded-xl bg-slate-900/80 border border-blue-500/30 text-blue-300">
+                <strong>2.0 &lt; R &lt; 5.0:</strong> Campuran (Mixed)
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. PART 1: DILI MEKANISME -->
-    <section id="dili-section" class="content-section mb-5">
-      <div class="section-header text-center mb-4">
-        <span class="badge bg-danger-light text-danger fw-bold px-3 py-2 rounded-pill">PART 1: DRUG-INDUCED LIVER INJURY</span>
-        <h2 class="fw-bold mt-2">5 Pilar Patogenesis & Mekanisme DILI</h2>
-        <p class="text-muted">Kenali bagaimana obat berubah menjadi perusak arsitektur hepar.</p>
+    <!-- ========================================================================= -->
+    <!-- TAB 3: ALGORITMA REINTRODUKSI OAT -->
+    <!-- ========================================================================= -->
+    <section id="tab-oat-rechallenge" class="content-section space-y-8 hidden">
+      <div>
+        <div class="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <i data-lucide="git-merge" class="w-4 h-4"></i> Tuberculosis Pharmacotherapy
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">Algoritma Penanganan & Reintroduksi OAT</h3>
       </div>
 
-      <div class="row g-4 mb-4" id="dili-mechanisms-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Toxicity Ranking -->
+        <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <h4 class="text-lg font-bold text-white flex items-center gap-2">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-rose-400"></i> Tingkat Hepatotoksisitas OAT Lini Pertama
+          </h4>
+          
+          <div class="space-y-3">
+            <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/40 space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-rose-300">
+                <span>1. Paling Hepatotoksik</span>
+                <span class="badge bg-rose-500 text-white px-2 py-0.5 rounded-full">Tinggi</span>
+              </div>
+              <div class="text-base font-bold text-white">Pirazinamid (Z)</div>
+              <p class="text-xs text-slate-300">Onset lambat, sering memicu nekrosis hepatosit masif; diuji paling akhir atau dieliminasi permanen.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/40 space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-amber-300">
+                <span>2. Hepatotoksisitas Sedang</span>
+                <span class="badge bg-amber-500 text-white px-2 py-0.5 rounded-full">Sedang</span>
+              </div>
+              <div class="text-base font-bold text-white">Isoniazid (H)</div>
+              <p class="text-xs text-slate-300">Dimediasi metabolit asetilhidrazin; dimonitor ketat saat reintroduksi.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-emerald-300">
+                <span>3. Paling Rendah Toksik</span>
+                <span class="badge bg-emerald-500 text-white px-2 py-0.5 rounded-full">Rendah</span>
+              </div>
+              <div class="text-base font-bold text-white">Rifampisin (R)</div>
+              <p class="text-xs text-slate-300">Komponen bakterisidal terpenting; direintroduksi PERTAMA KALI setelah resolusi enzim hati.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Stepper -->
+        <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div class="flex items-center justify-between">
+            <h4 class="text-lg font-bold text-white flex items-center gap-2">
+              <i data-lucide="play" class="w-5 h-5 text-indigo-400"></i> Interactive Rechallenge Stepper
+            </h4>
+            <div class="flex space-x-1">
+              <button class="oat-step-item w-8 h-8 rounded-lg text-xs font-bold bg-indigo-600 text-white" data-step="0">1</button>
+              <button class="oat-step-item w-8 h-8 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700" data-step="1">2</button>
+              <button class="oat-step-item w-8 h-8 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700" data-step="2">3</button>
+              <button class="oat-step-item w-8 h-8 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700" data-step="3">4</button>
+            </div>
+          </div>
+
+          <div id="oat-stepper-display">
+            <!-- Injected by dili-diki.js -->
+          </div>
+
+          <div class="flex justify-between pt-2">
+            <button id="btn-oat-prev" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 disabled:opacity-40 transition">
+              &larr; Langkah Sebelumnya
+            </button>
+            <button id="btn-oat-next" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 transition">
+              Langkah Selanjutnya &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 4: SPEKTRUM DIKI (STRUKTURAL & OBSTRUKTIF) -->
+    <!-- ========================================================================= -->
+    <section id="tab-diki-spectrum" class="content-section space-y-8 hidden">
+      <div>
+        <div class="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <i data-lucide="filter" class="w-4 h-4"></i> Nephrotoxic Spectrum
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">Klasifikasi & Patogenesis DIKI Struktural</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1: ATN Aminoglycosides -->
+        <div class="glass-panel-interactive rounded-3xl p-6 sm:p-7 border border-rose-500/30 space-y-4">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300">
+            Nekrosis Tubulus Akut (ATN)
+          </span>
+          <h4 class="text-xl font-bold text-white">Aminoglikosida (Gentamisin/Amikasin)</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            <strong>Struktur Polikationik (+):</strong> Berikatan kuat secara elektrostatik dengan fosfolipid anionik (-) dan reseptor megalin/kubilin di brush border tubulus proksimal -> endositosis masif -> ruptur lisosom & nekrosis seluler.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300">
+            <strong>Pencegahan:</strong> Regimen Once-Daily Dosing + TDM kadar trough (< 1 mcg/mL).
+          </div>
+        </div>
+
+        <!-- Card 2: Crystal Nephropathy -->
+        <div class="glass-panel-interactive rounded-3xl p-6 sm:p-7 border border-amber-500/30 space-y-4">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300">
+            Nefropati Kristal (Obstruktif)
+          </span>
+          <h4 class="text-xl font-bold text-white">Asiklovir IV & Metotreksat</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            <strong>Presipitasi Intratubular:</strong> Kelarutan obat rendah dalam urin asam dan pekat memicu pengendapan kristal jarum di collecting duct pasca infus bolus cepat & dehidrasi.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300">
+            <strong>Pencegahan:</strong> Hidrasi agresif + infus perlahan (> 1-2 jam) + Alkalinisasi urin (pH ≥ 7.0).
+          </div>
+        </div>
+
+        <!-- Card 3: Osmotic Nephropathy -->
+        <div class="glass-panel-interactive rounded-3xl p-6 sm:p-7 border border-cyan-500/30 space-y-4">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-300">
+            Nefropati Osmotik
+          </span>
+          <h4 class="text-xl font-bold text-white">Manitol & IVIG Sukrosa</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            <strong>Vakuolisasi Epitel:</strong> Akumulasi solut eksogen hiperosmoler di lisosom tubulus proksimal memicu pembengkakan sel dan oklusi lumen tubulus.
+          </p>
+          <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300">
+            <strong>Pencegahan:</strong> Batasi dosis kumulatif manitol (< 300 g) & pilih sediaan IVIG bebas sukrosa.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 5: SIMULATOR GLOMERULUS (HEMODINAMIK) -->
+    <!-- ========================================================================= -->
+    <section id="tab-hemodynamic-sim" class="content-section space-y-8 hidden">
+      <div>
+        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <i data-lucide="gauge" class="w-4 h-4"></i> Interactive Physiology Engine
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">Simulator Autoregulasi Hemodinamik Glomerulus</h3>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Scenario Selector -->
+        <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-4">
+          <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pilih Skenario Paparan Obat:</label>
+          
+          <div class="space-y-2">
+            <button class="hemo-btn w-full text-left p-3 rounded-2xl bg-indigo-600 text-white font-bold text-xs transition flex items-center justify-between" data-scenario="normal">
+              <span>1. Fisiologis Normal (PGE2 & AT-II Seimbang)</span>
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </button>
+            <button class="hemo-btn w-full text-left p-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition" data-scenario="nsaid">
+              2. Terapi NSAID (Inhibisi PGE2 -> Aferen Konstriksi)
+            </button>
+            <button class="hemo-btn w-full text-left p-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition" data-scenario="acei">
+              3. Terapi ACEI / ARB (Inhibisi AT-II -> Eferen Dilatasi)
+            </button>
+            <button class="hemo-btn w-full text-left p-3 rounded-2xl bg-rose-950/60 hover:bg-rose-900/60 text-rose-300 text-xs font-bold border border-rose-500/40 transition" data-scenario="triple_whammy">
+              4. TRIPLE WHAMMY (Diuretik + NSAID + ACEI)
+            </button>
+            <button class="hemo-btn w-full text-left p-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition" data-scenario="sglt2i">
+              5. SGLT2 Inhibitor (TGF Macula Densa -> eGFR Dip)
+            </button>
+            <button class="hemo-btn w-full text-left p-3 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition" data-scenario="cni">
+              6. Calcineurin Inhibitor (Spasme Aferen CNI)
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulation Screen -->
+        <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <h4 class="text-lg font-bold text-white flex items-center gap-2">
+              <i data-lucide="activity" class="w-5 h-5 text-emerald-400"></i> Status Tekanan Kapiler & GFR
+            </h4>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-1">
+                <div class="text-xs text-slate-400 font-medium">Pintu Masuk (Arteriol Aferen):</div>
+                <div id="hemo-afferent-status" class="text-sm font-bold text-emerald-300">Normal (Dilatasi Seimbang)</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-1">
+                <div class="text-xs text-slate-400 font-medium">Pintu Keluar (Arteriol Eferen):</div>
+                <div id="hemo-efferent-status" class="text-sm font-bold text-indigo-300">Normal (Tonus Seimbang)</div>
+              </div>
+            </div>
+
+            <!-- GFR Gauge -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-400 font-medium">Tekanan Intraglomerular (GFR Estimasi):</span>
+                <span id="hemo-gfr-text" class="font-bold text-emerald-400">Normal GFR (~100%)</span>
+              </div>
+              <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden p-0.5">
+                <div id="hemo-gfr-gauge" class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="hemo-explanation" class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 leading-relaxed">
+            Kondisi fisiologis normal: Prostaglandin menjaga arteriol aferen terbuka lebar, sementara Angiotensin II menjaga tonus arteriol eferen sehingga tekanan hidrostatik kapiler glomerulus optimal untuk filtrasi.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 6: KDIGO AKI STAGING & STEWARDSHIP -->
+    <!-- ========================================================================= -->
+    <section id="tab-kdigo-stewardship" class="content-section space-y-8 hidden">
+      <div>
+        <div class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <i data-lucide="shield-check" class="w-4 h-4"></i> Clinical Practice Framework
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white">KDIGO AKI Stager & Multimodal Stewardship</h3>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Stager Form -->
+        <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-4">
+          <h4 class="text-lg font-bold text-white">Parameter Pasien Terkini:</h4>
+
+          <div class="space-y-3">
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-slate-300">Serum Kreatinin Baseline [mg/dL]:</label>
+              <input type="number" id="kdigo-base-scr" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" value="0.9" step="0.1" min="0.1">
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-slate-300">Serum Kreatinin Saat Ini [mg/dL]:</label>
+              <input type="number" id="kdigo-curr-scr" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" value="2.8" step="0.1" min="0.1">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-slate-300">Urin Output [mL/kg/h]:</label>
+                <input type="number" id="kdigo-urine-output" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" value="0.4" step="0.1" min="0">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-slate-300">Durasi [Jam]:</label>
+                <input type="number" id="kdigo-urine-hours" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" value="14" step="1" min="0">
+              </div>
+            </div>
+          </div>
+
+          <button id="btn-calc-kdigo" class="w-full py-3 px-4 rounded-xl text-sm font-bold bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-600/30 hover:opacity-95 transition">
+            Staging KDIGO & Rencana Asuhan
+          </button>
+        </div>
+
+        <!-- Result Box -->
+        <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div id="kdigo-result-box">
+            <!-- Injected by dili-diki.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Stewardship Pillars Display -->
+      <div class="space-y-4 pt-4">
+        <h4 class="text-xl font-bold text-white flex items-center gap-2">
+          <i data-lucide="shield-alert" class="w-5 h-5 text-amber-400"></i> 4 Pilar Multimodal Nephrotoxin Stewardship
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="stewardship-pillars-container">
+          <!-- Injected by dili-diki.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 7: 30 SOAL HOTS GAMIFIED QUIZ -->
+    <!-- ========================================================================= -->
+    <section id="tab-quiz" class="content-section space-y-8 hidden">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+            <i data-lucide="award" class="w-4 h-4"></i> Interactive Assessment
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white">Bank 30 Soal HOTS: DILI & DIKI Mastery</h3>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div id="quiz-score-badge" class="px-4 py-2 rounded-xl text-xs font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+            Skor: 0 (0/30 Benar)
+          </div>
+          <button id="btn-quiz-reset" class="px-3 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white transition">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="flex flex-wrap gap-2" id="quizCatFilters">
+        <button class="quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-rose-600 text-white border border-rose-500 transition" data-category="all">Semua Soal (30)</button>
+        <button class="quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="DILI - Kalkulasi">R-Ratio & Hy's Law</button>
+        <button class="quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="DILI - Mekanisme">Mekanisme DILI</button>
+        <button class="quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="DILI - OAT">OAT Algoritma</button>
+        <button class="quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="DIKI - Hemodinamik">DIKI Hemodinamik</button>
+        <button class="quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="DIKI - Aminoglikosida">Aminoglikosida & ATN</button>
+        <button class="quiz-cat-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="DIKI - Stewardship">Stewardship & KDIGO</button>
+      </div>
+
+      <!-- Question Navigation Matrix Grid (1-30) -->
+      <div class="glass-panel rounded-3xl p-5 border border-slate-800 space-y-3">
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-slate-400 font-bold">Matriks Navigasi Soal (1 - 30):</span>
+          <span id="quiz-progress-text" class="text-rose-400 font-semibold">Terjawab 0 dari 30 Soal</span>
+        </div>
+        <div id="quiz-grid-container" class="flex flex-wrap gap-2">
+          <!-- Injected by dili-diki.js -->
+        </div>
+      </div>
+
+      <!-- Active Question Card Container -->
+      <div id="quiz-question-card" class="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800">
         <!-- Injected by dili-diki.js -->
       </div>
 
-      <!-- INTRINSIC VS IDIOSYNCRATIC COMPARISON CARD -->
-      <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-        <div class="card-header bg-dark text-white p-3 px-4">
-          <h5 class="fw-bold mb-0"><i class="fa-solid fa-code-compare me-2 text-warning"></i>Klasifikasi: Intrinsic vs Idiosyncratic DILI</h5>
-        </div>
-        <div class="card-body p-4">
-          <div class="row g-4">
-            <div class="col-md-6">
-              <div class="p-3 bg-danger-light rounded-3 h-100 border border-danger">
-                <h5 class="fw-bold text-danger mb-2"><i class="fa-solid fa-radiation me-2"></i>Intrinsic (Direct) DILI</h5>
-                <ul class="text-secondary small ps-3 mb-0">
-                  <li class="mb-2"><strong>Dose-dependent:</strong> Risiko toksisitas berkorelasi langsung dengan dosis yang melampaui ambang batas toksik.</li>
-                  <li class="mb-2"><strong>Predictable:</strong> Dapat direproduksi pada model hewan laboratorium dan terjadi pada mayoritas individu.</li>
-                  <li class="mb-2"><strong>Onset Cepat:</strong> Terjadi dalam hitungan jam hingga beberapa hari pasca pajanan masif.</li>
-                  <li><strong>Contoh Klasik:</strong> Parasetamol overdosis (>10-15 g), Karbon Tetraklorida (CCl4).</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-3 bg-warning-light rounded-3 h-100 border border-warning">
-                <h5 class="fw-bold text-warning text-dark mb-2"><i class="fa-solid fa-dice me-2"></i>Idiosyncratic DILI</h5>
-                <ul class="text-secondary small ps-3 mb-0">
-                  <li class="mb-2"><strong>Dose-independent:</strong> Terjadi pada rentang dosis terapeutik lazim yang aman bagi mayoritas orang.</li>
-                  <li class="mb-2"><strong>Unpredictable:</strong> Tidak dapat diprediksi secara umum; dipengaruhi oleh faktor genetik (HLA) & imun pejamu.</li>
-                  <li class="mb-2"><strong>Onset Bervariasi:</strong> Terjadi setelah beberapa minggu hingga beberapa bulan pemakaian (1-24 minggu).</li>
-                  <li><strong>Contoh Klasik:</strong> Isoniazid, Amoksisilin-Klavulanat, Flukonazol, Troglitazon.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. R-RATIO CALCULATOR & HY'S LAW LAB -->
-    <section id="r-ratio-calc" class="content-section mb-5">
-      <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
-        <div class="card-header bg-gradient-danger text-white p-4">
-          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <div>
-              <span class="badge bg-white text-danger fw-bold mb-1">INTERACTIVE CLINICAL TOOL</span>
-              <h3 class="fw-bold mb-0"><i class="fa-solid fa-calculator me-2"></i>R-Ratio DILI Calculator & Hy's Law Sentinel</h3>
-            </div>
-            <span class="badge bg-dark bg-opacity-25 px-3 py-2 rounded-pill">Formula Terstandar RUCAM</span>
-          </div>
-        </div>
-
-        <div class="card-body p-4">
-          <div class="row g-4">
-            <!-- Left: Inputs & Presets -->
-            <div class="col-lg-6 border-end-lg">
-              <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-flask-vial me-2 text-danger"></i>Data Laboratorium Pasien:</h5>
-              
-              <!-- Quick Presets -->
-              <div class="mb-3">
-                <small class="text-muted d-block fw-semibold mb-2">Preset Kasus Cepat (Klik untuk Tes):</small>
-                <div class="d-flex flex-wrap gap-2">
-                  <button class="btn btn-sm btn-outline-danger preset-btn-dili rounded-pill" data-preset="paracetamol">
-                    <i class="fa-solid fa-pills me-1"></i>Parasetamol (Hepatoseluler)
-                  </button>
-                  <button class="btn btn-sm btn-outline-warning text-dark preset-btn-dili rounded-pill" data-preset="amoxclav">
-                    <i class="fa-solid fa-capsules me-1"></i>Ko-Amoksiklav (Kolestatik)
-                  </button>
-                  <button class="btn btn-sm btn-outline-danger preset-btn-dili rounded-pill" data-preset="hyslaw">
-                    <i class="fa-solid fa-skull-crossbones me-1"></i>Hy's Law (Red Flag)
-                  </button>
-                  <button class="btn btn-sm btn-outline-primary preset-btn-dili rounded-pill" data-preset="mixed">
-                    <i class="fa-solid fa-shuffle me-1"></i>Fenitoin (Campuran)
-                  </button>
-                </div>
-              </div>
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">Serum ALT (SGPT) [U/L]:</label>
-                  <input type="number" id="calc-alt" class="form-control" value="1600" min="1" step="1">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">ULN ALT [U/L]:</label>
-                  <input type="number" id="calc-uln-alt" class="form-control" value="40" min="1" step="1">
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">Serum ALP (Alkaline Phosphatase) [U/L]:</label>
-                  <input type="number" id="calc-alp" class="form-control" value="130" min="1" step="1">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">ULN ALP [U/L]:</label>
-                  <input type="number" id="calc-uln-alp" class="form-control" value="120" min="1" step="1">
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">Bilirubin Total [mg/dL]:</label>
-                  <input type="number" id="calc-tbil" class="form-control" value="1.2" min="0.1" step="0.1">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">ULN Bilirubin Total [mg/dL]:</label>
-                  <input type="number" id="calc-uln-tbil" class="form-control" value="1.0" min="0.1" step="0.1">
-                </div>
-              </div>
-
-              <div class="d-grid mt-4">
-                <button id="btn-calc-r-ratio" class="btn btn-danger btn-lg rounded-pill fw-bold shadow-sm">
-                  <i class="fa-solid fa-calculator me-2"></i>Hitung Rasio R & Evaluasi Hy's Law
-                </button>
-              </div>
-            </div>
-
-            <!-- Right: Results & Clinical Interpretation -->
-            <div class="col-lg-6">
-              <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-square-poll-vertical me-2 text-primary"></i>Hasil Analisis Pola & Prognosis:</h5>
-              <div id="r-ratio-result-box">
-                <!-- Result dynamically rendered here -->
-              </div>
-
-              <div class="p-3 bg-light rounded-3 border mt-3 small text-muted">
-                <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-scale-balanced me-1"></i>Kriteria Klasifikasi Rasio R:</h6>
-                <div class="d-flex justify-content-between mb-1">
-                  <span><strong>R ≥ 5.0:</strong> Hepatoseluler (ALT Dominan)</span>
-                  <span class="badge bg-danger">High Acute Mortality Risk</span>
-                </div>
-                <div class="d-flex justify-content-between mb-1">
-                  <span><strong>R ≤ 2.0:</strong> Kolestatik (ALP Dominan)</span>
-                  <span class="badge bg-warning text-dark">Slower Resolution / Pruritus</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span><strong>2.0 &lt; R &lt; 5.0:</strong> Campuran (Mixed Pattern)</span>
-                  <span class="badge bg-primary">Combined Pathology</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. OAT RECHALLENGE LADDER -->
-    <section id="oat-rechallenge" class="content-section mb-5">
-      <div class="section-header text-center mb-4">
-        <span class="badge bg-primary-light text-primary fw-bold px-3 py-2 rounded-pill">MANAJEMEN FARMAKOTERAPI KHUSUS</span>
-        <h2 class="fw-bold mt-2">Algoritma Reintroduksi OAT pada Pasien TB</h2>
-        <p class="text-muted">Protokol esensial untuk mencegah gagal terapi dan melindungi hepatosit pasien.</p>
-      </div>
-
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-5">
-          <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
-            <h5 class="fw-bold text-danger mb-3"><i class="fa-solid fa-ranking-star me-2"></i>Tingkat Hepatotoksisitas OAT:</h5>
-            
-            <div class="timeline-toxic mb-4">
-              <div class="d-flex align-items-center mb-3 p-2 bg-danger-light rounded-3 border border-danger">
-                <span class="badge bg-danger fs-6 me-3">1 (Paling Toksik)</span>
-                <div>
-                  <h6 class="fw-bold mb-0 text-danger">Pirazinamid (Z)</h6>
-                  <small class="text-muted">Toksisitas paling sering & lambat pulih</small>
-                </div>
-              </div>
-              <div class="d-flex align-items-center mb-3 p-2 bg-warning-light rounded-3 border border-warning">
-                <span class="badge bg-warning text-dark fs-6 me-3">2 (Sedang)</span>
-                <div>
-                  <h6 class="fw-bold mb-0 text-dark">Isoniazid (H)</h6>
-                  <small class="text-muted">Dimediasi metabolit asetilhidrazin</small>
-                </div>
-              </div>
-              <div class="d-flex align-items-center p-2 bg-success-light rounded-3 border border-success">
-                <span class="badge bg-success fs-6 me-3">3 (Paling Rendah)</span>
-                <div>
-                  <h6 class="fw-bold mb-0 text-success">Rifampisin (R)</h6>
-                  <small class="text-muted">Komponen bakterisidal utama paling aman</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="alert alert-dark small mb-0">
-              <i class="fa-solid fa-lightbulb text-warning me-2"></i><strong>Prinsip Klinis:</strong> Uji reintroduksi selalu dimulai dari obat dengan toksisitas PALING RENDAH tetapi PALING ESENSIAL yaitu <strong>Rifampisin (R)</strong>, disusul <strong>Isoniazid (H)</strong>.
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-7">
-          <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="fw-bold text-primary mb-0"><i class="fa-solid fa-stairs me-2"></i>Interactive Rechallenge Stepper</h5>
-              <div class="btn-group btn-group-sm">
-                <button class="btn btn-outline-primary oat-step-item active" data-step="0">1</button>
-                <button class="btn btn-outline-primary oat-step-item" data-step="1">2</button>
-                <button class="btn btn-outline-primary oat-step-item" data-step="2">3</button>
-                <button class="btn btn-outline-primary oat-step-item" data-step="3">4</button>
-              </div>
-            </div>
-
-            <div id="oat-stepper-display">
-              <!-- Rendered by JS -->
-            </div>
-
-            <div class="d-flex justify-content-between mt-3">
-              <button id="btn-oat-prev" class="btn btn-outline-secondary rounded-pill px-3" disabled>
-                <i class="fa-solid fa-arrow-left me-1"></i>Langkah Sebelumnya
-              </button>
-              <button id="btn-oat-next" class="btn btn-primary rounded-pill px-3">
-                Langkah Selanjutnya <i class="fa-solid fa-arrow-right ms-1"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. PART 2: DIKI & GLOMERULAR SIMULATOR -->
-    <section id="diki-section" class="content-section mb-5">
-      <div class="section-header text-center mb-4">
-        <span class="badge bg-primary-light text-primary fw-bold px-3 py-2 rounded-pill">PART 2: DRUG-INDUCED KIDNEY INJURY</span>
-        <h2 class="fw-bold mt-2">Spektrum Patogenesis DIKI: Hemodinamik vs Struktural</h2>
-        <p class="text-muted">Memahami titik tangkap nefrotoksisitas dari arteriol glomerulus hingga sel tubulus.</p>
-      </div>
-
-      <!-- Hemodynamic Visualizer Simulator -->
-      <div id="hemodynamic-sim" class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
-        <div class="card-header bg-gradient-primary text-white p-4">
-          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <div>
-              <span class="badge bg-white text-primary fw-bold mb-1">INTERACTIVE GLOMERULAR SIMULATOR</span>
-              <h3 class="fw-bold mb-0"><i class="fa-solid fa-gauge-high me-2"></i>Glomerular Hemodynamic Autoregulation Engine</h3>
-            </div>
-            <span class="badge bg-dark bg-opacity-25 px-3 py-2 rounded-pill">Afferent vs Efferent Tonus</span>
-          </div>
-        </div>
-
-        <div class="card-body p-4">
-          <div class="row g-4">
-            <!-- Left: Scenarios -->
-            <div class="col-lg-5">
-              <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-sliders me-2 text-primary"></i>Pilih Skenario Terapi / Paparan Obat:</h5>
-              
-              <div class="d-grid gap-2 mb-3">
-                <button class="btn btn-primary text-start hemo-btn active p-2 px-3 rounded-3" data-scenario="normal">
-                  <div class="fw-bold"><i class="fa-solid fa-heart me-2 text-danger"></i>1. Fisiologis Normal</div>
-                  <small class="opacity-75">PGE2/PGI2 mendilatasi aferen, AT-II menjaga tonus eferen</small>
-                </button>
-                
-                <button class="btn btn-outline-primary text-start hemo-btn p-2 px-3 rounded-3" data-scenario="nsaid">
-                  <div class="fw-bold"><i class="fa-solid fa-ban me-2 text-warning"></i>2. Terapi NSAID (Ibuprofen/Ketorolak)</div>
-                  <small class="opacity-75">Inhibisi PGE2 -> Vasokonstriksi arteriol aferen</small>
-                </button>
-                
-                <button class="btn btn-outline-primary text-start hemo-btn p-2 px-3 rounded-3" data-scenario="acei">
-                  <div class="fw-bold"><i class="fa-solid fa-pills me-2 text-info"></i>3. Terapi ACEI / ARB (Ramipril/Kandesartan)</div>
-                  <small class="opacity-75">Inhibisi AT-II -> Vasodilatasi arteriol eferen</small>
-                </button>
-                
-                <button class="btn btn-outline-danger text-start hemo-btn p-2 px-3 rounded-3" data-scenario="triple_whammy">
-                  <div class="fw-bold"><i class="fa-solid fa-triangle-exclamation me-2 text-danger"></i>4. TRIPLE WHAMMY (Diuretik + NSAID + ACEI)</div>
-                  <small class="opacity-75">Hipovolemia + Aferen Tercekik + Eferen Bocor -> AKI!</small>
-                </button>
-
-                <button class="btn btn-outline-success text-start hemo-btn p-2 px-3 rounded-3" data-scenario="sglt2i">
-                  <div class="fw-bold"><i class="fa-solid fa-shield-halved me-2 text-success"></i>5. SGLT2 Inhibitor (Dapagliflozin)</div>
-                  <small class="opacity-75">Aktivasi TGF via Na+ macula densa -> eGFR dip nefroprotektif</small>
-                </button>
-
-                <button class="btn btn-outline-dark text-start hemo-btn p-2 px-3 rounded-3" data-scenario="cni">
-                  <div class="fw-bold"><i class="fa-solid fa-dna me-2 text-secondary"></i>6. Calcineurin Inhibitor (Siklosporin)</div>
-                  <small class="opacity-75">Spasme aferen poten -> Rescue dengan Amlodipin (CCB DHP)</small>
-                </button>
-              </div>
-            </div>
-
-            <!-- Right: Interactive Visualization -->
-            <div class="col-lg-7">
-              <div class="p-4 bg-light rounded-4 border h-100 d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-microscope me-2 text-success"></i>Status Hemodinamik Glomerulus:</h5>
-                  
-                  <div class="row g-3 mb-3">
-                    <div class="col-md-6">
-                      <div class="p-3 bg-white rounded-3 border shadow-sm">
-                        <small class="text-muted d-block fw-semibold mb-1"><i class="fa-solid fa-arrow-right-to-bracket text-primary me-1"></i>Pintu Masuk (Arteriol Aferen):</small>
-                        <div id="hemo-afferent-status" class="fw-bold text-dark">Normal (Dilatasi Seimbang via PGE2/PGI2)</div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="p-3 bg-white rounded-3 border shadow-sm">
-                        <small class="text-muted d-block fw-semibold mb-1"><i class="fa-solid fa-arrow-right-from-bracket text-danger me-1"></i>Pintu Keluar (Arteriol Eferen):</small>
-                        <div id="hemo-efferent-status" class="fw-bold text-dark">Normal (Tonus Seimbang via AT-II)</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- GFR Gauge Bar -->
-                  <div class="mb-3">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                      <span class="fw-semibold text-secondary">Tekanan Intraglomerular & Estimasi Laju Filtrasi (GFR):</span>
-                      <span id="hemo-gfr-text" class="fw-bold text-success">Normal GFR (~100%)</span>
-                    </div>
-                    <div class="progress" style="height: 25px;">
-                      <div id="hemo-gfr-gauge" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div id="hemo-explanation" class="alert alert-info py-2 px-3 mb-0 rounded-3 small">
-                  <i class="fa-solid fa-circle-info text-primary me-2"></i>Kondisi fisiologis normal: Prostaglandin menjaga arteriol aferen terbuka lebar, sementara Angiotensin II menjaga tonus arteriol eferen sehingga tekanan hidrostatik kapiler glomerulus optimal untuk filtrasi.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Damage Without Dysfunction Cards: Aminoglycosides, Crystal, Osmotic -->
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
-            <div class="card-body">
-              <span class="badge bg-danger-light text-danger fw-bold mb-2">NEKROSIS TUBULUS AKUT</span>
-              <h5 class="fw-bold text-dark mb-2">Aminoglikosida (Gentamisin/Amikasin)</h5>
-              <p class="text-secondary small mb-3">
-                <strong>Struktur Kationik:</strong> Molekul bermuatan (+) mengikat fosfolipid (-) & kompleks megalin/kubilin di tubulus proksimal -> ruptur lisosom -> nekrosis sel epitel.
-              </p>
-              <div class="p-2 bg-light rounded text-muted small">
-                <strong>Pencegahan:</strong> Extended-interval dosing (once-daily) + TDM rutin.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
-            <div class="card-body">
-              <span class="badge bg-warning-light text-warning text-dark fw-bold mb-2">NEFROPATI OBSTRUKTIF</span>
-              <h5 class="fw-bold text-dark mb-2">Nefropati Kristal (Asiklovir / MTX)</h5>
-              <p class="text-secondary small mb-3">
-                <strong>Presipitasi Kristal:</strong> Kelarutan rendah dalam urin asam memicu kristalisasi jarum di collecting duct pasca bolus cepat atau dehidrasi.
-              </p>
-              <div class="p-2 bg-light rounded text-muted small">
-                <strong>Pencegahan:</strong> Hidrasi agresif + infus lambat (>1-2 jam) + Alkalinisasi urin (NaBic target pH > 7.0).
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
-            <div class="card-body">
-              <span class="badge bg-primary-light text-primary fw-bold mb-2">NEFROPATI OSMOTIK</span>
-              <h5 class="fw-bold text-dark mb-2">Osmotic Nephropathy (Manitol / IVIG)</h5>
-              <p class="text-secondary small mb-3">
-                <strong>Vakuolisasi Epitel:</strong> Akumulasi solut hiperosmoler (sukrosa dalam IVIG atau manitol kumulatif >300g) memicu pembengkakan sel tubulus.
-              </p>
-              <div class="p-2 bg-light rounded text-muted small">
-                <strong>Pencegahan:</strong> Pilih IVIG sukrosa-free (maltosa/glisin) & batasi dosis kumulatif manitol.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. KDIGO STAGER & STEWARDSHIP -->
-    <section id="kdigo-section" class="content-section mb-5">
-      <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-        <div class="card-header bg-dark text-white p-4">
-          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <div>
-              <span class="badge bg-warning text-dark fw-bold mb-1">KDIGO GUIDELINES</span>
-              <h3 class="fw-bold mb-0"><i class="fa-solid fa-shield-halved me-2 text-warning"></i>KDIGO AKI Stager & Multimodal Stewardship</h3>
-            </div>
-            <span class="badge bg-secondary px-3 py-2 rounded-pill">Konsensus Internasional</span>
-          </div>
-        </div>
-
-        <div class="card-body p-4">
-          <div class="row g-4 mb-4">
-            <!-- Inputs -->
-            <div class="col-lg-5">
-              <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-keyboard me-2 text-primary"></i>Input Parameter Pasien:</h5>
-              
-              <div class="mb-3">
-                <label class="form-label fw-semibold">Serum Kreatinin Baseline [mg/dL]:</label>
-                <input type="number" id="kdigo-base-scr" class="form-control" value="0.9" step="0.1" min="0.1">
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label fw-semibold">Serum Kreatinin Saat Ini [mg/dL]:</label>
-                <input type="number" id="kdigo-curr-scr" class="form-control" value="2.8" step="0.1" min="0.1">
-              </div>
-
-              <div class="row g-2 mb-3">
-                <div class="col-6">
-                  <label class="form-label fw-semibold small">Urine Output [mL/kg/jam]:</label>
-                  <input type="number" id="kdigo-urine-output" class="form-control" value="0.4" step="0.1" min="0">
-                </div>
-                <div class="col-6">
-                  <label class="form-label fw-semibold small">Durasi Penurunan [Jam]:</label>
-                  <input type="number" id="kdigo-urine-hours" class="form-control" value="14" step="1" min="0">
-                </div>
-              </div>
-
-              <div class="d-grid">
-                <button id="btn-calc-kdigo" class="btn btn-primary rounded-pill fw-bold">
-                  <i class="fa-solid fa-stethoscope me-1"></i>Analisis Stadium KDIGO
-                </button>
-              </div>
-            </div>
-
-            <!-- Output -->
-            <div class="col-lg-7">
-              <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-notes-medical me-2 text-success"></i>Hasil Staging & Intervensi Farmasi:</h5>
-              <div id="kdigo-result-box">
-                <!-- Injected by JS -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Stewardship 4 Pillars Display -->
-          <div class="mt-4 pt-3 border-top">
-            <h5 class="fw-bold text-dark mb-3 text-center"><i class="fa-solid fa-cubes me-2 text-primary"></i>4 Pilar Multimodal Nephrotoxin Stewardship</h5>
-            <div class="row g-3" id="stewardship-pillars-container">
-              <!-- Injected by JS -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. 30 HOTS CLINICAL QUIZ BANK -->
-    <section id="quiz-section" class="content-section mb-5">
-      <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
-        <div class="card-header bg-gradient-dili text-white p-4">
-          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <div>
-              <span class="badge bg-warning text-dark fw-bold mb-1">INTERACTIVE GAMIFIED QUIZ</span>
-              <h3 class="fw-bold mb-0"><i class="fa-solid fa-trophy me-2 text-warning"></i>Bank 30 Soal HOTS: DILI & DIKI Mastery</h3>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <span id="quiz-score-badge" class="badge bg-dark bg-opacity-50 fs-6 px-3 py-2 rounded-pill">
-                <i class="fa-solid fa-trophy text-warning me-1"></i>Skor: 0 (0/30 Benar)
-              </span>
-              <button id="btn-quiz-reset" class="btn btn-outline-light btn-sm rounded-pill px-3" title="Reset Kuis">
-                <i class="fa-solid fa-arrow-rotate-left me-1"></i>Reset
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-body p-4">
-          <!-- Category Filters -->
-          <div class="mb-4">
-            <small class="text-muted d-block fw-semibold mb-2"><i class="fa-solid fa-filter me-1"></i>Filter Kategori Soal:</small>
-            <div class="d-flex flex-wrap gap-2">
-              <button class="btn btn-sm btn-primary quiz-cat-filter active rounded-pill px-3" data-category="all">Semua Soal (30)</button>
-              <button class="btn btn-sm btn-outline-primary quiz-cat-filter rounded-pill px-3" data-category="DILI - Kalkulasi">R-Ratio & Hy's Law</button>
-              <button class="btn btn-sm btn-outline-primary quiz-cat-filter rounded-pill px-3" data-category="DILI - Mekanisme">Mekanisme DILI</button>
-              <button class="btn btn-sm btn-outline-primary quiz-cat-filter rounded-pill px-3" data-category="DILI - OAT">OAT Algoritma</button>
-              <button class="btn btn-sm btn-outline-primary quiz-cat-filter rounded-pill px-3" data-category="DIKI - Hemodinamik">DIKI Hemodinamik</button>
-              <button class="btn btn-sm btn-outline-primary quiz-cat-filter rounded-pill px-3" data-category="DIKI - Aminoglikosida">Aminoglikosida & ATN</button>
-              <button class="btn btn-sm btn-outline-primary quiz-cat-filter rounded-pill px-3" data-category="DIKI - Stewardship">Stewardship & KDIGO</button>
-            </div>
-          </div>
-
-          <!-- Question Matrix Grid (1-30) -->
-          <div class="p-3 bg-light rounded-3 border mb-4">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <small class="text-muted fw-bold"><i class="fa-solid fa-border-all me-1"></i>Matriks Navigasi Soal (1 - 30):</small>
-              <small id="quiz-progress-text" class="text-primary fw-semibold">Terjawab 0 dari 30 Soal</small>
-            </div>
-            <div id="quiz-grid-container" class="d-flex flex-wrap gap-1">
-              <!-- Rendered by JS -->
-            </div>
-          </div>
-
-          <!-- Active Question Card -->
-          <div id="quiz-question-card" class="mb-4">
-            <!-- Injected by JS -->
-          </div>
-
-          <!-- Prev/Next Navigation -->
-          <div class="d-flex justify-content-between align-items-center">
-            <button id="btn-quiz-prev" class="btn btn-outline-secondary rounded-pill px-4" disabled>
-              <i class="fa-solid fa-arrow-left me-2"></i>Soal Sebelumnya
-            </button>
-            <button id="btn-quiz-next" class="btn btn-primary rounded-pill px-4">
-              Soal Selanjutnya <i class="fa-solid fa-arrow-right ms-2"></i>
-            </button>
-          </div>
-        </div>
+      <!-- Prev / Next Navigation -->
+      <div class="flex justify-between items-center">
+        <button id="btn-quiz-prev" class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 disabled:opacity-40 transition">
+          &larr; Soal Sebelumnya
+        </button>
+        <button id="btn-quiz-next" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-600/30 hover:opacity-95 transition">
+          Soal Selanjutnya &rarr;
+        </button>
       </div>
     </section>
 
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-dark text-white py-5 mt-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-5">
-          <h5 class="fw-bold text-white mb-3">
-            <i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>PharmacoVigilance Lab & Portal
-          </h5>
-          <p class="text-muted small">
-            Platform Pembelajaran Interaktif Farmasi Klinik Terintegrasi yang dikembangkan berbasis silabus dan materi kuliah Fakultas Farmasi Universitas Katolik Widya Mandala Surabaya (UKWMS).
+  <footer class="border-t border-slate-800 bg-slate-950/80 mt-16 py-12 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="space-y-3 md:col-span-2">
+          <div class="flex items-center space-x-2 text-white font-bold text-base">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-rose-400"></i>
+            <span>DILI & DIKI Masterclass</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed max-w-md">
+            Modul Pembelajaran Interaktif Farmasi Klinik Terintegrasi: Monitoring Keamanan Terapi & Farmakovigilans Klinis. Fakultas Farmasi Universitas Katolik Widya Mandala Surabaya.
           </p>
-          <div class="d-flex gap-2">
-            <a href="index.html" class="btn btn-sm btn-outline-light rounded-pill px-3">Portal Utama</a>
-            <a href="farklin-populasi-khusus.html" class="btn btn-sm btn-outline-info rounded-pill px-3">Modul 1: Populasi Khusus</a>
+          <div class="text-slate-500 text-[11px]">
+            Tahun Ajaran 2026/2027 &bull; Evidence-Based Clinical Practice
           </div>
         </div>
-        <div class="col-lg-3">
-          <h6 class="fw-bold text-light mb-3">Modul Tersedia</h6>
-          <ul class="list-unstyled small text-muted">
-            <li class="mb-2"><a href="farklin-populasi-khusus.html" class="text-muted text-decoration-none hover-white"><i class="fa-solid fa-chevron-right me-1 text-primary"></i>Modul 1: Penyesuaian Dosis Populasi Khusus</a></li>
-            <li class="mb-2"><a href="dili-diki.html" class="text-white text-decoration-none fw-bold"><i class="fa-solid fa-chevron-right me-1 text-danger"></i>Modul 2: Monitoring DILI & DIKI</a></li>
-            <li class="mb-2 text-muted opacity-50"><i class="fa-solid fa-lock me-1"></i>Modul 3: TDM & Farmakokinetik Klinis (Coming Soon)</li>
+
+        <div>
+          <h4 class="text-slate-200 font-bold mb-3 text-sm">Modul Terintegrasi</h4>
+          <ul class="space-y-2">
+            <li><a href="./index.html" class="hover:text-white transition flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i> Dashboard Portal</a></li>
+            <li><a href="./farklin-populasi-khusus.html" class="hover:text-purple-400 transition flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i> Modul 1: Populasi Khusus</a></li>
+            <li><a href="./dili-diki.html" class="text-rose-400 font-semibold flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i> Modul 2: DILI & DIKI</a></li>
           </ul>
         </div>
-        <div class="col-lg-4">
-          <h6 class="fw-bold text-light mb-3">Dosen Pengampu</h6>
-          <p class="small text-muted mb-1"><strong>Apt. Vania Denise Djunaidy, S.Farm., M.Farm.Klin.</strong></p>
-          <p class="small text-muted mb-3"><strong>Dr. apt. Ivonne Soeliono, M.Farm.Klin.</strong></p>
-          <div class="p-2 bg-dark-light rounded text-muted small border border-secondary border-opacity-25">
-            <i class="fa-solid fa-shield-check text-success me-1"></i>100% Evidence-Based & Sesuai Silabus Resmi UKWMS 2026/2027.
-          </div>
+
+        <div>
+          <h4 class="text-slate-200 font-bold mb-3 text-sm">Dosen Pengampu</h4>
+          <ul class="space-y-2 text-slate-300">
+            <li class="font-medium text-white">Apt. Vania Denise Djunaidy, M.Farm.Klin.</li>
+            <li class="text-slate-400 text-[11px]">Monitoring Keamanan Terapi: DILI & DIKI</li>
+            <li class="font-medium text-white pt-2">Dr. apt. Ivonne Soeliono, M.Farm.Klin.</li>
+            <li class="text-slate-400 text-[11px]">Asuhan Kefarmasian pada Populasi Khusus</li>
+          </ul>
         </div>
       </div>
-      <div class="border-top border-secondary border-opacity-25 mt-4 pt-3 text-center small text-muted">
-        &copy; 2026-2027 Fakultas Farmasi UKWMS &bull; Gen Z Clinical Pharmacy Assistant.
+
+      <div class="mt-8 pt-6 border-t border-slate-800/80 text-center text-slate-500 text-[11px]">
+        &copy; 2026-2027 Fakultas Farmasi UKWMS &bull; Gen Z Clinical Pharmacy Assistant Platform.
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Data & Script -->
-  <script src="data/diliDikiData.js"></script>
-  <script src="dili-diki.js"></script>
+  <!-- Scripts -->
+  <script src="./data/diliDikiData.js"></script>
+  <script src="./dili-diki.js"></script>
 </body>
 </html>

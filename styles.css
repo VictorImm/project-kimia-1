@@ -1,58 +1,27 @@
 /**
  * Unified Clinical Design System - UI/UX Pro Max Standard
  * Project: Clinical Pharmacy Interactive Hub (UKWMS)
- * Integrated Styles for Portal, Farklin Populasi Khusus, & DILI-DIKI Modules
+ * Shared Master Stylesheet for Portal, Farklin Populasi Khusus, & DILI-DIKI Modules
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   /* Core Semantic Tokens (WCAG AAA/AA Compliant) */
-  --color-primary: #0284c7;
-  --color-primary-hover: #0369a1;
-  --color-primary-light: rgba(2, 132, 199, 0.1);
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  --dili-gradient: linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #fb7185 100%);
+  --diki-gradient: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+  --renal-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --liver-gradient: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
   
-  --color-dili: #e11d48;
-  --color-dili-hover: #be123c;
-  --color-dili-light: rgba(225, 29, 72, 0.1);
-
-  --color-diki: #0891b2;
-  --color-diki-hover: #0e7490;
-  --color-diki-light: rgba(8, 145, 178, 0.1);
-
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #7c3aed;
+  --color-dili: #f43f5e;
+  --color-diki: #0ea5e9;
   --color-success: #10b981;
-  --color-success-light: rgba(16, 185, 129, 0.1);
-
   --color-warning: #f59e0b;
-  --color-warning-light: rgba(245, 158, 11, 0.12);
+  --color-danger: #ef4444;
 
-  --color-danger: #dc2626;
-  --color-danger-light: rgba(220, 38, 38, 0.1);
-
-  --color-surface: #ffffff;
-  --color-surface-subtle: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-border-subtle: rgba(226, 232, 240, 0.8);
-  
-  --color-text-main: #0f172a;
-  --color-text-muted: #64748b;
-  --color-text-light: #94a3b8;
-
-  /* Elevation Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-
-  /* Spacing Scale */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-pill: 9999px;
-
-  /* Animation Timings */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,34 +33,18 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: var(--color-text-main);
-  background-color: var(--color-surface-subtle);
-  line-height: 1.6;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
   letter-spacing: -0.02em;
-  color: #0f172a;
 }
 
 code, kbd, pre, .font-mono {
   font-family: 'JetBrains Mono', monospace;
-}
-
-/* Accessibility: Focus Rings for Keyboard Navigation */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Cursor Pointer on Clickables */
-button, a, .nav-tab, .clickable-card, .quiz-matrix-cell, .quiz-option-btn, input[type="range"] {
-  cursor: pointer;
 }
 
 /* Custom Sleek Scrollbar */
@@ -100,182 +53,137 @@ button, a, .nav-tab, .clickable-card, .quiz-matrix-cell, .quiz-option-btn, input
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.04);
+  background: rgba(15, 23, 42, 0.6);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.5);
+  background: rgba(99, 102, 241, 0.4);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.8);
+  background: rgba(139, 92, 246, 0.8);
 }
 
-/* Hero Background Gradients */
-.bg-gradient-portal {
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #172554 100%);
+/* Hero Gradient Mesh Background */
+.bg-mesh {
+  background-color: #0f172a;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.18) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(217, 70, 239, 0.18) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(244, 63, 94, 0.15) 0px, transparent 50%);
 }
 
-.bg-gradient-dili {
-  background: linear-gradient(135deg, #881337 0%, #be123c 45%, #0f172a 100%);
+/* Glassmorphism Panels */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #0369a1 0%, #4338ca 100%) !important;
+.glass-panel-interactive {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--transition-normal);
 }
 
-.bg-gradient-danger {
-  background: linear-gradient(135deg, #dc2626 0%, #e11d48 100%) !important;
+.glass-panel-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.25);
+}
+
+/* Pulse Glowing Badge */
+.pulse-badge {
+  box-shadow: 0 0 15px rgba(217, 70, 239, 0.4);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(217, 70, 239, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(217, 70, 239, 0.6);
+  }
 }
 
 /* Gradient Text Utilities */
 .gradient-text {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #f472b6 100%);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-dili {
-  background: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #f97316 100%);
+  background: var(--dili-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Uniform Cards Hierarchy */
-.card-modern {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+.gradient-text-diki {
+  background: var(--diki-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.card-modern:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(2, 132, 199, 0.3);
-}
-
-/* Portal Track Cards */
-.portal-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
-}
-
-.portal-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl) !important;
-  border-color: rgba(2, 132, 199, 0.4);
-}
-
-/* DILI Mechanism Cards */
-.mech-card {
-  display: flex;
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-  margin-bottom: 1.25rem;
-}
-
-.mech-card:hover {
-  border-color: var(--color-dili);
-  box-shadow: 0 10px 20px -5px rgba(225, 29, 72, 0.12);
-  transform: translateY(-2px);
-}
-
-.mech-badge {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-dili);
-  background: var(--color-dili-light);
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1.25rem;
-  flex-shrink: 0;
-}
-
-/* Organ Comparison Cards */
-.card-organ {
-  border-radius: var(--radius-xl);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-}
-.card-organ:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg) !important;
-}
-
-/* Standardized Badge Pills */
-.badge-pill {
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-}
-
-.bg-primary-light { background-color: var(--color-primary-light); color: var(--color-primary); }
-.bg-danger-light { background-color: var(--color-dili-light); color: var(--color-dili); }
-.bg-warning-light { background-color: var(--color-warning-light); color: #b45309; }
-.bg-success-light { background-color: var(--color-success-light); color: #047857; }
-.bg-info-light { background-color: rgba(14, 165, 233, 0.1); color: #0369a1; }
-.bg-secondary-light { background-color: rgba(100, 116, 139, 0.1); color: #475569; }
-
-/* Interactive Quiz Styling (Uniform Across Modul 1 & 2) */
-.quiz-matrix-cell {
-  width: 42px;
-  height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: 0.875rem;
+/* Interactive Navigation Tabs */
+.nav-tab {
   transition: all var(--transition-fast);
 }
 
-.quiz-matrix-cell:hover {
-  transform: scale(1.06);
+.nav-tab.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(217, 70, 239, 0.25) 100%);
+  border-color: rgba(168, 85, 247, 0.6);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
 }
 
-.quiz-option-btn {
-  transition: all var(--transition-normal);
-  border: 1.5px solid var(--color-border);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.quiz-option-btn:hover:not(:disabled) {
-  background-color: var(--color-surface-subtle);
-  border-color: var(--color-primary);
-  transform: translateX(3px);
-}
-
-/* Hy's Law Pulsing Alert Box */
+/* Hy's Law Pulsing Box */
 .hys-law-box {
-  animation: pulseAlert 2.5s infinite ease-in-out;
+  animation: pulseHys 2.5s infinite ease-in-out;
 }
 
-@keyframes pulseAlert {
-  0%, 100% { box-shadow: 0 0 0 rgba(220, 38, 38, 0.15); }
-  50% { box-shadow: 0 0 22px rgba(220, 38, 38, 0.45); }
+@keyframes pulseHys {
+  0%, 100% { box-shadow: 0 0 0 rgba(244, 63, 94, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(244, 63, 94, 0.5); }
 }
 
-/* KaTeX Math Formula Crisp Display */
+/* KaTeX Math Formula Display */
 .katex-display {
   margin: 0.75em 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.5rem;
+}
+
+/* Custom Range Sliders */
+input[type="range"] {
+  accent-color: #8b5cf6;
+}
+
+/* Accessibility: Focus Rings for Keyboard Navigation */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
 /* Smooth Reduced Motion Support */
@@ -290,7 +198,7 @@ button, a, .nav-tab, .clickable-card, .quiz-matrix-cell, .quiz-option-btn, input
 
 /* Print Friendly Styles */
 @media print {
-  .no-print, nav, footer, .btn, .btn-group {
+  .no-print, header, footer, .btn, .btn-group {
     display: none !important;
   }
   body {
