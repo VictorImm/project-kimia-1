@@ -129,33 +129,33 @@ code, kbd, pre, .font-mono {
   -webkit-text-fill-color: transparent;
 }
 
-/* Fantasy Lore Storytelling Cards */
-.fantasy-lore-box {
-  background: linear-gradient(135deg, rgba(30, 27, 75, 0.75) 0%, rgba(49, 16, 66, 0.75) 100%);
-  border: 1px solid rgba(217, 70, 239, 0.35);
-  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.2);
+/* Realistic Clinical Case Narratives (5W+1H Bedside Series) */
+.clinical-case-box, .fantasy-lore-box {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.85) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px 0 rgba(99, 102, 241, 0.12);
   border-radius: 1.5rem;
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-.fantasy-lore-box::before {
+.clinical-case-box::before, .fantasy-lore-box::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1 0%, #06b6d4 50%, #10b981 100%);
 }
 
-.fantasy-badge {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.25) 0%, rgba(139, 92, 246, 0.25) 100%);
-  border: 1px solid rgba(217, 70, 239, 0.5);
-  color: #fbcfe8;
+.clinical-badge, .fantasy-badge {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: #c7d2fe;
   font-weight: 700;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
@@ -164,8 +164,27 @@ code, kbd, pre, .font-mono {
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
+
+/* 5W+1H Grid Tag Styling */
+.badge-5w1h {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.badge-who { background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(14, 165, 233, 0.35); color: #7dd3fc; }
+.badge-what { background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.35); color: #fda4af; }
+.badge-when { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.35); color: #fcd34d; }
+.badge-where { background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.35); color: #d8b4fe; }
+.badge-why { background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.35); color: #f472b6; }
+.badge-how { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #6ee7b7; }
 
 /* Interactive Navigation Tabs */
 .nav-tab {
