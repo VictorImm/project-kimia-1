@@ -32,16 +32,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initGrandRoundAccordion();
 });
 
-// Helper for rendering Math formulas via KaTeX
+// Helper for rendering Math formulas via KaTeX (Render Exactly Once)
 function renderMathInDocument() {
   document.querySelectorAll('.math-formula').forEach(el => {
-    const raw = el.getAttribute('data-formula') || el.innerText;
+    if (el.dataset.rendered === "true") return;
+
+    let raw = el.getAttribute('data-formula');
+    if (!raw) {
+      raw = el.innerText.trim();
+      el.setAttribute('data-formula', raw);
+    }
+
     try {
       if (window.katex) {
         katex.render(raw, el, {
           throwOnError: false,
           displayMode: el.classList.contains('math-display')
         });
+        el.dataset.rendered = "true";
       }
     } catch (e) {
       console.warn('KaTeX render error:', e);
@@ -70,10 +78,6 @@ function initTabNavigation() {
           section.classList.remove('animate-fade-in');
         }
       });
-
-      // Re-trigger icon rendering & math rendering
-      if (window.lucide) window.lucide.createIcons();
-      renderMathInDocument();
 
       // If PK simulator is in view, resize chart
       if (targetId === 'tab-simulator' && window.pkChartInstance) {
