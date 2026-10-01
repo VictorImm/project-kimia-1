@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
+  // Initialize KaTeX formulas
+  renderMathInDocument();
+
   initDiliTabs();
   initRRatioCalculator();
   initOatStepper();
@@ -19,6 +22,31 @@ document.addEventListener('DOMContentLoaded', () => {
   initDiliDikiQuiz();
   renderContentCards();
 });
+
+// Helper for rendering Math formulas via KaTeX
+function renderMathInDocument() {
+  document.querySelectorAll('.math-formula').forEach(el => {
+    if (el.dataset.rendered === "true") return;
+
+    let raw = el.getAttribute('data-formula');
+    if (!raw) {
+      raw = el.innerText.trim();
+      el.setAttribute('data-formula', raw);
+    }
+
+    try {
+      if (window.katex) {
+        katex.render(raw, el, {
+          throwOnError: false,
+          displayMode: el.classList.contains('math-display')
+        });
+        el.dataset.rendered = "true";
+      }
+    } catch (e) {
+      console.warn('KaTeX render error:', e);
+    }
+  });
+}
 
 // 1. Tab Navigation System (Identical to Farklin Masterclass)
 function initDiliTabs() {
@@ -44,10 +72,11 @@ function initDiliTabs() {
         }
       });
 
-      // Re-initialize icons for newly shown section
+      // Re-initialize icons & math for newly shown section
       if (window.lucide) {
         window.lucide.createIcons();
       }
+      renderMathInDocument();
     });
   });
 }
