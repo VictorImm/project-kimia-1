@@ -508,22 +508,32 @@ function initGrandRoundAccordion() {
   });
 }
 
-// 9. Gamified Pop Quiz Engine
+// 9. Gamified Pop Quiz Engine (60 HOTS Questions Support)
 let currentQuizIndex = 0;
 let userQuizScore = 0;
-const answeredQuestions = new Set();
+let selectedCategory = 'all';
+const userAnswers = {}; // Map: qId -> { selectedIndex, isCorrect }
 
 function initQuizEngine() {
+  renderCategoryFilters();
+  renderQuestionGrid();
   renderQuizQuestion();
 
   const nextBtn = document.getElementById('quiz-next-btn');
   const prevBtn = document.getElementById('quiz-prev-btn');
+  const resetBtn = document.getElementById('quiz-reset-btn');
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      if (currentQuizIndex < window.LECTURE_DATA.quiz.length - 1) {
+      const filtered = getFilteredQuestions();
+      if (currentQuizIndex < filtered.length - 1) {
         currentQuizIndex++;
         renderQuizQuestion();
+        renderQuestionGrid();
+      } else if (Object.keys(userAnswers).length === window.LECTURE_DATA.quiz.length) {
+        if (window.confetti) {
+          confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+        }
       }
     });
   }
@@ -533,48 +543,158 @@ function initQuizEngine() {
       if (currentQuizIndex > 0) {
         currentQuizIndex--;
         renderQuizQuestion();
+        renderQuestionGrid();
+      }
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (confirm('Apakah kamu yakin ingin mereset seluruh progres kuis 60 soal ini?')) {
+        for (const key in userAnswers) delete userAnswers[key];
+        userQuizScore = 0;
+        currentQuizIndex = 0;
+        renderQuestionGrid();
+        renderQuizQuestion();
       }
     });
   }
 }
 
+function getFilteredQuestions() {
+  const all = window.LECTURE_DATA.quiz;
+  if (selectedCategory === 'all') return all;
+  return all.filter(q => q.category === selectedCategory || (selectedCategory === 'PK' && (q.category === 'Kalkulasi PK' || q.category === 'Fundamental PK')));
+}
+
+function renderCategoryFilters() {
+  const container = document.getElementById('quiz-category-filters');
+  if (!container) return;
+
+  const categories = [
+    { id: 'all', label: '🔥 Semua (60 Soal)' },
+    { id: 'PK', label: '📐 PK & Hitungan (10)' },
+    { id: 'Gangguan Ginjal', label: '🫘 Ginjal & Dialisis (12)' },
+    { id: 'Gangguan Hati', label: '🫀 Hati & Sirosis (12)' },
+    { id: 'Geriatri', label: '👵 Geriatri & Beers (10)' },
+    { id: 'Ibu Hamil', label: '🤰 Bumil & Teratogen (9)' },
+    { id: 'Ibu Menyusui', label: '🍼 Busui & RID (7)' }
+  ];
+
+  container.innerHTML = '';
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    const isActive = selectedCategory === cat.id;
+    btn.className = `px-3 py-1.5 rounded-xl text-xs font-semibold transition whitespace-nowrap border ${
+      isActive 
+        ? 'bg-purple-600 text-white border-purple-500 shadow-md shadow-purple-500/30' 
+        : 'bg-slate-800/80 text-slate-300 border-slate-700 hover:border-purple-400'
+    }`;
+    btn.innerText = cat.label;
+    btn.addEventListener('click', () => {
+      selectedCategory = cat.id;
+      currentQuizIndex = 0;
+      renderCategoryFilters();
+      renderQuestionGrid();
+      renderQuizQuestion();
+    });
+    container.appendChild(btn);
+  });
+}
+
+function renderQuestionGrid() {
+  const gridContainer = document.getElementById('quiz-question-grid');
+  if (!gridContainer) return;
+
+  const filtered = getFilteredQuestions();
+  gridContainer.innerHTML = '';
+
+  filtered.forEach((q, idx) => {
+    const btn = document.createElement('button');
+    const ans = userAnswers[q.id];
+    const isCurrent = idx === currentQuizIndex;
+
+    let bgClass = 'bg-slate-800 text-slate-300 border-slate-700';
+    if (ans) {
+      if (ans.isCorrect) {
+        bgClass = 'bg-emerald-600/30 text-emerald-300 border-emerald-500/50 font-bold';
+      } else {
+        bgClass = 'bg-rose-600/30 text-rose-300 border-rose-500/50 font-bold';
+      }
+    }
+
+    if (isCurrent) {
+      bgClass += ' ring-2 ring-purple-400 scale-105 shadow-md shadow-purple-500/30';
+    }
+
+    btn.className = `w-8 h-8 rounded-lg text-xs font-semibold border flex items-center justify-center transition-all ${bgClass}`;
+    btn.innerText = (idx + 1).toString();
+    btn.title = `Soal ${idx + 1} (${q.category})`;
+
+    btn.addEventListener('click', () => {
+      currentQuizIndex = idx;
+      renderQuizQuestion();
+      renderQuestionGrid();
+    });
+
+    gridContainer.appendChild(btn);
+  });
+}
+
 function renderQuizQuestion() {
-  const quizList = window.LECTURE_DATA.quiz;
-  const q = quizList[currentQuizIndex];
+  const filtered = getFilteredQuestions();
+  const q = filtered[currentQuizIndex];
   if (!q) return;
 
   const numEl = document.getElementById('quiz-question-number');
+  const catBadge = document.getElementById('quiz-question-category');
   const textEl = document.getElementById('quiz-question-text');
   const optionsContainer = document.getElementById('quiz-options-container');
   const explanationEl = document.getElementById('quiz-explanation');
   const nextBtn = document.getElementById('quiz-next-btn');
   const prevBtn = document.getElementById('quiz-prev-btn');
   const scoreCounter = document.getElementById('quiz-score-counter');
+  const answeredCountEl = document.getElementById('quiz-answered-count');
 
-  if (numEl) numEl.innerText = `Pertanyaan ${currentQuizIndex + 1} dari ${quizList.length}`;
+  if (numEl) numEl.innerText = `Soal ${currentQuizIndex + 1} dari ${filtered.length}`;
+  if (catBadge) {
+    catBadge.innerText = q.category;
+    catBadge.className = 'inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40';
+  }
   if (textEl) textEl.innerText = q.question;
-  if (scoreCounter) scoreCounter.innerText = `Skor Kamu: ${userQuizScore} / ${quizList.length * 20}`;
+
+  const answeredTotal = Object.keys(userAnswers).length;
+  const correctTotal = Object.values(userAnswers).filter(a => a.isCorrect).length;
+  if (scoreCounter) scoreCounter.innerText = `Skor: ${correctTotal * 20} (Benar: ${correctTotal}/${answeredTotal})`;
+  if (answeredCountEl) answeredCountEl.innerText = `${answeredTotal} dari ${window.LECTURE_DATA.quiz.length} Terjawab`;
 
   if (prevBtn) prevBtn.disabled = currentQuizIndex === 0;
   if (nextBtn) {
-    if (currentQuizIndex === quizList.length - 1) {
-      nextBtn.innerText = 'Selesai & Rayakan! 🎓';
+    if (currentQuizIndex === filtered.length - 1) {
+      nextBtn.innerText = 'Selesai Kategori Ini 🎓';
     } else {
       nextBtn.innerText = 'Soal Berikutnya ➡️';
     }
   }
 
-  if (explanationEl) {
-    explanationEl.classList.add('hidden');
-    explanationEl.innerText = '';
-  }
+  const prevAnswer = userAnswers[q.id];
 
   if (!optionsContainer) return;
   optionsContainer.innerHTML = '';
 
   q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
-    btn.className = 'quiz-option w-full text-left p-4 rounded-xl border border-slate-700 bg-slate-800/80 text-slate-200 hover:border-purple-400 flex items-start space-x-3 transition';
+    let optionClass = 'quiz-option w-full text-left p-4 rounded-xl border border-slate-700 bg-slate-800/80 text-slate-200 hover:border-purple-400 flex items-start space-x-3 transition';
+
+    if (prevAnswer) {
+      if (opt.correct) {
+        optionClass += ' correct-answer';
+      } else if (prevAnswer.selectedIndex === idx) {
+        optionClass += ' wrong-answer';
+      }
+    }
+
+    btn.className = optionClass;
     btn.innerHTML = `
       <span class="w-7 h-7 rounded-full bg-purple-900/50 border border-purple-500/40 text-purple-300 font-bold flex items-center justify-center flex-shrink-0 text-sm">
         ${opt.label}
@@ -582,46 +702,45 @@ function renderQuizQuestion() {
       <span class="text-sm md:text-base leading-relaxed">${opt.text}</span>
     `;
 
-    btn.addEventListener('click', () => {
-      if (answeredQuestions.has(q.id)) return;
-      answeredQuestions.add(q.id);
+    if (prevAnswer) {
+      btn.disabled = true;
+    } else {
+      btn.addEventListener('click', () => {
+        userAnswers[q.id] = {
+          selectedIndex: idx,
+          isCorrect: opt.correct
+        };
 
-      const allOptions = optionsContainer.querySelectorAll('.quiz-option');
-      allOptions.forEach((optBtn, oIdx) => {
-        if (q.options[oIdx].correct) {
-          optBtn.classList.add('correct-answer');
-        } else if (oIdx === idx) {
-          optBtn.classList.add('wrong-answer');
+        if (opt.correct) {
+          userQuizScore += 20;
+          if (window.confetti) {
+            confetti({ particleCount: 60, spread: 50, origin: { y: 0.7 } });
+          }
         }
-        optBtn.disabled = true;
+
+        renderQuestionGrid();
+        renderQuizQuestion();
       });
-
-      if (opt.correct) {
-        userQuizScore += 20;
-        if (window.confetti) {
-          confetti({
-            particleCount: 80,
-            spread: 60,
-            origin: { y: 0.7 }
-          });
-        }
-      }
-
-      if (scoreCounter) scoreCounter.innerText = `Skor Kamu: ${userQuizScore} / ${quizList.length * 20}`;
-
-      if (explanationEl) {
-        explanationEl.classList.remove('hidden');
-        explanationEl.innerHTML = `
-          <div class="p-4 rounded-xl ${opt.correct ? 'bg-emerald-950/40 border border-emerald-500/40 text-emerald-200' : 'bg-rose-950/40 border border-rose-500/40 text-rose-200'}">
-            <div class="font-bold mb-1 flex items-center gap-2">
-              <span>${opt.correct ? '✨ Jawaban Tepat Banget!' : '💡 Pembahasan Dosen:'}</span>
-            </div>
-            <p class="text-sm leading-relaxed">${q.explanation}</p>
-          </div>
-        `;
-      }
-    });
+    }
 
     optionsContainer.appendChild(btn);
   });
+
+  if (explanationEl) {
+    if (prevAnswer) {
+      explanationEl.classList.remove('hidden');
+      explanationEl.innerHTML = `
+        <div class="p-4 rounded-xl ${prevAnswer.isCorrect ? 'bg-emerald-950/40 border border-emerald-500/40 text-emerald-200' : 'bg-rose-950/40 border border-rose-500/40 text-rose-200'}">
+          <div class="font-bold mb-1 flex items-center gap-2">
+            <span>${prevAnswer.isCorrect ? '✨ Jawaban Tepat Banget!' : '💡 Pembahasan Dosen:'}</span>
+          </div>
+          <p class="text-sm leading-relaxed">${q.explanation}</p>
+        </div>
+      `;
+    } else {
+      explanationEl.classList.add('hidden');
+      explanationEl.innerHTML = '';
+    }
+  }
 }
+
