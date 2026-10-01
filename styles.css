@@ -1,0 +1,162 @@
+/* Farklin Masterclass - Custom UI/UX Pro Max Styles */
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  --renal-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --liver-gradient: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  --geriatric-gradient: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  --maternal-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --lactation-gradient: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.5);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.8);
+}
+
+/* Glassmorphism Cards */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-interactive {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.25);
+}
+
+/* Pulse Glowing Badge */
+.pulse-badge {
+  box-shadow: 0 0 15px rgba(217, 70, 239, 0.4);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(217, 70, 239, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(217, 70, 239, 0.6);
+  }
+}
+
+/* Hero Gradient Mesh */
+.bg-mesh {
+  background-color: #0f172a;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.18) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(217, 70, 239, 0.18) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(244, 63, 94, 0.15) 0px, transparent 50%);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Interactive Tabs */
+.nav-tab.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(217, 70, 239, 0.25) 100%);
+  border-color: rgba(168, 85, 247, 0.6);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+/* KaTeX in Cards */
+.katex-display {
+  margin: 0.75em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem;
+}
+
+/* Cascade Tree Node */
+.cascade-step {
+  position: relative;
+}
+.cascade-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(to bottom, #ef4444, #f59e0b);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Quiz Option Hover & Selection */
+.quiz-option {
+  transition: all 0.2s ease-in-out;
+}
+.quiz-option:hover {
+  background-color: rgba(51, 65, 85, 0.9);
+  border-color: rgba(147, 197, 253, 0.5);
+}
+.quiz-option.correct-answer {
+  background-color: rgba(16, 185, 129, 0.2) !important;
+  border-color: #10b981 !important;
+  color: #34d399 !important;
+}
+.quiz-option.wrong-answer {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  border-color: #ef4444 !important;
+  color: #f87171 !important;
+}
+
+/* Sliders Styling */
+input[type="range"] {
+  accent-color: #8b5cf6;
+}
+
+/* Print Friendly */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+}
