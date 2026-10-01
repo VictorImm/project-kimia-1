@@ -99,12 +99,12 @@ window.LECTURE_DATA = {
         {
           subtitle: "6 Parameter Kunci Farmakokinetik",
           params: [
-            { symbol: "CL (Klirens)", unit: "L/jam atau mL/min", meaning: "Kemampuan tubuh membersihkan volume darah dari obat per satuan waktu. $CL = CL_{renal} + CL_{non-renal}$." },
+            { symbol: "CL (Klirens)", unit: "L/jam atau mL/min", meaning: "Kemampuan tubuh membersihkan volume darah dari obat per satuan waktu. feCLCL = CL_renal + CL_non-renal." },
             { symbol: "V_d (Volume Distribusi)", unit: "Liter atau L/kg", meaning: "Ruang semu tempat obat terdistribusi. Vd besar (> 5 L/kg) = obat suka ngumpet di lemak/jaringan (susah dicuci dialisis!)." },
-            { symbol: "t_{1/2} (Waktu Paruh)", unit: "Jam", meaning: "Waktu yang dibutuhkan kadar obat untuk turun jadi 50%. Rumus: $t_{1/2} = \\frac{0.693 \\times V_d}{CL}$." },
+            { symbol: "t_{1/2} (Waktu Paruh)", unit: "Jam", meaning: "Waktu yang dibutuhkan kadar obat untuk turun jadi 50%. Rumus: fet_{1/2} = \\frac{0.693 \\times V_d}{CL}fe." },
             { symbol: "f_e (Fraksi Renal)", unit: "0 - 1.0 (atau %)", meaning: "Persentase obat yang dieliminasi lewat urin dalam bentuk UTUH tanpa diubah." },
             { symbol: "f_u (Fraksi Bebas)", unit: "0 - 1.0", meaning: "Persentase obat yang TIDAK terikat albumin. Hanya obat bebas yang punya efek farmakologis & bisa difiltrasi ginjal!" },
-            { symbol: "E (Rasio Ekstraksi)", unit: "0 - 1.0", meaning: "Efisiensi hepar menyaring obat dalam satu kali aliran darah. $E > 0.7$ (High) vs $E < 0.3$ (Low)." }
+            { symbol: "E (Rasio Ekstraksi)", unit: "0 - 1.0", meaning: "Efisiensi hepar menyaring obat dalam satu kali aliran darah. feE > 0.7fe (High) vs feE < 0.3fe (Low)." }
           ]
         },
         {
@@ -114,22 +114,22 @@ window.LECTURE_DATA = {
               name: "Strategi 1: Turunkan Dosis (Dose Reduction)",
               formula: "D_{pasien} = D_{normal} \\times Q",
               interval: "Interval (\\tau) tetap sama",
-              pros: "Kadar obat dalam darah lebih rata dan fluktuasi puncak-lembah ($C_{max}-C_{min}$) lebih kecil.",
+              pros: "Kadar obat dalam darah lebih rata dan fluktuasi puncak-lembah (feC_{max}-C_{min}fe) lebih kecil.",
               when: "Sangat cocok untuk obat dengan indeks terapi sempit atau obat tipe *time-dependent* (misal antidiabetes, beberapa antiepilepsi)."
             },
             {
               name: "Strategi 2: Perpanjang Interval (Interval Extension)",
               formula: "\\tau_{pasien} = \\frac{\\tau_{normal}}{Q}",
               interval: "Dosis tetap sama, interval diperpanjang",
-              pros: "Tetap mencapai kadar puncak ($C_{max}$) yang tinggi untuk efek bakterisidal maksimal.",
+              pros: "Tetap mencapai kadar puncak (feC_{max}fe) yang tinggi untuk efek bakterisidal maksimal.",
               when: "Sangat cocok untuk obat tipe *concentration-dependent* seperti Aminoglikosida (Gentamisin, Amikasin) dan Fluorokuinolon."
             }
           ]
         },
         {
-          subtitle: "Formula Sakti Dettli & Rowland-Tozer ($Q$ Factor)",
+          subtitle: "Formula Sakti Dettli & Rowland-Tozer (feQfe Factor)",
           latexFormula: "Q = 1 - f_e \\times (1 - KF)",
-          detailExplanation: "Di mana: \\n• $f_e$ = fraksi obat utuh di urin pada fungsi ginjal normal\\n• $KF$ (Kidney Function ratio) = $\\frac{CrCl_{pasien}}{CrCl_{normal}}$ (CrCl normal diasumsikan 100 atau 120 mL/min)\\n• Jika $f_e = 0.9$ dan $KF = 0.3$, maka $Q = 1 - 0.9 \\times (1 - 0.3) = 1 - 0.63 = 0.37$ (dosis disunat jadi 37%!)."
+          detailExplanation: "Di mana: \\n• fef_efe = fraksi obat utuh di urin pada fungsi ginjal normal\\n• feKFfe (Kidney Function ratio) = fe\\frac{CrCl_{pasien}}{CrCl_{normal}}fe (CrCl normal diasumsikan 100 atau 120 mL/min)\\n• Jika fef_e = 0.9fe dan feKF = 0.3fe, maka feQ = 1 - 0.9 \\times (1 - 0.3) = 1 - 0.63 = 0.37fe (dosis disunat jadi 37%!)."
         }
       ]
     },
@@ -161,7 +161,7 @@ window.LECTURE_DATA = {
           subtitle: "Prinsip Obat & Hemodialisis (Bisa Dicuci Gak Sih?)",
           rules: [
             { title: "Berat Molekul (BM)", desc: "BM < 500 Da sangat mudah terbuang lewat membran dialisis konvensional. Vankomisin (BM ±1.400 Da) hanya tersaring pada dialzer High-Flux." },
-            { title: "Ikatan Protein (Protein Binding)", desc: "Hanya fraksi bebas ($f_u$) yang bisa menembus pori membran dialisis. Obat dengan ikatan protein > 90% (misal Fenitoin, Warfarin) tidak banyak terbuang." },
+            { title: "Ikatan Protein (Protein Binding)", desc: "Hanya fraksi bebas (fef_ufe) yang bisa menembus pori membran dialisis. Obat dengan ikatan protein > 90% (misal Fenitoin, Warfarin) tidak banyak terbuang." },
             { title: "Volume Distribusi (Vd)", desc: "Obat yang ngumpet di jaringan dengan Vd raksasa (misal Digoksin Vd 300-500 L, Amiodaron) tidak bisa ditarik oleh mesin dialisis." }
           ]
         }
@@ -170,7 +170,7 @@ window.LECTURE_DATA = {
         title: "Kasus 1: Tn. B (78 th, 50 kg, SCr 1.8 mg/dL) & Metformin",
         scenario: "Tn. B menderita DM tipe 2 dan diresepkan Metformin 500 mg 3x sehari. SCr lab = 1.8 mg/dL.",
         calculation: "CrCl = (140 - 78) * 50 / (72 * 1.8) = 62 * 50 / 129.6 = 23.9 mL/menit!",
-        drp: "DRP Kritis: Metformin diekskresi 90-100% utuh di urin ($f_e = 0.9-1.0$). Pada CrCl < 30 mL/min, akumulasi Metformin memicu Lactic Acidosis (bisa fatal!).",
+        drp: "DRP Kritis: Metformin diekskresi 90-100% utuh di urin (fef_e = 0.9-1.0fe). Pada CrCl < 30 mL/min, akumulasi Metformin memicu Lactic Acidosis (bisa fatal!).",
         recommendation: "HENTIKAN METFORMIN SEGERA! Ganti dengan antidiabetes yang aman untuk CrCl < 30 mL/min (misal Insulin, Linagliptin tanpa penyesuaian dosis, atau Gliklazid dosis rendah)."
       }
     },
@@ -185,13 +185,13 @@ window.LECTURE_DATA = {
         {
           subtitle: "3 Perubahan Patofisiologis Utama pada Sirosis",
           points: [
-            { icon: "git-branch", title: "Portosystemic Shunt & Aliran Darah Turun", text: "Darah memotong jalur hepar -> First-pass metabolism lenyap -> Bioavailabilitas ($F$) obat oral melonjak drastis! Dosis normal bisa bikin overdosis." },
+            { icon: "git-branch", title: "Portosystemic Shunt & Aliran Darah Turun", text: "Darah memotong jalur hepar -> First-pass metabolism lenyap -> Bioavailabilitas (feFfe) obat oral melonjak drastis! Dosis normal bisa bikin overdosis." },
             { icon: "zap-off", title: "Kerusakan Enzim CYP (Fase 1 Drop Parah)", text: "Oksidasi CYP450 rusak berat. TAPI Glukuronidasi (Fase 2) relatif lebih bertahan. Makanya pilih benzodiazepin Fase 2 (Lorazepam, Oksazepam) daripada Fase 1 (Diazepam)!" },
-            { icon: "droplet", title: "Sintesis Albumin Menurun", text: "Hipoalbuminemia -> Fraksi bebas obat asam ($f_u$) melonjak tinggi -> Efek samping meningkat tajam walau kadar total terlihat normal." }
+            { icon: "droplet", title: "Sintesis Albumin Menurun", text: "Hipoalbuminemia -> Fraksi bebas obat asam (fef_ufe) melonjak tinggi -> Efek samping meningkat tajam walau kadar total terlihat normal." }
           ]
         },
         {
-          subtitle: "High Extraction ($E > 0.7$) vs Low Extraction ($E < 0.3$)",
+          subtitle: "High Extraction (feE > 0.7fe) vs Low Extraction (feE < 0.3fe)",
           extractionComparison: [
             {
               type: "High Extraction Drugs (E > 0.7)",
@@ -201,7 +201,7 @@ window.LECTURE_DATA = {
             },
             {
               type: "Low Extraction Drugs (E < 0.3)",
-              meaning: "Klirens obat dibatasi oleh AKTIVITAS ENZIM INTRINSIK & IKATAN PROTEIN ($CL_{int} \\times f_u$).",
+              meaning: "Klirens obat dibatasi oleh AKTIVITAS ENZIM INTRINSIK & IKATAN PROTEIN (feCL_{int} \\times f_ufe).",
               examples: "Warfarin, Fenitoin, Diazepam, Teofilin.",
               impact: "Pada sirosis: Albumin turun membuat fraksi bebas naik, tapi enzim CYP turun membuat eliminasi lambat. Perlu TDM dan monitoring ketat!"
             }
@@ -241,8 +241,8 @@ window.LECTURE_DATA = {
         {
           subtitle: "Perubahan Fisiologis Penuaan vs Dampak PK",
           changes: [
-            { organ: "Air Tubuh Total & Massa Otot (-10 s/d 15%)", impact: "Volume distribusi obat larut air (Litium, Digoksin, Aminoglikosida) menyusut -> Kadar puncak ($C_{max}$) melonjak tinggi!" },
-            { organ: "Persentase Lemak Tubuh (+20 s/d 40%)", impact: "Volume distribusi obat larut lemak (Diazepam, Lipofilik) membesar -> Obat terperangkap di lemak, $t_{1/2}$ memanjang drastis, pasien teler berhari-hari!" },
+            { organ: "Air Tubuh Total & Massa Otot (-10 s/d 15%)", impact: "Volume distribusi obat larut air (Litium, Digoksin, Aminoglikosida) menyusut -> Kadar puncak (feC_{max}fe) melonjak tinggi!" },
+            { organ: "Persentase Lemak Tubuh (+20 s/d 40%)", impact: "Volume distribusi obat larut lemak (Diazepam, Lipofilik) membesar -> Obat terperangkap di lemak, fet_{1/2}fe memanjang drastis, pasien teler berhari-hari!" },
             { organ: "Aliran Darah Hepar (-20 s/d 50%)", impact: "Klirens obat hepar ekstraksi tinggi menurun tajam (Propranolol, Lidokain, Morfin)." },
             { organ: "Laju Filtrasi Glomerulus (-1 mL/min/th sesudah 40 th)", impact: "Ekskresi obat renal melambat drastis walau SCr tampak normal (pseudonormal SCr)." }
           ]
@@ -267,7 +267,7 @@ window.LECTURE_DATA = {
       caseStudy: {
         title: "Kasus 3: Ny. M.G. (75 th, Gagal Jantung Kongestif)",
         scenario: "Ny. M.G. mengeluh sesak dan bengkak kaki memberat. Minum Furosemid 40 mg oral tapi pipis tidak kunjung bertambah. Hasil lab: SCr 1.2 mg/dL, BB 48 kg.",
-        drp: "1. Furosemid oral lambat diserap pada mukosa edematous lansia -> kadar tubulus di bawah ambang diuresis.\\n2. Hitung CrCl: $(140-75) \\times 48 / (72 \\times 1.2) \\times 0.85 = 30.6$ mL/min (Gangguan ginjal tahap 3!).",
+        drp: "1. Furosemid oral lambat diserap pada mukosa edematous lansia -> kadar tubulus di bawah ambang diuresis.\\n2. Hitung CrCl: fe(140-75) \\times 48 / (72 \\times 1.2) \\times 0.85 = 30.6fe mL/min (Gangguan ginjal tahap 3!).",
         recommendation: "Ganti ke Furosemid 40 mg IV secara perlahan untuk mengatasi edema akut. Setelah terkontrol, edukasi pembatasan natrium dan evaluasi interaksi obat nefrotoksik."
       }
     },
@@ -341,7 +341,7 @@ window.LECTURE_DATA = {
           shields: [
             { icon: "shield-check", title: "Ikatan Protein Plasma Tinggi (> 90%)", desc: "Hanya fraksi bebas yang bisa berdifusi ke kelenjar mamae. Contoh: Sertralin (98% protein-bound), Ibuprofen (99% protein-bound) -> Sangat sedikit masuk ASI!" },
             { icon: "anchor", title: "Berat Molekul Raksasa (> 800 - 1000 Da)", desc: "Molekul besar seperti Heparin, Insulin, dan Antibodi Monoklonal tidak bisa menembus taut sel alveoli mamae." },
-            { icon: "clock", title: "Waktu Paruh Pendek ($t_{1/2}$ singkat)", desc: "Obat cepat dibersihkan dari darah ibu sebelum jadwal menyusui berikutnya." },
+            { icon: "clock", title: "Waktu Paruh Pendek (fet_{1/2}fe singkat)", desc: "Obat cepat dibersihkan dari darah ibu sebelum jadwal menyusui berikutnya." },
             { icon: "scissors", title: "Bioavailabilitas Oral Bayi Rendah", desc: "Meskipun obat masuk ke ASI, jika obat tersebut rusak oleh asam lambung/enzim usus bayi (misal Gentamisin, Vankomisin oral), obat tidak akan diserap ke darah bayi." }
           ]
         },
@@ -2144,14 +2144,14 @@ window.LECTURE_DATA = {
   cheatSheet: [
     {
       population: "Gangguan Ginjal",
-      primaryChange: "Klirens renal ($CL_R$) turun, waktu paruh ($t_{1/2}$) memanjang, fraksi bebas obat asam ($f_u$) naik.",
+      primaryChange: "Klirens renal (feCL_Rfe) turun, waktu paruh (fet_{1/2}fe) memanjang, fraksi bebas obat asam (fef_ufe) naik.",
       tool: "Kalkulator Cockcroft-Gault (CrCl mL/min)",
-      actionPrinciple: "Hitung CrCl -> Gunakan Dettli Factor $Q = 1 - f_e(1-KF)$ -> Turunkan dosis atau panjangkan interval. Hindari Metformin pada CrCl < 30.",
+      actionPrinciple: "Hitung CrCl -> Gunakan Dettli Factor feQ = 1 - f_e(1-KF)fe -> Turunkan dosis atau panjangkan interval. Hindari Metformin pada CrCl < 30.",
       keyRef: "The Renal Drug Handbook 5th ed & DiPiro Ch. 69"
     },
     {
       population: "Gangguan Hati & Sirosis",
-      primaryChange: "Shunt portosistemik ($F$ oral naik), CYP Fase 1 rusak parah, Glukuronidasi Fase 2 relatif bertahan, Albumin turun.",
+      primaryChange: "Shunt portosistemik (feFfe oral naik), CYP Fase 1 rusak parah, Glukuronidasi Fase 2 relatif bertahan, Albumin turun.",
       tool: "Skor Child-Pugh (Kelas A: 5-6, B: 7-9, C: 10-15)",
       actionPrinciple: "Tidak ada rumus eksak seperti CrCl -> Turunkan dosis awal 25-50% pada Kelas B/C. Pilih Lorazepam dibanding Diazepam. Hindari NSAID & sedatif berat.",
       keyRef: "Shargel Bab 25 & DiPiro Bab 58"
@@ -2172,9 +2172,9 @@ window.LECTURE_DATA = {
     },
     {
       population: "Ibu Menyusui",
-      primaryChange: "Obat masuk ke ASI via difusi pasif fraksi bebas ($f_u$).",
+      primaryChange: "Obat masuk ke ASI via difusi pasif fraksi bebas (fef_ufe).",
       tool: "Kalkulator Relative Infant Dose (RID) & Buku Medications & Mothers' Milk (Prof. Thomas Hale)",
-      actionPrinciple: "Ambang batas RID < 10% aman. Pilih obat ber-BM besar, $t_{1/2}$ singkat, dan protein binding tinggi. HINDARI Kodein (risiko CYP2D6 UM) & Kemoterapi.",
+      actionPrinciple: "Ambang batas RID < 10% aman. Pilih obat ber-BM besar, fet_{1/2}fe singkat, dan protein binding tinggi. HINDARI Kodein (risiko CYP2D6 UM) & Kemoterapi.",
       keyRef: "Hale's Medications & Mothers' Milk 2023"
     }
   ]
