@@ -465,22 +465,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Q = 0.25; Regimen baru yang direkomendasikan adalah 125 mg tiap 8 jam",
+          "text": "Q = 0.25; penurunan klirens hanya memperhitungkan rasio ekskresi ginjal murni tanpa eliminasi hepar kompensatorik; dosis direkomendasikan 125 mg tiap 8 jam untuk mencegah toksisitas akut",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Q = 0.40; Regimen baru yang direkomendasikan adalah 200 mg tiap 8 jam",
+          "text": "Q = 0.40; fraksi eliminasi memperhitungkan klirens residual hepar dan filtrasi ginjal yang menurun 60%; dosis direkomendasikan 200 mg tiap 8 jam untuk menjaga konsentrasi tunak aman",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Q = 0.60; Regimen baru yang direkomendasikan adalah 300 mg tiap 8 jam",
+          "text": "Q = 0.60; fraksi eliminasi dihitung dengan mengabaikan fraksi fe non-renal sehingga klirens obat overestimate; dosis direkomendasikan 300 mg tiap 8 jam yang berisiko memicu akumulasi obat",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Q = 0.80; Regimen baru yang direkomendasikan adalah 400 mg tiap 8 jam",
+          "text": "Q = 0.80; perhitungan mengasumsikan kapasitas sekresi tubulus tetap utuh pada laju filtrasi 25 mL/menit; dosis direkomendasikan 400 mg tiap 8 jam yang membahayakan fungsi nefron residual",
           "correct": false
         }
       ],
@@ -493,22 +493,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "tau_pasien = 12 jam; Regimen baru adalah 500 mg tiap 12 jam",
+          "text": "tau_pasien = 12 jam; perpanjangan interval parsial dengan asumsi eliminasi hepar meningkat dua kali lipat; regimen 500 mg tiap 12 jam mempertahankan eliminasi namun berisiko akumulasi obat",
           "correct": false
         },
         {
           "label": "B",
-          "text": "tau_pasien = 16 jam; Regimen baru adalah 500 mg tiap 16 jam",
+          "text": "tau_pasien = 16 jam; interval dihitung dari kelipatan linier penurunan GFR tanpa mengoreksi fraksi non-renal; regimen 500 mg tiap 16 jam memicu fluktuasi kadar plasma di atas batas aman toksik",
           "correct": false
         },
         {
           "label": "C",
-          "text": "tau_pasien = 32 jam; Regimen baru adalah 500 mg tiap 32 jam",
+          "text": "tau_pasien = 32 jam; interval dihitung berdasarkan rasio klirens murni KF tanpa memperhitungkan fraksi Dettli Q; regimen 500 mg tiap 32 jam memicu periode subterapeutik berkepanjangan",
           "correct": false
         },
         {
           "label": "D",
-          "text": "tau_pasien = 20 jam; Regimen baru adalah 500 mg tiap 20 jam (dapat dibulatkan secara praktis menjadi 500 mg tiap 24 jam dengan TDM)",
+          "text": "tau_pasien = 20 jam; interval dihitung dari tau normal dibagi faktor Dettli Q (dapat disesuaikan praktis 24 jam); regimen 500 mg tiap 20-24 jam mempertahankan Cmax bakterisidal tanpa toksisitas",
           "correct": true
         }
       ],
@@ -521,22 +521,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Loading Dose = 300 mg; Dosis muatan HANYA dipengaruhi oleh Volume Distribusi (Vd) dan target konsentrasi plasma (C_target), TIDAK diturunkan oleh gangguan klirens ginjal pasien",
+          "text": "Loading Dose = 300 mg; dosis muatan hanya ditentukan oleh volume distribusi fisiologis dan target kadar plasma, sehingga tidak boleh diturunkan oleh penurunan klirens eliminasi organ ginjal",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Loading Dose = 90 mg; Dosis muatan harus diturunkan 70% sebanding dengan penurunan klirens ginjal untuk mencegah nefrotoksisitas instan",
+          "text": "Loading Dose = 90 mg; dosis muatan diturunkan proporsional 70% mengikuti penurunan klirens ginjal pasien, guna mencegah paparan konsentrasi puncak plasma supraterapeutik yang merusak glomerulus",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Loading Dose = 600 mg; Dosis muatan harus digandakan karena eliminasi ginjal yang lambat menghambat penetrasi obat ke jaringan perifer",
+          "text": "Loading Dose = 600 mg; dosis muatan digandakan untuk mengompensasi peningkatan ruang interstitial sepsis, dengan asumsi eliminasi ginjal yang lambat memperlambat penetrasi obat ke jaringan target",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Loading Dose = 150 mg; Dosis muatan dihitung dari perkalian klirens total dengan waktu paruh eliminasi baru",
+          "text": "Loading Dose = 150 mg; dosis muatan dihitung dari perkalian klirens total terganggu dengan waktu paruh eliminasi baru, untuk menghindari kejenuhan pengikatan protein plasma pada fase kritis syok",
           "correct": false
         }
       ],
@@ -549,22 +549,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "t1/2 = 13.86 jam; Waktu untuk mencapai kondisi tunak adalah sekitar 24 hingga 36 jam",
+          "text": "t1/2 = 13.86 jam; waktu mencapai kondisi tunak adalah 24 hingga 36 jam pasca inisiasi infus, karena kompensasi volume distribusi cairan ekstraseluler mempercepat akumulasi kadar plasma tunak",
           "correct": false
         },
         {
           "label": "B",
-          "text": "t1/2 = 6.93 jam; Waktu untuk mencapai kondisi tunak tetap sama 28 hingga 35 jam karena steady state tidak dipengaruhi klirens",
+          "text": "t1/2 = 6.93 jam; waktu mencapai kondisi tunak tetap bertahan 28 hingga 35 jam seperti normal, karena laju infus konstan mendikte waktu pencapaian steady state terlepas dari nilai klirens organ",
           "correct": false
         },
         {
           "label": "C",
-          "text": "t1/2 = 27.72 jam; Waktu untuk mencapai kondisi tunak adalah sekitar 111 hingga 139 jam (membutuhkan 4 hingga 5 kali waktu paruh)",
+          "text": "t1/2 = 27.72 jam; waktu mencapai kondisi tunak memanjang menjadi 111 hingga 139 jam (butuh 4-5 kali waktu paruh), sehingga tanpa loading dose pasien mengalami kondisi subterapeutik berhari-hari",
           "correct": true
         },
         {
           "label": "D",
-          "text": "t1/2 = 55.44 jam; Waktu untuk mencapai kondisi tunak adalah 12 jam pasca inisiasi infus",
+          "text": "t1/2 = 55.44 jam; waktu mencapai kondisi tunak membutuhkan 220 hingga 280 jam akibat kejenuhan eliminasi, sehingga infus kontinu harus dihentikan setelah 12 jam pertama untuk evaluasi toksisitas",
           "correct": false
         }
       ],
@@ -577,22 +577,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Fenitoin terkoreksi = 7.5 mcg/mL; Hipoalbuminemia tidak mempengaruhi distribusi fenitoin; dosis harus segera digandakan hingga kadar mencapai 15 mcg/mL",
+          "text": "Fenitoin terkoreksi = 7.5 mcg/mL; hipoalbuminemia tidak mengubah ketersediaan fraksi aktif obat asam; dosis pemeliharaan harus segera dinaikkan dua kali lipat hingga target total plasma 15 mcg/mL",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Fenitoin terkoreksi = 16.3 mcg/mL; Kadar obat sebenarnya berada di rentang target terapeutik optimal (10-20 mcg/mL) karena hipoalbuminemia meningkatkan fraksi bebas aktif obat; JANGAN menaikkan dosis fenitoin karena berisiko toksisitas fatal!",
+          "text": "Fenitoin terkoreksi = 16.3 mcg/mL; hipoalbuminemia meningkatkan fraksi bebas aktif tak terikat sehingga kadar efektif optimal; dosis tidak boleh dinaikkan karena berisiko memicu neurotoksisitas fatal",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Fenitoin terkoreksi = 3.75 mcg/mL; Pasien mengalami defisiensi absorbsi saluran cerna; ganti fenitoin ke rute intramuskular dengan dosis 3 kali lipat",
+          "text": "Fenitoin terkoreksi = 3.75 mcg/mL; edema saluran cerna sindrom nefrotik menghambat absorbsi oral fenitoin; sediaan harus dialihkan ke rute intramuskular dengan titrasi dosis bertahap ke atas",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Fenitoin terkoreksi = 28.5 mcg/mL; Pasien berada dalam kondisi intoksikasi letal; fenitoin harus segera dihentikan dan dilakukan dialisis albumin",
+          "text": "Fenitoin terkoreksi = 28.5 mcg/mL; penurunan pengikatan protein memicu pergeseran kompartemen sentral masif; terapi antikonvulsan harus dihentikan mendadak dan diganti dengan dialisis albumin darurat",
           "correct": false
         }
       ],
@@ -605,22 +605,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Bioavailabilitas Obat A akan turun menjadi nol karena hepar memblokade seluruh absorbsi obat di duodenum",
+          "text": "Bioavailabilitas Obat A turun mendekati nol akibat stasis sirkulasi portal hepatik, sedangkan klirens sistemik Obat B meningkat tajam karena aliran darah dialihkan langsung menuju vena kava inferior",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Obat B akan mengalami peningkatan klirens total 5 kali lipat karena darah dialirkan langsung ke vena kava inferior",
+          "text": "Klirens total Obat A tidak mengalami perubahan karena eliminasi murni dikontrol oleh filtrasi glomerulus, sedangkan fraksi bebas Obat B berkurang drastis akibat peningkatan sintesis protein albumin",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Kedua obat tidak mengalami perubahan farmakokinetik karena sirkulasi portosistemik hanya mempengaruhi metabolisme karbohidrat",
+          "text": "Bioavailabilitas kedua obat meningkat setara karena shunt portosistemik secara mekanik meningkatkan luas permukaan absorpsi mukosa usus halus dan menghambat transporter efluks P-glikoprotein enterosit",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Bioavailabilitas oral (F) Obat A akan melonjak drastis secara tidak terduga akibat hilangnya metabolisme lintas pertama (first-pass metabolism), sedangkan klirens sistemik Obat B akan turun terutama akibat penurunan kapasitas intrinsik enzim CYP450 dan deplesi albumin",
+          "text": "Bioavailabilitas oral Obat A melonjak drastis akibat kolapsnya metabolisme lintas pertama (first-pass), sedangkan klirens Obat B menurun terutama akibat hilangnya kapasitas intrinsik enzim mikrosomal",
           "correct": true
         }
       ],
@@ -633,22 +633,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Ketokonazol adalah basa lemah yang membutuhkan keasaman lambung (pH < 3.0) untuk mengalami disolusi dan ionisasi agar dapat diabsorbsi, dan ion Besi membutuhkan suasana asam untuk mereduksi Fe3+ menjadi Fe2+; hipoklorhidria kronis akibat PPI menggagalkan disolusi dan absorbsi sistemik kedua agen tersebut",
+          "text": "Ketokonazol butuh asam untuk disolusi terionisasi dan Besi butuh pH rendah mereduksi Fe3+ ke Fe2+; hipoklorhidria akibat PPI menghambat pelarutan dan absorpsi sistemik kedua obat di saluran cerna",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Omeprazol menginduksi transporter efflux P-glikoprotein di enterosit ileum sehingga membuang seluruh ketokonazol kembali ke lumen usus",
+          "text": "Omeprazol menginduksi transporter efluks P-glikoprotein enterosit secara masif; ketokonazol dan zat besi dipompa kembali ke lumen duodenum sehingga bioavailabilitas oral keduanya turun drastis",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Ketokonazol dan Besi membentuk senyawa dimer kovalen yang mengendap di esofagus bagian bawah",
+          "text": "Kenaikan pH lambung memicu polimerisasi kovalen antara molekul ketokonazol dan garam fero; presipitasi kompleks tak larut di pilorus menghambat disintegrasi sediaan tablet dan penyerapan mukosa",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Peningkatan pH lambung memicu degradasi enzimatik pepsin terhadap cincin azol ketokonazol",
+          "text": "Penurunan keasaman lambung merusak lapisan enterik mukosa gaster; degradasi enzimatik pepsin terhadap cincin imidazol memicu inaktivasi kimiawi antijamur sebelum mencapai kompartemen sistemik",
           "correct": false
         }
       ],
@@ -661,22 +661,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Glibenklamid memicu nefrokalsinosis kristal tubular akut; Sitagliptin adalah DPP-4 inhibitor yang tidak butuh penyesuaian dosis ginjal",
+          "text": "Glibenklamid memicu presipitasi kristal kalsium tubular akut pada pH urin rendah; Sitagliptin adalah DPP-4 inhibitor pilihan utama karena diekskresi murni melalui sistem enterohepatik tanpa beban ginjal",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Glibenklamid menghambat produksi eritropoietin ginjal; Alogliptin adalah obat yang aman tanpa penyesuaian dosis",
+          "text": "Glibenklamid menghambat sekresi hormon eritropoietin sehingga memicu krisis anemia mikrositik; Alogliptin merupakan pilihan teraman karena memiliki jalur eliminasi ganda yang resisten terhadap uremia",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Glibenklamid memiliki metabolit aktif yang dieliminasi via ginjal dan berakumulasi memicu hipoglikemia berkepanjangan yang fatal; Linagliptin adalah DPP-4 inhibitor pilihan utama karena dieliminasi mayoritas via rute bilier/feses (> 80%) tanpa penyesuaian dosis",
+          "text": "Glibenklamid menghasilkan metabolit aktif tereliminasi via ginjal yang memicu hipoglikemia berkepanjangan; Linagliptin adalah DPP-4 inhibitor teraman karena dieliminasi mayoritas via rute bilier dan feses",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Glibenklamid menginduksi sekresi asam urat masif; Vildagliptin aman digunakan pada dosis maksimal 100 mg 2x/hari tanpa modifikasi ginjal",
+          "text": "Glibenklamid menekan reabsorpsi bikarbonat di tubulus proksimal memicu asidosis tubular; Vildagliptin aman digunakan pada dosis penuh 100 mg dua kali sehari tanpa memerlukan penyesuaian laju filtrasi",
           "correct": false
         }
       ],
@@ -689,22 +689,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Digoksin akan mengalami pergeseran ikatan protein menjadi 100% sehingga tidak mampu berikatan dengan pompa Na+/K+ ATPase di miokard",
+          "text": "Penurunan klirens memicu pergeseran ikatan protein plasma menjadi saturasi 100%; hilangnya fraksi bebas digoksin menggagalkan modulasi inotropik miokard dan memicu dekompensasi kordis akut kongestif",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Penurunan klirens ginjal menyebabkan akumulasi kadar Digoksin plasma melampaui ambang toksik (> 2.0 ng/mL), yang diperparah oleh gangguan elektrolit hingga memicu aritmia ventrikel letal (VT/VF) dan blok atrioventrikular derajat tinggi",
+          "text": "Penurunan eliminasi ginjal memicu akumulasi toksik digoksin di atas rentang sempit; hambatan sistemik pompa Na+/K+ ATPase memicu aritmia ventrikel letal dan blokade atrioventrikular derajat tinggi",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Digoksin akan diubah oleh mikrobiota usus menjadi metabolit inaktif yang memicu hipertensi krisis",
+          "text": "Retensi toksin uremik mengubah molekul digoksin menjadi metabolit inaktif di sirkulasi darah; ketiadaan efek inotropik memicu lonjakan takiaritmia supraventrikular refrakter yang mencetuskan syok",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Gangguan ginjal mempercepat klirens digoksin sehingga memicu eksaserbasi takiaritmia akibat hilangnya efek inotropik",
+          "text": "Disfungsi tubulus ginjal mempercepat klirens digoksin melalui jalur sekresi kompensatorik; penurunan tajam kadar serum memicu kekambuhan atrial fibrilasi dengan respons ventrikel cepat tak terkendali",
           "correct": false
         }
       ],
@@ -717,22 +717,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Neonatus memiliki persentase lemak tubuh 50% sehingga obat hidrofilik tidak dapat terdistribusi ke kompartemen sentral",
+          "text": "Persentase lemak tubuh neonatus mencapai 50% bobot badan sehingga volume distribusi obat lipofilik meningkat masif, sedangkan sistem filtrasi glomerulus telah mencapai fungsi filtrasi sempurna dewasa",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Kapasitas filtrasi glomerulus neonatus sudah matang sempurna sejak hari ke-2 kelahiran melebihi kapasitas orang dewasa",
+          "text": "Kadar albumin plasma neonatus meningkat dua kali lipat dibanding dewasa sehingga fraksi bebas obat asam tertekan, sementara aktivitas enzim fase 1 mikrosomal telah aktif penuh sejak hari pertama lahir",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Neonatus memiliki kadar albumin plasma 2 kali lebih tinggi dibanding dewasa sehingga fraksi bebas obat asam turun drastis",
+          "text": "Permeabilitas membran biologis neonatus sangat impermeabel terhadap molekul polar sehingga Vd obat hidrofilik menyusut, namun konjugasi glukuronidasi bekerja hiperaktif memicu eliminasi obat dipercepat",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Persentase total cairan tubuh neonatus sangat tinggi (~80% BB) sehingga Volume Distribusi (Vd) obat hidrofilik (seperti Gentamisin) meningkat signifikan dan membutuhkan dosis muatan (mg/kg) lebih besar; sedangkan ekspresi enzim CYP450 dan glukuronidasi (UGT) masih sangat imatur sehingga klirens obat metabolik lambat dan waktu paruh memanjang",
+          "text": "Air tubuh total neonatus tinggi (~80%) memperbesar volume distribusi obat hidrofilik sehingga butuh dosis muatan per kg tinggi, sementara imaturitas enzim hepar dan filtrasi ginjal memperpanjang waktu paruh",
           "correct": true
         }
       ],
@@ -745,22 +745,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "CrCl = 35.5 mL/menit; Gangguan Ginjal Derajat Sedang (Tahap 3)",
+          "text": "CrCl = 35.5 mL/menit; Gangguan Ginjal Derajat Sedang (Tahap 3); perhitungan menggunakan rumus baku MDRD tanpa koreksi jenis kelamin wanita, sehingga dosis pemeliharaan obat nefrotoksik dipertahankan",
           "correct": false
         },
         {
           "label": "B",
-          "text": "CrCl = 24.0 mL/menit; Gangguan Ginjal Derajat Berat (Tahap 4)",
+          "text": "CrCl = 24.0 mL/menit; Gangguan Ginjal Derajat Berat (Tahap 4); nilai diperoleh tanpa mengalikan faktor koreksi wanita 0.85, menghasilkan perkiraan fungsi ginjal yang overestimate 15% dari kenyataan",
           "correct": false
         },
         {
           "label": "C",
-          "text": "CrCl = 20.4 mL/menit; Gangguan Ginjal Derajat Berat (Tahap 4, rentang 15-29 mL/menit)",
+          "text": "CrCl = 20.4 mL/menit; Gangguan Ginjal Derajat Berat (Tahap 4, rentang 15-29 mL/min); perhitungan memperhitungkan faktor koreksi gender 0.85 akibat massa otot wanita yang lebih rendah dibanding pria",
           "correct": true
         },
         {
           "label": "D",
-          "text": "CrCl = 16.8 mL/menit; Gagal Ginjal Terminal (Tahap 5)",
+          "text": "CrCl = 16.8 mL/menit; Gangguan Ginjal Tahap Akhir (Tahap 5); perhitungan menggunakan estimasi luas permukaan tubuh yang mengecilkan klirens, mengindikasikan inisiasi dialisis peritoneal segera mungkin",
           "correct": false
         }
       ],
@@ -773,22 +773,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Metformin dieliminasi 90-100% utuh via filtrasi ginjal; pada eGFR < 30 mL/min, akumulasi obat menghambat fosforilasi oksidatif mitokondria dan konversi laktat menjadi glukosa di hepar, memicu penumpukan asam laktat masif (Lactic Acidosis) dengan mortalitas mencapai 30-50%",
+          "text": "Metformin dieliminasi 90-100% utuh via ginjal; pada eGFR < 30 mL/min, akumulasi intraseluler menghambat respirasi mitokondria memicu Asidosis Laktat (MALA) fatal dengan angka mortalitas mencapai 30-50%",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Metformin memblokade kanal natrium di tubulus proksimal yang memicu nekrosis tubular akut dalam waktu 24 jam",
+          "text": "Metformin memblokade transporter kation organik di tubulus renalis; kristalisasi masif asam urat memicu nekrosis tubular akut oligurik destruktif yang memerlukan intervensi hemodialisis cito dalam 24 jam",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Metformin mengikat kalsium serum membentuk kristal nefrolitiasis yang menyumbat ureter bilateral",
+          "text": "Metformin mengikat kalsium bebas di kompartemen sirkulasi; presipitasi kalsium oksalat di parenkim ginjal memicu nefrokalsinosis meduler progresif dan ruptur pembuluh darah kapiler glomerulus bilateral",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Metformin memicu pelepasan histamin masif yang menyebabkan sindrom Stevens-Johnson renal",
+          "text": "Metformin menginduksi pelepasan mediator inflamasi anafilaktoid; vaskulitis sistemik pembuluh darah ginjal memicu sindrom nefrotik sekunder disertai edema anasarka refrakter terhadap diuretik kuat",
           "correct": false
         }
       ],
@@ -801,22 +801,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Tepat 4 jam sebelum sesi hemodialisis dimulai agar obat sempat terdistribusi merata ke seluruh organ",
+          "text": "Diberikan tepat 4 jam sebelum sesi hemodialisis dimulai; obat membutuhkan waktu ekstensif untuk berdifusi menembus kompartemen perifer sebelum cairan tubuh ditarik oleh proses ultrafiltrasi dialisis",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Hanya diberikan pada hari bebas dialisis di pagi hari saat puasa",
+          "text": "Diberikan hanya pada hari jeda bebas dialisis di pagi hari saat puasa; absorbsi sistemik obat glikopeptida lebih stabil saat laju filtrasi glomerulus residual tidak dipengaruhi fluktuasi hemodinamik mesin",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Secara bolus intravena cepat saat jarum fistula arteri baru ditusukkan",
+          "text": "Diberikan secara bolus intravena cepat saat akses kanula vaskular dipasang; kadar puncak plasma harus segera dicapai untuk mencegah translokasi bakteri stafilokokus ke sirkuit membran ekstrakorporeal",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Diberikan pada 30-60 menit terakhir sesi hemodialisis atau SEGERA SETELAH sesi hemodialisis selesai, karena membran High-Flux membuang 30-50% vankomisin dari darah selama proses dialisis",
+          "text": "Diberikan pada 30-60 menit terakhir dialisis atau segera setelah sesi selesai; membran High-Flux menyaring 30-50% kadar vankomisin dari darah sehingga pemberian sebelum dialisis memicu underdosing berat",
           "correct": true
         }
       ],
@@ -829,22 +829,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Dosis harus dinaikkan menjadi 750 mg tiap 8 jam karena penetrasi jaringan ginjal berkurang",
+          "text": "Dosis harus dinaikkan menjadi 750 mg tiap 8 jam; penurunan aliran darah parenkim ginjal menghambat penetrasi fluorokuinolon ke medula renalis sehingga dosis tinggi diperlukan untuk membasmi kuman target",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Dosis harus disesuaikan menjadi 250 mg tiap 12 jam ATAU 500 mg tiap 24 jam; dosis standar 500 mg q12h akan memicu akumulasi obat yang berisiko toksisitas neurologis berat (konfusi mental, halusinasi, tremor, bangkitan kejang) dan pemanjangan interval QTc",
+          "text": "Dosis harus disesuaikan menjadi 250 mg tiap 12 jam atau 500 mg tiap 24 jam; dosis lazim 500 mg q12h memicu bioakumulasi obat yang berisiko toksisitas neurologis berat (konfusi, kejang) dan pemanjangan QTc",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Siprofloksasin tidak perlu disesuaikan dosisnya karena seluruhnya dimetabolisme menjadi metabolit inaktif di hepar",
+          "text": "Siprofloksasin tidak memerlukan modifikasi dosis pada gangguan ginjal; klirens metabolik hepar secara otomatis mengambil alih kompensasi eliminasi sehingga kadar tunak plasma tetap berada di rentang aman",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Siprofloksasin harus diganti dengan injeksi Gentamisin dosis tinggi tiap 8 jam",
+          "text": "Siprofloksasin harus dihentikan total dan digantikan oleh Gentamisin injeksi 5 mg/kgBB tiap 8 jam; aminoglikosida memiliki profil eliminasi yang jauh lebih mudah diprediksi pada pasien geriatri uremik",
           "correct": false
         }
       ],
@@ -857,22 +857,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Kolistin dan Gentamisin saling menginaktivasi secara kimiawi di sirkulasi darah membentuk endapan ester",
+          "text": "Kolistin dan Gentamisin saling bereaksi secara kimiawi di sirkulasi darah; presipitasi kompleks ester inaktif di lumen kapiler memicu oklusi mikrovaskular paru dan kegagalan pertukaran gas alveolar akut",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Gentamisin menyebabkan resistensi silang instan terhadap seluruh antibiotik golongan polimiksin",
+          "text": "Gentamisin memicu ekspresi enzim mutan karbapenemase secara sekunder; induksi resistensi silang instan terhadap seluruh golongan antibiotik polipeptida menggagalkan eradikasi kuman gram negatif pan-resisten",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Kolistin dan Gentamisin keduanya merupakan nefrotoksin poten yang sama-sama merusak membran sel epitel tubulus proksimal ginjal; kombinasinya menghasilkan sinergisme nefrotoksisitas destruktif yang memicu Acute Tubular Necrosis (ATN) masif dan gagal ginjal anurik akut",
+          "text": "Kolistin dan Gentamisin sama-sama kationik nefrotoksin poten perusak membran tubulus proksimal; kombinasinya memicu sinergisme nefrotoksisitas destruktif yang menyebabkan nekrosis tubular akut masif (ATN)",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Kolistin menurunkan absorbsi gentamisin di pleura paru",
+          "text": "Kolistin secara selektif menghambat transporter uptake gentamisin di pleura; penyerapan antibiotik ke jaringan paru terhenti total sehingga kombinasi tidak memberikan keuntungan terapeutik tambahan",
           "correct": false
         }
       ],
@@ -885,22 +885,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Pada CKD, perfusi glomerulus sangat bergantung pada vasodilatasi kompensatorik arteriol aferen yang diperantarai oleh Prostaglandin renal (PGE2 dan PGI2); NSAID memblokade COX sehingga memicu vasokonstriksi tajam arteriol aferen, meruntuhkan tekanan filtrasi intraglomerular, dan mempercepat transisi ke gagal ginjal terminal",
+          "text": "Perfusi glomerulus CKD bergantung pada vasodilatasi arteriol aferen via prostaglandin renal; NSAID memblokade sintesis PGE2/PGI2 memicu vasokonstriksi aferen akut dan keruntuhan laju filtrasi intraglomerular",
           "correct": true
         },
         {
           "label": "B",
-          "text": "NSAID mengikat asam urat membentuk kristal kalsium urat di kandung kemih",
+          "text": "NSAID mengikat asam urat bebas di pelvis renalis membentuk kalkulus kristal urat ireversibel; obstruksi lumen ureter bilateral memicu hidronefrosis akut destruktif yang merusak parenkim nefron korteks",
           "correct": false
         },
         {
           "label": "C",
-          "text": "NSAID merangsang produksi renin secara berlebih memicu hipotensi kolaps",
+          "text": "Hambatan prostaglandin oleh NSAID merangsang sekresi renin dan aldosteron secara berlebih; retensi natrium masif memicu lonjakan tekanan darah maligna yang menyebabkan ensefalopati hipertensi krisis",
           "correct": false
         },
         {
           "label": "D",
-          "text": "NSAID menghancurkan glomerulus melalui induksi apoptosis sel endotel vena renalis",
+          "text": "Molekul metabolit diklofenak memicu apoptosis langsung sel endotel kapiler glomerulus; kerusakan membran filtrasi menghasilkan proteinuria masif derajat nefrotik dan edema paru kardiogenik sekunder",
           "correct": false
         }
       ],
@@ -913,22 +913,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Oksipurinol dimetabolisme oleh empedu menjadi senyawa beracun bagi pankreas",
+          "text": "Oksipurinol dimetabolisme oleh flora empedu menjadi metabolit radikal bebas hepatotoksik; retensi uremik mempercepat translokasi toksin ke sirkulasi porta yang memicu nekrosis lobular hepar fulminan",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Alopurinol mengikat eritropoietin sehingga memicu anemia hemolitik akut",
+          "text": "Alopurinol mengikat hormon eritropoietin di sumsum tulang; penurunan klirens ginjal melipatgandakan afinitas pengikatan sehingga memicu aplasia sel darah merah murni dan anemia refrakter transfusi",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Pada gagal ginjal, alopurinol kehilangan efektivitas menghambat xantin oksidase sehingga harus diberikan dosis maksimal 900 mg/hari",
+          "text": "Pada gagal ginjal berat, alopurinol kehilangan daya inhibisi terhadap xantin oksidase; dosis harus dinaikkan hingga 900 mg per hari untuk memaksa penurunan biosintesis purin pada tingkat intraseluler",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Metabolit aktif Oksipurinol diekskresi terutama via filtrasi ginjal dengan waktu paruh normal 18-30 jam; pada CrCl 15 mL/min waktu paruhnya molor hingga > 100 jam, memicu akumulasi masif yang berkorelasi kuat dengan sindrom mematikan Allopurinol Hypersensitivity Syndrome (AHS/DRESS)",
+          "text": "Metabolit aktif Oksipurinol diekskresi via ginjal dengan t1/2 molor dari 20 jam ke >100 jam pada CrCl 15 mL/min; bioakumulasi masif memicu reaksi mematikan Allopurinol Hypersensitivity Syndrome (AHS/DRESS)",
           "correct": true
         }
       ],
@@ -941,22 +941,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Seftriakson sama sekali tidak melewati ginjal dan 100% dieliminasi lewat kelenjar keringat",
+          "text": "Seftriakson 100% dieliminasi melalui sekresi kelenjar keringat dan ekskresi paru; penurunan laju filtrasi glomerulus tidak memberikan dampak farmakokinetik terhadap profil konsentrasi obat dalam darah",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Seftriakson memiliki jalur eliminasi ganda seimbang (Dual Elimination Pathway: ~60% diekskresi via ginjal dan ~40% diekskresi via bilier/empedu ke feses); bila fungsi ginjal menurun, rute eliminasi bilier mengalami kompensasi sehingga tidak terjadi akumulasi toksik berbahaya",
+          "text": "Seftriakson memiliki jalur eliminasi ganda seimbang (50-60% renal dan 40-50% bilier); saat fungsi ginjal turun rute bilier berkompensasi membuang obat sehingga tidak terjadi bioakumulasi toksik berbahaya",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Seftriakson adalah prodrug yang hanya aktif di dalam glomerulus ginjal",
+          "text": "Seftriakson merupakan prodrug inaktif yang hanya mengalami aktivasi biokimia di epitel glomerulus ginjal; disfungsi renal justru memperlambat laju pembentukan metabolit aktif sehingga aman pada dosis penuh",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Seftriakson memiliki indeks terapi tak terbatas sehingga kadar serum setinggi apa pun tidak pernah menimbulkan efek samping",
+          "text": "Seftriakson memiliki indeks terapi tak terbatas dengan afinitas reseptor PBP spesifik mikroba; konsentrasi serum supraterapeutik tidak menimbulkan efek toksik terhadap organ parenkim manusia dewasa",
           "correct": false
         }
       ],
@@ -969,22 +969,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Enoksaparin memicu lisis eritrosit sekunder di tubulus distal ginjal",
+          "text": "Enoksaparin memicu lisis membran eritrosit di tubulus distal ginjal; presipitasi hemoglobin bebas intratubular menyebabkan nefropati pigmen akut destruktif yang memperparah insufisiensi ginjal kronis",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Enoksaparin diinaktivasi oleh kreatinin sehingga kehilangan seluruh efektivitas antitrombotiknya",
+          "text": "Enoksaparin diinaktivasi secara kimiawi oleh toksin uremik kreatinin; hilangnya aktivitas biologis anti-Faktor Xa menyebabkan kegagalan resolusi trombus vena dan mempercepat emboli paru masif sekunder",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Enoksaparin dieliminasi terutama melalui filtrasi ginjal (fe ~0.80); pada CrCl < 30 mL/min, bioakumulasi aktivitas anti-Faktor Xa melonjak tajam melipatgandakan risiko perdarahan mayor fatal, sehingga dosis wajib diturunkan menjadi 1 mg/kgBB sekali sehari (tiap 24 jam) ATAU beralih ke Unfractionated Heparin (UFH) dengan pemantauan aPTT",
+          "text": "Enoksaparin dieliminasi via filtrasi ginjal sehingga pada CrCl < 30 mL/min terjadi bioakumulasi anti-Xa berisiko perdarahan mayor fatal; dosis harus diturunkan ke 1 mg/kg q24h atau beralih ke UFH titrasi aPTT",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Enoksaparin harus diganti dengan Warfarin dosis muatan 20 mg tanpa pemantauan INR",
+          "text": "Enoksaparin harus segera dihentikan total dan digantikan oleh Warfarin oral dosis muatan 20 mg tanpa pemantauan INR; antikoagulan oral memiliki profil klirens ekstrarenal yang lebih stabil pada pasien lansia",
           "correct": false
         }
       ],
@@ -997,22 +997,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Resep DAPAT DISETUJUI dan dilanjutkan; meskipun efikasi penurunan HbA1c menurun pada eGFR < 45, inisiasi SGLT2 inhibitor tetap direkomendasikan hingga batas eGFR >= 20 mL/min/1.73m² karena terbukti kuat memperlambat progresi gagal ginjal, menurunkan risiko dialisis, dan menurunkan mortalitas kardiovaskular",
+          "text": "Resep disetujui; meskipun efek penurunan glukosa minimal pada eGFR < 45, inisiasi SGLT2i tetap direkomendasikan hingga eGFR >= 20 mL/min karena terbukti kuat nefroprotektif dan kardioprotektif jangka panjang",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Resep harus ditolak karena SGLT2 inhibitor mutlak dilarang pada semua pasien dengan eGFR di bawah 60 mL/menit",
+          "text": "Resep ditolak total; panduan klinis melarang keras pemberian SGLT2 inhibitor pada laju filtrasi di bawah 60 mL/menit karena memicu deplesi volume intravaskular akut yang mencetuskan nekrosis korteks ginjal",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Empagliflozin harus dinaikkan dosisnya menjadi 50 mg agar mampu memaksa filtrasi ginjal yang rusak",
+          "text": "Dosis empagliflozin harus dinaikkan menjadi 50 mg sekali sehari; beban filtrasi glomerulus yang rendah memerlukan konsentrasi intraluminal yang lebih pekat untuk memblokade transporter glukosa proksimal",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Empagliflozin harus diganti dengan Fenformin untuk meningkatkan perfusi ginjal",
+          "text": "Empagliflozin harus diganti dengan Fenformin tablet oral; biguanida generasi pertama memiliki efektivitas vasodilatasi arteriol aferen yang mampu mendongkrak laju filtrasi nefron yang tersisa pada stadium 4",
           "correct": false
         }
       ],
@@ -1025,22 +1025,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Memberikan Furosemid dosis tinggi 80 mg IV tepat sebelum injeksi kontras untuk menguras zat kontras secepatnya",
+          "text": "Memberikan Furosemid bolus IV 80 mg tepat sebelum prosedur kontras; peningkatan volume urin intraluminal secara cepat mampu membilas molekul zat kontras keluar dari tubulus ginjal sebelum merusak nefron",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Melakukan restriksi cairan ketat (puasa minum 12 jam sebelum dan sesudah tindakan)",
+          "text": "Melakukan restriksi cairan ketat dan puasa total 12 jam sebelum dan sesudah tindakan radiologi; penurunan volume distribusi intravaskular mempercepat eliminasi zat warna kontras melalui rute sirkulasi empedu",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Memberikan manitol 20% bersamaan dengan injeksi kontras iodinasi",
+          "text": "Memberikan infus Manitol hipertonik 20% bersamaan dengan zat kontras; tekanan osmotik koloid mencegah edema seluler epitel tubulus medula dan menstabilkan gradien konsentrasi ionik di ruang interstitium",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Hidrasi cairan kristaloid isotonik intravena (Normal Saline 0.9% 1 mL/kgBB/jam) selama 12 jam sebelum dan 12 jam sesudah prosedur, menggunakan volume zat kontras iso/low-osmolar seminimal mungkin, dan menghentikan obat nefrotoksik sementara",
+          "text": "Hidrasi kristaloid isotonik NaCl 0.9% 1 mL/kg/jam selama 12 jam pra dan pasca prosedur radiologi; ekspansi volume mendilusi zat kontras di tubulus, mencegah iskemia medula, serta meminimalkan risiko CI-AKI",
           "correct": true
         }
       ],
@@ -1053,22 +1053,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Gabapentin dimetabolisme di hepar menjadi metabolit neurotoksik yang merangsang reseptor glutamat",
+          "text": "Gabapentin dimetabolisme di hepar menjadi metabolit asam neurotoksik; penumpukan toksin uremik menghambat ekskresi bilier metabolit sehingga memicu stimulasi reseptor glutamat korteks serebri secara difus",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Gabapentin dieliminasi 100% utuh dalam bentuk tidak berubah via filtrasi ginjal tanpa metabolisme hepar; pada CrCl 18 mL/min eliminasi terhenti memicu akumulasi masif di susunan saraf pusat, sehingga dosis wajib diturunkan drastis (misal 100 - 300 mg sekali sehari malam hari atau tiap 48 jam)",
+          "text": "Gabapentin dieliminasi 100% utuh via ginjal tanpa metabolisme hepar; pada CrCl 18 mL/min eliminasi terhenti memicu bioakumulasi masif di SSP, sehingga dosis harus diturunkan drastis ke 100-300 mg sekali sehari",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Pasien mengalami alergi anafilaktik tipe lambat terhadap cangkang kapsul gelatin gabapentin",
+          "text": "Pasien mengalami reaksi anafilaksis hipersensitivitas tipe lambat terhadap gelatin cangkang kapsul; pelepasan histamin sentral memicu spasme neurovaskular serebral dan kekakuan neuromuskular perifer akut",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Gabapentin menginduksi ekskresi kalsium ginjal masif memicu tetani hipokalsemik",
+          "text": "Gabapentin menginduksi ekskresi kalsium dan magnesium tubulus secara berlebih; hipokalsemia akut memicu iritabilitas neuromuscular junction dengan manifestasi mioklonus dan bangkitan kejang tetani umum",
           "correct": false
         }
       ],
@@ -1081,22 +1081,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Total Skor = 7 (Child-Pugh Kelas A); tidak memerlukan penyesuaian dosis",
+          "text": "Total Skor = 7 (Child-Pugh Kelas A - Fungsi Hati Terkompensasi Baik); kapasitas metabolisme mikrosomal hepatosit masih utuh sehingga dosis obat eliminasi hepar dapat diberikan sesuai dosis standar lazim",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Total Skor = 9 (Child-Pugh Kelas B); dosis obat hepar diturunkan 10-20%",
+          "text": "Total Skor = 9 (Child-Pugh Kelas B - Gangguan Fungsional Sedang); klirens intrinsik hepar menurun moderat sehingga dosis pemeliharaan obat metabolisme hepar cukup diturunkan sebesar 15-25% dari dosis lazim",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Total Skor = 11 (Child-Pugh Kelas C - Dekompensasi Berat); dosis obat-obatan dengan eliminasi hepar harus diturunkan minimal 50% hingga 75% dari dosis lazim atau dihindari sama sekali",
+          "text": "Total Skor = 11 (Child-Pugh Kelas C - Dekompensasi Berat); kapasitas biotransformasi mikrosomal hepar rusak parah sehingga dosis obat eliminasi hepar harus diturunkan minimal 50-75% atau dihindari total",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Total Skor = 14 (Child-Pugh Kelas C); pasien harus menjalani cuci darah hemodialisis harian",
+          "text": "Total Skor = 14 (Child-Pugh Kelas C - Stadium Terminal Akhir); kerusakan hepatoseluler ireversibel mengharuskan penghentian seluruh terapi oral dan inisiasi dialisis albumin sistemik MARS secara kontinu",
           "correct": false
         }
       ],
@@ -1109,22 +1109,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Diazepam dimetabolisme via Oksidasi CYP450 (Fase I) yang rusak parah pada sirosis dan menghasilkan metabolit aktif berwaktu paruh sangat panjang (> 100 jam); sedangkan Lorazepam dimetabolisme via Glukuronidasi (Fase II) yang relatif bertahan pada sirosis serta tidak memiliki metabolit aktif",
+          "text": "Diazepam dimetabolisme via Oksidasi CYP450 Fase 1 yang rusak parah dan membentuk metabolit aktif berwaktu paruh panjang; sedangkan Lorazepam dikonjugasi via Glukuronidasi Fase 2 yang relatif lebih bertahan",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Diazepam diekskresi 100% via saliva sedangkan Lorazepam diekskresi via paru-paru",
+          "text": "Diazepam diekskresi 100% utuh melalui sekresi kelenjar saliva sehingga menimbulkan ulserasi mukosa oral berat; sedangkan Lorazepam dieliminasi melalui ventilasi pernapasan paru tanpa melibatkan hepar",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Lorazepam bekerja menginduksi sintesis albumin baru di hepatosit yang rusak",
+          "text": "Lorazepam bekerja aktif menstimulasi regenerasi mRNA dan sintesis albumin baru di parenkim hepatosit yang nekrotik; sedangkan Diazepam menghambat mitosis sel hati dan mempercepat fibrosis jaringan ikat",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Diazepam mengikat reseptor insulin dan memicu ketoasidosis diabetik hepatik",
+          "text": "Diazepam mengikat reseptor insulin hepar dan menghambat glikogenesis memicu ketoasidosis hepatikum fatal; sedangkan Lorazepam menstabilkan homeostasis glukosa darah melalui stimulasi glukagon perifer",
           "correct": false
         }
       ],
@@ -1137,22 +1137,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Propranolol mengendap di usus halus sehingga tidak dapat diserap pada dosis di atas 20 mg",
+          "text": "Propranolol mengendap di lumen duodenum pada pH basa sirotik sehingga bioavailabilitas oral anjlok drastis; dosis kecil diperlukan untuk mencegah sindrom malabsorpsi lipid dan diare osmotik refrakter",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Sirosis memicu mutasi reseptor beta-1 adrenergik jantung menjadi 10 kali lebih banyak",
+          "text": "Kerusakan sel hati memicu up-regulasi mutasi reseptor beta-1 jantung hingga sepuluh kali lipat dari normal; densitas reseptor yang masif menyebabkan miokardium mengalami takiaritmia letal pada dosis lazim",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Propranolol diekskresi via empedu yang tersumbat total pada pasien hipertensi portal",
+          "text": "Propranolol diekskresi murni melalui sistem kanalikuli empedu yang tersumbat total pada hipertensi portal; akumulasi obat di kantung empedu memicu kolesistitis akalkulus destruktif dalam hitungan hari",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Adanya shunt portosistemik dan penurunan aliran darah hepar menghilangkan metabolisme lintas pertama (first-pass effect); bioavailabilitas oral (F) Propranolol melonjak 3 hingga 4 kali lipat (mencapai 70-80%), sehingga dosis oral kecil sudah menghasilkan kadar plasma sistemik yang sangat tinggi",
+          "text": "Shunt portosistemik menghilangkan metabolisme lintas pertama (first-pass) sehingga bioavailabilitas oral melonjak 3-4 kali lipat; dosis standar memicu konsentrasi plasma toksik berisiko bradikardia berat",
           "correct": true
         }
       ],
@@ -1165,22 +1165,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Parasetamol mutlak dilarang pada semua pasien penyakit liver dan harus diganti dengan Asam Asetilsalisilat dosis tinggi",
+          "text": "Parasetamol mutlak dilarang pada seluruh stadium penyakit hepar karena deplesi glutation absolut; pasien harus dialihkan ke terapi Asam Asetilsalisilat dosis tinggi untuk mencegah inflamasi hepatosit",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Parasetamol tetap merupakan analgesik lini pertama pilihan yang PALING AMAN pada sirosis asalkan dosis dibatasi maksimal 2.0 gram/hari (misal 500 mg tiap 6-8 jam prn); sebaliknya NSAID (Asam Mefenamat/Ketorolak) KONTRAINDIKASI MUTLAK karena memicu perdarahan varises esofagus dan Sindrom Hepatorenal (HRS)",
+          "text": "Parasetamol adalah analgesik pilihan paling aman pada sirosis asalkan dibatasi maksimal 2.0 gram/hari; sebaliknya NSAID kontraindikasi mutlak karena memicu perdarahan varises dan Sindrom Hepatorenal fatal",
           "correct": true
         },
         {
           "label": "C",
-          "text": "NSAID sangat aman bagi pasien sirosis karena menghambat inflamasi di kapsul Glisson hepar",
+          "text": "Golongan NSAID sangat aman dan direkomendasikan pada sirosis karena menghambat sintesis sitokin proinflamasi di kapsul hepar; tidak ada batasan dosis maksimal untuk asam mefenamat maupun ketorolak oral",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Kedua obat tersebut sama-sama aman diberikan pada dosis maksimal kemasan tanpa batas",
+          "text": "Kedua obat tersebut memiliki profil keamanan hepatik yang setara tanpa risiko perdarahan; dokter bebas memilih salah satu obat berdasarkan preferensi pasien pada dosis kemasan dewasa standar lazim",
           "correct": false
         }
       ],
@@ -1193,22 +1193,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Diazepam menginaktivasi flora usus normal sehingga bakteri penghasil amonia mati total",
+          "text": "Diazepam mengeradikasi flora usus normal penghasil laktat di lumen kolon; ketiadaan asam organik usus memicu lonjakan pH intraluminal yang mempercepat lisis enterosit dan absorpsi amonia ke sirkulasi porta",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Benzodiazepin memicu pelepasan amonia langsung dari jaringan adiposa perifer",
+          "text": "Benzodiazepin menstimulasi lipolisis masif di jaringan adiposa perifer; pelepasan amonia bebas dari katabolisme asam amino otot skelet membanjiri vena kava inferior melampaui kapasitas detoksifikasi hepar",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Penurunan klirens hepar memperpanjang waktu paruh sedatif secara ekstrem, disertai peningkatan permeabilitas sawar darah otak dan 'up-regulation' sensitivitas kompleks reseptor GABA-A di susunan saraf pusat pada kondisi sirosis, memicu depresi SSP mendalam dan presipitasi koma hepatikum",
+          "text": "Penurunan klirens hepar memperpanjang t1/2 sedatif ekstrem, diperparah up-regulasi sensitivitas reseptor GABA-A serebral dan sawar darah otak pada sirosis, memicu depresi SSP berat hingga koma hepatikum",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Sedatif menginduksi sekresi asam lambung yang membakar vena porta hepatika",
+          "text": "Senyawa sedatif menginduksi sekresi asam hidroklorida lambung secara berlebih; erosi mukosa esofagus proksimal memicu ruptur vena porta hepatika anterior disertai syok hipovolemik hemoragik fulminan",
           "correct": false
         }
       ],
@@ -1221,22 +1221,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Spironolakton mengatasi hiperaldosteronisme sekunder yang mendasari retensi natrium pada sirosis; rasio dosis baku yang direkomendasikan adalah 100 mg Spironolakton : 40 mg Furosemid sekali sehari pagi",
+          "text": "Spironolakton mengatasi hiperaldosteronisme sekunder pemicu retensi natrium; rasio baku yang direkomendasikan adalah 100 mg Spironolakton : 40 mg Furosemid sekali sehari untuk menjaga normokalemia",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Furosemid adalah lini pertama sedangkan spironolakton hanya pelengkap; rasio baku adalah 20 mg Spironolakton : 100 mg Furosemid",
+          "text": "Furosemid merupakan pilar utama penarik cairan di ansa Henle sedangkan spironolakton hanya pelengkap; rasio baku adalah 20 mg Spironolakton : 100 mg Furosemid yang diberikan terbagi dalam tiga dosis harian",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Spironolakton bekerja membunuh kuman E. coli di cairan asites; rasio baku adalah 500 mg : 10 mg",
+          "text": "Spironolakton bekerja membunuh koloni bakteri patogen transmigran di cairan asites; rasio baku adalah 500 mg Spironolakton : 10 mg Furosemid untuk mencegah peritonitis bakterial spontan pada rawat inap",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Kombinasi diuretik dilarang pada sirosis dan pasien hanya boleh diberikan infus albumin harian tanpa obat",
+          "text": "Penggunaan kombinasi diuretik dilarang keras pada sirosis karena memicu gagal ginjal akut; penanganan asites murni mengandalkan parasentesis terapeutik harian disertai restriksi natrium tanpa intervensi obat",
           "correct": false
         }
       ],
@@ -1249,22 +1249,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Laktulosa diserap 100% ke darah dan mengkatalisis penguraian urea di ginjal",
+          "text": "Laktulosa diserap sempurna di jejunum dan mengkatalisis sintesis enzim arginase hepar; percepatan siklus urea ginjal meningkatkan ekskresi amonia bebas secara eksponensial melalui filtrasi glomerulus nefron",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Laktulosa mengikat amonia secara kovalen di lambung membentuk asam amino esensial",
+          "text": "Laktulosa mengikat molekul amonia bebas secara kovalen di lumen lambung membentuk ikatan peptida inert; kompleks makromolekul kemudian diserap utuh ke sirkulasi sistemik tanpa melewati metabolisme hati",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Laktulosa merangsang regenerasi sel hepatosit hepar yang nekrotik",
+          "text": "Laktulosa merangsang diferensiasi sel punca oval hepar yang mempercepat regenerasi lobulus hati; pemulihan arsitektur vaskular sinusoid secara langsung menormalkan klirens racun nitrogenous di dalam darah",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Laktulosa tidak diserap di usus halus dan difermentasi oleh mikrobiota kolon menjadi asam organik (asam laktat & asetat), menurunkan pH lumen kolon menjadi asam (~pH 5); ion H+ mengubah amonia bebas (NH3) yang mudah diserap menjadi ion amonium (NH4+) yang tidak dapat menembus mukosa usus (ammonia ion-trapping) lalu dievakuasi via efek laksatif osmotik",
+          "text": "Laktulosa difermentasi bakteri kolon menjadi asam organik menurunkan pH lumen usus; ionisasi amonia (NH3) menjadi amonium (NH4+) polar mencegah penyerapan mukosa (ion-trapping) dan dievakuasi via laksasi",
           "correct": true
         }
       ],
@@ -1277,22 +1277,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Rifaximin diserap sempurna ke sirkulasi sistemik untuk membunuh kuman di parenkim otak",
+          "text": "Rifaximin diserap sempurna ke sirkulasi sistemik dan menembus sawar darah otak; eliminasi koloni mikroba di parenkim serebral secara langsung meredakan inflamasi astroglia dan pembengkakan sitotoksik neuron",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Rifaximin memiliki penyerapan sistemik yang sangat minimal (< 0.4%), bekerja lokal di lumen saluran cerna membasmi bakteri kolon penghasil amonia tanpa memicu nefrotoksisitas, ototoksisitas, atau neurotoksisitas perifer kumulatif",
+          "text": "Rifaximin memiliki absorpsi sistemik sangat minimal (<0.4%) bekerja lokal di lumen usus membasmi bakteri amoniagenik tanpa risiko nefrotoksisitas, ototoksisitas, atau neurotoksisitas perifer kumulatif",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Rifaximin menstimulasi produksi enzim CYP3A4 di hepar hingga 10 kali lipat",
+          "text": "Rifaximin menstimulasi biosintesis enzim CYP3A4 dan CYP2C19 hepar hingga lima kali lipat; percepatan metabolisme oksidatif mempercepat pembersihan racun metabolit nitrogen dari kompartemen sirkulasi darah",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Rifaximin bekerja menghancurkan asam empedu di kantung empedu",
+          "text": "Rifaximin membentuk lapisan pelindung mukosa yang mengikat asam empedu sekunder di ileum terminalis; hambatan sirkulasi enterohepatik memicu deplesi kolesterol dan menstabilkan tekanan hemodinamik portal",
           "correct": false
         }
       ],
@@ -1305,22 +1305,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Pankreatitis nekrotikan autoimun",
+          "text": "Presipitasi pankreatitis nekrotikans hemoragik masif akibat aktivasi prematur tripsinogen di duktus pankreatikus; kebocoran enzim pencernaan ke rongga retroperitoneal memicu syok distributif refrakter cairan",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Tirotoksikosis badai tiroid",
+          "text": "Eksaserbasi krisis tirotoksikosis badai tiroid akibat pelepasan hormon tiroksin dari ikatan tiroglobulin hepar; lonjakan metabolik ekstrem memicu fibrilasi atrium tak terkendali dan hipertermia maligna letal",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Presipitasi gagal ginjal anurik Sindrom Hepatorenal (Hepatorenal Syndrome / HRS-AKI) akibat vasokonstriksi arteriol aferen ginjal, retensi natrium/air refrakter yang memperparah asites, dan perdarahan varises esofagus masif",
+          "text": "Presipitasi gagal ginjal anurik Sindrom Hepatorenal (HRS-AKI) akibat vasokonstriksi arteriol aferen ginjal, retensi natrium/air refrakter yang memperparah asites, dan perdarahan varises esofagus masif",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Penutupan duktus arteriosus botalli pada pasien dewasa",
+          "text": "Penutupan prematur duktus arteriosus Botalli pada arkus aorta pasien dewasa; peningkatan resistensi vaskular pulmonal memicu dekompensasi akut ventrikel kanan dan edema paru kardiogenik fulminan sekunder",
           "correct": false
         }
       ],
@@ -1333,22 +1333,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "NSBB memiliki aksi ganda: blokade reseptor Beta-1 menurunkan curah jantung (cardiac output), sedangkan blokade reseptor Beta-2 membiarkan stimulasi Alpha-1 adrenergik bekerja tanpa lawan (unopposed alpha-1 vasoconstriction) memicu vasokonstriksi arteri splanknikus, menurunkan aliran darah masuk ke sistem porta dan menurunkan tekanan gradien vena hepatika (HVPG)",
+          "text": "NSBB menghambat Beta-1 menurunkan curah jantung dan memblokade Beta-2 memicu vasokonstriksi splanknikus via unopposed alpha-1; penurunan aliran darah porta menurunkan gradien tekanan vena hepatika (HVPG)",
           "correct": true
         },
         {
           "label": "B",
-          "text": "NSBB bekerja mengentalkan darah di dalam varises esofagus sehingga menyumbat lumen varises",
+          "text": "NSBB menginduksi pembekuan darah secara lokal di dalam plexus vena submukosa esofagus; oklusi lumen varises melalui pembentukan bekuan fibrin terorganisir mencegah ruptur mekanik saat terjadi refluks lambung",
           "correct": false
         },
         {
           "label": "C",
-          "text": "NSBB mendilatasi vena porta secara masif agar darah mengalir deras ke hepar",
+          "text": "NSBB mendilatasi percabangan vena porta intrahepatik secara selektif; penurunan resistensi vaskular sinusoidal mengalirkan darah portal langsung ke vena kava tanpa meningkatkan tekanan kapiler kolateral",
           "correct": false
         },
         {
           "label": "D",
-          "text": "NSBB membunuh virus hepatitis B dan C di dalam sinusoid hati",
+          "text": "NSBB menghambat replikasi genomik virus hepatitis di dalam hepatosit; reduksi beban inflamasi parenkim hati menurunkan pembengkakan seluler dan memulihkan arsitektur sinusoid hepar dalam hitungan minggu",
           "correct": false
         }
       ],
@@ -1361,22 +1361,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Kodein dan Tramadol langsung diekskresi 100% via keringat pada pasien sirosis",
+          "text": "Kodein dan tramadol diekskresi utuh 100% melalui sekresi keringat aksila pada sirosis; penguapan senyawa induk di epidermis memicu dermatitis kontak iritan berat dan pruritus refrakter terhadap antihistamin",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Kedua obat tersebut memicu pembentukan batu empedu kalsium bilirubinat dalam 24 jam",
+          "text": "Senyawa opioid memicu presipitasi kalsium bilirubinat di saluran empedu ekstrahepatik; pembentukan batu empedu multipel dalam 24 jam menyebabkan ikterus obstruktif akut dan kolangitis asenden bakterial letal",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Kodein dan tramadol menginduksi glikogenolisis masif memicu hiperglikemia hiperosmolar",
+          "text": "Kodein menstimulasi glikogenolisis hepatik masif secara independen terhadap glukagon; deplesi glikogen seluler memicu hiperglikemia hiperosmolar krisis yang memperparah dehidrasi intraseluler di parenkim otak",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Kodein dan Tramadol adalah prodrug yang membutuhkan bioaktivasi enzimatik Fase I oleh CYP2D6 menjadi metabolit aktifnya (Morfin dan O-desmetiltramadol); kerusakan enzim CYP pada sirosis menyebabkan kegagalan bioaktivasi analgesik, sementara waktu paruh eliminasi senyawa induk memanjang, memperparah konstipasi parah yang memicu reabsorpsi amonia dan ensefalopati hepatik",
+          "text": "Gangguan bioaktivasi CYP2D6 pada sirosis menggagalkan pembentukan metabolit aktif analgesik, sementara senyawa induk terakumulasi memperparah konstipasi yang meningkatkan produksi amonia dan ensefalopati",
           "correct": true
         }
       ],
@@ -1389,22 +1389,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Statin KONTRAINDIKASI MUTLAK pada setiap kenaikan enzim transaminase di atas batas normal laboratorium",
+          "text": "Statin kontraindikasi mutlak pada setiap peningkatan enzim transaminase di atas batas rujukan laboratorium; akumulasi metabolit asam statin memicu rhabdomiolisis hepatosit dan nekrosis lobuler sentral fulminan",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Statin AMAN dan SANGAT DIREKOMENDASIKAN untuk perlindungan kardiovaskular pada NAFLD/NASH dan sirosis terkompensasi (Child-Pugh A); statin terbukti menurunkan mortalitas kardiovaskular dan menurunkan progresi sirosis serta risiko karsinoma hepatoseluler; kontraindikasi HANYA berlaku pada gagal hati akut fulminan atau sirosis dekompensata stadium akhir (Child-Pugh C)",
+          "text": "Statin aman dan sangat direkomendasikan pada NAFLD dan sirosis terkompensasi Child-Pugh A; proteksi kardiovaskular krusial menurunkan mortalitas, kontraindikasi hanya pada gagal hati akut atau Child-Pugh C",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Statin harus diganti dengan Gemfibrozil dosis maksimal bersamaan dengan Kolestipol",
+          "text": "Terapi statin harus dihentikan total dan digantikan oleh Gemfibrozil dosis maksimal bersamaan dengan resin pengikat asam empedu kolestipol untuk meminimalkan beban metabolisme enzim sitokrom P450 hepar",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Statin hanya boleh diminum jika ALT dan AST bernilai di bawah 10 U/L",
+          "text": "Statin hanya boleh diinisiasi kembali apabila nilai laboratorium transaminase serum ALT dan AST telah turun di bawah ambang minimal 10 U/L selama minimal tiga bulan berturut-turut pasca serangan koroner akut",
           "correct": false
         }
       ],
@@ -1417,22 +1417,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "SCr 0.7 mg/dL mencerminkan GFR super normal > 120 mL/min karena lansia tidak memproduksi toksin",
+          "text": "Kadar SCr 0.7 mg/dL mencerminkan cadangan filtrasi nefron supernormal > 120 mL/min; atrofi glomerulus fisiologis usia tua dikompensasi sempurna oleh hiperfiltrasi nefron residual yang resisten toksisitas",
           "correct": false
         },
         {
           "label": "B",
-          "text": "CrCl pasien adalah 70 mL/menit; dosis normal dapat dilanjutkan tanpa risiko",
+          "text": "Klirens kreatinin pasien terhitung normal 70 mL/menit; dosis standar dewasa muda dapat dilanjutkan tanpa risiko nefrotoksisitas karena laju pembersihan ginjal masih memadai untuk eliminasi obat hidrofilik",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Kreatinin adalah produk penguraian massa otot skelet; pada lansia sangat kurus dengan atrofi otot berat, laju pembentukan kreatinin harian anjlok drastis sehingga SCr darah tampak rendah menipu, padahal GFR sebenarnya sudah turun drastis (CrCl terhitung hanya ~37 mL/min atau bahkan < 25 mL/min bila dibulatkan ke baseline sarkopenik)",
+          "text": "Pembentukan kreatinin anjlok akibat sarkopenia ekstrem sehingga SCr tampak normal menipu, padahal CrCl sebenarnya turun berat (~37 mL/min); dosis standar dewasa muda memicu overdosis nefrotoksik berbahaya",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Kadar kreatinin yang rendah disebabkan oleh regenerasi nefron baru di usia tua",
+          "text": "Penurunan kadar kreatinin plasma disebabkan oleh pembentukan nefron baru di medula ginjal geriatri; peningkatan luas permukaan filtrasi memfasilitasi klirens obat tanpa memerlukan modifikasi regimen dosis",
           "correct": false
         }
       ],
@@ -1445,22 +1445,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Vd obat larut air (seperti Digoksin, Gentamisin, Litium) menyusut sehingga kadar puncak plasma (Cmax) melonjak tinggi; sebaliknya Vd obat larut lemak (seperti Diazepam) membesar masif sehingga obat tertimbun di lemak tubuh dan waktu paruh eliminasi (t1/2) memanjang drastis",
+          "text": "Vd obat larut air menyusut sehingga kadar puncak Cmax melonjak tinggi dan mudah toksik, sedangkan Vd obat larut lemak membesar masif tertimbun di jaringan adiposa sehingga waktu paruh eliminasi memanjang drastis",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Vd obat larut air membesar 3 kali lipat sedangkan obat larut lemak menyusut menjadi nol",
+          "text": "Vd obat hidrofilik meningkat tiga kali lipat akibat ekspansi cairan ekstraseluler, sedangkan ruang distribusi obat lipofilik menyusut total memicu eliminasi obat berlangsung lebih cepat dibanding dewasa muda",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Seluruh obat mengalami penurunan Vd secara serentak tanpa memandang sifat kelarutannya",
+          "text": "Seluruh obat hidrofilik dan lipofilik mengalami penyusutan volume distribusi secara merata akibat atrofi organ visceral, sehingga semua dosis regimen farmakoterapi harus diturunkan separuh tanpa terkecuali",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Komposisi tubuh lansia tidak mempengaruhi farmakokinetik distribusi obat",
+          "text": "Komposisi kompartemen jaringan tubuh lansia tidak mempengaruhi farmakokinetik distribusi molekul obat; variasi respons biologis murni ditentukan oleh penurunan laju filtrasi glomerulus di parenkim ginjal",
           "correct": false
         }
       ],
@@ -1473,22 +1473,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Reaksi resistensi antibiotik sekunder",
+          "text": "Sindrom resistensi antibiotik nosokomial sekunder; infeksi bakteri oportunistik resisten di jaringan lunak memicu pelepasan endotoksin yang melumpuhkan koordinasi neuromuskular dan merusak tulang paha pasien",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Sindrom lisis tumor vaskular",
+          "text": "Sindrom lisis tumor mikroangiopati kardiorenal; destruksi sel neoplastik okult membanjiri sirkulasi dengan asam urat dan kalium yang mencetuskan krisis kolaps kardiovaskular mendadak saat berdiri di kamar mandi",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Keracunan makanan kadaluarsa",
+          "text": "Intoksikasi bahan pengawet kemasan obat kadaluarsa; kontaminasi senyawa logam berat di saluran cerna menghambat transmisi sinaps perifer asetilkolin yang memicu hipotonia otot ekstremitas bawah secara akut",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Kaskade Peresepan (Prescribing Cascade); edema kaki adalah efek samping vasodilatasi prekapiler arteriol oleh Amlodipin yang salah didiagnosis sebagai penyakit baru; pencegahannya adalah mengenali efek samping obat sejak awal, menurunkan dosis amlodipin menjadi 5 mg atau mengganti ke ACEI/ARB, bukan menambah obat baru (Furosemid & Oksibutinin)",
+          "text": "Kaskade Peresepan (Prescribing Cascade); edema kaki efek samping amlodipin salah diobati dengan furosemid dan oksibutinin pemicu jatuh; solusinya turunkan dosis amlodipin, bukan menambah obat baru secara berantai",
           "correct": true
         }
       ],
@@ -1501,22 +1501,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Antihistamin generasi pertama merangsang nafsu makan berlebih sehingga memicu obesitas",
+          "text": "Antihistamin generasi pertama merangsang nafsu makan secara berlebih di hipotalamus; lonjakan asupan kalori memicu obesitas sentral cepat yang memperparah osteoartritis genu dan komplikasi resistensi insulin",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Antihistamin generasi 1 memiliki sifat antikolinergik sentral dan perifer yang sangat poten (memicu retensi urin akut, konstipasi, glaukoma sudut tertutup, mulut kering) serta menembus sawar darah otak memicu sedasi mendalam, delirium/konfusi, ataksia, dan risiko jatuh/fraktur",
+          "text": "Antihistamin generasi 1 memiliki efek antikolinergik poten (retensi urin, konstipasi) dan menembus sawar otak memicu sedasi berat, delirium, ataksia, serta risiko jatuh dan fraktur paha fatal pada geriatri",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Antihistamin generasi 1 menurunkan efikasi vaksin influenza",
+          "text": "Antihistamin generasi pertama menginaktivasi respons imunologis humoral terhadap vaksinasi; supresi produksi antibodi IgG meningkatkan kerentanan fatal terhadap infeksi virus influenza dan pneumonia pneumokokus",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Antihistamin generasi 1 memicu kerusakan enamel gigi secara langsung",
+          "text": "Molekul antihistamin generasi pertama berikatan kovalen dengan matriks enamel gigi lansia; demineralisasi kalsium memicu karies servikal destruktif dan abses periodontal dalam beberapa minggu pemakaian oral",
           "correct": false
         }
       ],
@@ -1529,22 +1529,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Membagi dosis menjadi lebih kecil dan sering: 10 mg 4 kali sehari",
+          "text": "Membagi regimen menjadi dosis lebih kecil dan sering seperti 10 mg empat kali sehari; strategi dosis terbagi menjaga kejenuhan reseptor kotransporter Na-K-2Cl di lumen ansa Henle secara konstan sepanjang hari",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Menghentikan furosemid dan menggantinya dengan tablet kalium klorida oral",
+          "text": "Menghentikan furosemid total dan menggantikannya dengan tablet kalium klorida oral 1200 mg per hari; suplementasi elektrolit mandiri secara alami mampu memicu diuresis osmotik tanpa intervensi obat loop diuretik",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Meningkatkan dosis tunggal bolus menjadi 40 mg hingga 80 mg sekali minum (atau beralih ke rute IV) agar konsentrasi obat di lumen tubulus ginjal mampu menembus ambang batas respons diuresis (ceiling threshold)",
+          "text": "Meningkatkan dosis tunggal menjadi 40-80 mg sekali minum untuk menembus ambang ceiling tubulus; dosis kecil 20 mg tidak mencapai konsentrasi efektif di lumen ansa Henle pada lansia dengan penurunan aliran ginjal",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Menambahkan NSAID untuk memperkuat retensi cairan fisiologis",
+          "text": "Menambahkan analgesik NSAID dosis standar bersamaan dengan furosemid; hambatan prostaglandin ginjal memperkuat retensi natrium fisiologis yang dibutuhkan untuk mempertahankan tekanan perfusi mikrovaskular",
           "correct": false
         }
       ],
@@ -1557,22 +1557,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Waktu paruh biologis yang panjang dan akumulasi metabolit aktif akibat penurunan klirens ginjal fisiologis lansia memicu risiko Hipoglikemia Berat Berkelanjutan yang sering tanpa gejala peringatan otonom (hypoglycemia unawareness), memicu stroke iskemik, disritmia, koma, dan jatuh",
+          "text": "Waktu paruh panjang dan akumulasi metabolit aktif akibat penurunan klirens ginjal memicu hipoglikemia berat berkepanjangan tanpa gejala peringatan otonom, berisiko stroke iskemik, disritmia letal, dan jatuh",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Sulfonilurea memicu osteoporosis tulang iga",
+          "text": "Sulfonilurea masa kerja panjang memicu demineralisasi kalsium pada tulang iga dan vertebra; peningkatan kerapuhan tulang aksial memicu fraktur patologis spontan tanpa riwayat benturan trauma mekanik fisik",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Sulfonilurea bereaksi dengan asam lambung memicu ulkus duodenum masif",
+          "text": "Sulfonilurea bereaksi dengan sekresi asam hidroklorida lambung membentuk asam korosif; erosi ulkus peptikum destruktif memicu perforasi mukosa duodenum dan peritonitis kimiawi akut yang memerlukan pembedahan",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Sulfonilurea meningkatkan absorbsi laktosa di usus halus",
+          "text": "Sulfonilurea memfasilitasi hipertransport laktosa dan glukosa di enterosit jejunum proksimal; fermentasi karbohidrat berlebih memicu sindrom malabsorpsi kronis disertai dehidrasi hipernatremik berat di rumah",
           "correct": false
         }
       ],
@@ -1585,22 +1585,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Lansia memiliki jumlah reseptor obat yang berlipat ganda di seluruh organ perifer",
+          "text": "Lansia mengalami multiplikasi jumlah reseptor obat fungsional di seluruh organ efektor perifer; amplifikasi respons biologis menyebabkan dosis standar menghasilkan efek farmakologis berlipat ganda toksik",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Semua enzim di tubuh lansia bekerja 10 kali lebih lambat dibanding anak-anak",
+          "text": "Seluruh jalur enzim mikrosomal hepar lansia bekerja sepuluh kali lebih lambat dibanding pediatrik; perlambatan biotransformasi universal ini mengharuskan titrasi lambat untuk seluruh kategori kelas terapi obat",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Refleks baroreseptor lansia bekerja terlalu sensitif sehingga memicu hipertensi krisis",
+          "text": "Sensitivitas refleks baroreseptor geriatri mengalami hiperaktivitas berlebih; vasodilatasi minor antihipertensi memicu takikardia refleks yang sangat agresif hingga mencetuskan infark miokardium transmural",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Perubahan farmakodinamik penuaan menyebabkan peningkatan sensitivitas intrinsik reseptor target di susunan saraf pusat (terhadap sedatif, opioid, antikolinergik) serta penumpulan mekanisme homeostatis refleks baroreseptor vaskular (risiko tinggi hipotensi ortostatik dan sinkop)",
+          "text": "Peningkatan sensitivitas reseptor SSP terhadap sedatif/opioid disertai penumpulan refleks kompensasi baroreseptor vaskular; lansia sangat rentan depresi pernapasan, konfusi, hipotensi ortostatik, dan sinkop",
           "correct": true
         }
       ],
@@ -1613,22 +1613,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Antipsikotik memicu katarak kongenital dan kebutaan mendadak",
+          "text": "Antipsikotik memicu katarak nuklearis kongenital akut dan glaukoma neovaskular; peningkatan tekanan intraokular mendadak menyebabkan iskemia nervus optikus bilateral dan kebutaan permanen dalam beberapa hari",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Penggunaan antipsikotik (tipikal maupun atipikal) pada lansia dengan psikosis terkait demensia meningkatkan risiko mortalitas semua penyebab (all-cause mortality) secara signifikan, terutama akibat kejadian kardiovaskular akut (gagal jantung, henti jantung mendadak) dan infeksi pneumonia aspirasi",
+          "text": "Antipsikotik pada psikosis terkait demensia meningkatkan risiko mortalitas signifikan, terutama akibat kejadian kardiovaskular akut (aritmia, henti jantung, stroke) dan infeksi pneumonia aspirasi fatal",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Antipsikotik memicu kanker kolon stadium 4 dalam waktu 1 bulan",
+          "text": "Antipsikotik memicu mutasi onkogenik sel epitel kripta usus secara cepat; karsinogenesis kolorektal agresif bermetastasis ke hepar dan paru dalam kurun waktu kurang dari empat minggu pemakaian dosis reguler",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Antipsikotik menyebabkan peningkatan massa otot secara berlebih",
+          "text": "Antipsikotik menginduksi hipertrofi sarkomer otot rangka lurik secara berlebih; pembentukan massa otot ekstrem memicu kekakuan gerak katatonik dan rhabdomiolisis masif yang merusak fungsi tubulus ginjal",
           "correct": false
         }
       ],
@@ -1641,22 +1641,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Pseudoefedrin merusak glomerulus ginjal sehingga ginjal tidak mampu lagi memproduksi urin",
+          "text": "Pseudoefedrin merusak kapiler glomerulus ginjal secara akut; penghentian total laju filtrasi filtrat urin memicu anuria obstruktif yang salah didiagnosis sebagai pembesaran kandung kemih pada evaluasi fisik",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Amitriptilin memicu lisis prostat akut yang menyumbat uretra secara mekanik",
+          "text": "Amitriptilin menginduksi nekrosis seluler stroma prostat akut; serpihan jaringan mati menyumbat uretra pars prostatika secara mekanik dan menghambat pengosongan urin meskipun kandung kemih berkontraksi penuh",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Pseudoefedrin (Alpha-1 adrenergik agonis) memicu kontraksi otot polos leher kandung kemih dan stroma prostat (menutup pintu keluar urin), sedangkan Amitriptilin (antikolinergik poten) memblokade reseptor muskarinik M3 sehingga melumpuhkan kontraksi otot detrusor kandung kemih (gagal memompa urin keluar)",
+          "text": "Pseudoefedrin memicu spasme otot leher vesika urinaria via stimulasi Alpha-1, sementara Amitriptilin memblokade reseptor M3 melumpuhkan kontraksi detrusor; urin terkunci rapat memicu retensi obstruktif akut",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Kedua obat bereaksi membentuk kristal garam di meatus uretra eksterna",
+          "text": "Kedua obat bereaksi secara fisikokimia membentuk garam presipitasi tak larut di meatus uretra; kristalisasi masif menyumbat orifisium saluran kencing eksterna dan mengharuskan pembedahan rekonstruksi cito",
           "correct": false
         }
       ],
@@ -1669,22 +1669,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Mengidentifikasi obat yang tidak lagi memiliki indikasi klinis valid, obat yang saling menduplikasi terapi, atau obat berisiko tinggi (seperti PPI > 8 minggu tanpa ulkus aktif, sedatif tanpa indikasi), lalu merencanakan penghentian bertahap (tapering off) satu per satu dengan pemantauan gejala putus obat",
+          "text": "Mengidentifikasi obat tanpa indikasi valid atau berisiko tinggi, lalu merencanakan penurunan dosis bertahap (tapering off) satu per satu disertai pemantauan ketat terhadap efek rebound atau gejala putus obat",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Menghentikan seluruh 10 jenis obat sekaligus secara mendadak pada hari yang sama",
+          "text": "Menghentikan seluruh sepuluh jenis obat secara serentak pada hari yang sama; penghentian masif seketika merupakan satu-satunya cara efektif membersihkan toksisitas beban antikolinergik dari kompartemen otak",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Menambahkan 3 obat baru untuk menekan skor antikolinergik pasien",
+          "text": "Menambahkan tiga jenis obat nootropik baru untuk menetralisir efek sedasi antikolinergik; kombinasi agen kolinergik sentral dosis tinggi mampu mendongkrak performa kognitif tanpa perlu memodifikasi terapi lama",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Mengganti seluruh obat dengan suplemen herbal tanpa konsultasi dengan dokter penanggung jawab",
+          "text": "Mengalihkan seluruh terapi konvensional ke sediaan jamu herbal tanpa memberitahu dokter penanggung jawab; ekstrak tanaman dinilai secara apriori bebas dari risiko farmakodinamik antikolinergik sistemik tubuh",
           "correct": false
         }
       ],
@@ -1697,22 +1697,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Penurunan aliran darah ginjal sebesar 80% akibat penekanan uterus",
+          "text": "Penurunan perfusi mikrovaskular ginjal maternal sebesar 80% akibat penekanan uterus gravidarum; stagnasi aliran darah kapiler glomerulus memicu kompensasi filtrasi metabolik sekunder di mukosa kolon maternal",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Peningkatan keasaman lambung yang menghancurkan seluruh molekul antibiotik",
+          "text": "Peningkatan sekresi asam hidroklorida lambung secara ekstrem; lingkungan hiperasiditas lambung menghancurkan cincin molekul antibiotik secara instan sebelum mencapai permukaan membran absorpsi mikrovili usus",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Penurunan volume plasma maternal hingga separuh dari normal",
+          "text": "Deplesi cairan intravascular maternal hingga separuh volume normal akibat pergeseran cairan ke janin; hemokonsentrasi berat memicu percepatan klirens obat melalui peningkatan ekskresi kelenjar keringat kulit",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Peningkatan Laju Filtrasi Glomerulus (GFR) hingga 50%, peningkatan curah jantung 30-50%, serta ekspansi volume plasma maternal hingga 40-50% (hemodilusi), yang memperbesar volume distribusi dan mempercepat eliminasi renal",
+          "text": "Lonjakan laju filtrasi glomerulus (GFR) hingga 50%, kenaikan curah jantung, dan ekspansi volume plasma maternal hingga 50%; volume distribusi membesar dan eliminasi ginjal dipercepat sehingga obat cepat hilang",
           "correct": true
         }
       ],
@@ -1725,22 +1725,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Minggu ke-1 hingga ke-2 pascakonsepsi (Periode Pre-Diferensiasi)",
+          "text": "Minggu ke-1 hingga ke-2 pascakonsepsi; fase pre-diferensiasi blastokista di mana paparan zat toksik memicu diferensiasi abnormal ekstrem pada lapisan trofoblas dengan risiko malformasi anggota gerak permanen",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Minggu ke-3 hingga ke-8 pascakonsepsi (setara minggu ke-5 hingga ke-10 usia kehamilan klinis)",
+          "text": "Minggu ke-3 hingga ke-8 pascakonsepsi (setara minggu 5-10 usia klinis); periode organogenesis kritis di mana pembentukan primordial organ vital berlangsung sehingga paparan teratogen memicu malformasi mayor",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Minggu ke-20 hingga ke-24 kehamilan",
+          "text": "Minggu ke-20 hingga ke-24 usia kehamilan; fase pematangan surfaktan alveolar paru janin di mana paparan obat kimiawi memicu kecacatan penutupan tabung saraf spinalis dan kelainan bentuk ekstremitas janin",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Minggu ke-36 hingga sesaat sebelum persalinan",
+          "text": "Minggu ke-36 hingga sesaat sebelum persalinan; fase persiapan maturitas enzim hepar janin di mana paparan zat asing memicu mutasi diferensiasi kraniofasial dan defek septum ventrikel jantung ireversibel",
           "correct": false
         }
       ],
@@ -1753,22 +1753,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Berat molekul sangat kecil (< 200 Da), tidak terionisasi, dan sangat lipofilik",
+          "text": "Berat molekul sangat kecil di bawah 200 Dalton, derajat ionisasi rendah di plasma darah, dan kelarutan lipid yang sangat tinggi; karakteristik ini membatasi difusi transmembran melintasi sinsitiotrofoblas",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Senyawa nonpolar dengan ikatan protein plasma rendah (fu mendekati 100%)",
+          "text": "Senyawa nonpolar lipofilik dengan fraksi bebas plasma mendekati 100%; ketiadaan ikatan albumin maternal memaksa molekul obat tertahan di sirkulasi ibu tanpa mampu menembus gradien konsentrasi plasenta",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Berat molekul raksasa (BM > 1.000 Da), derajat ionisasi tinggi pada pH fisiologis darah (sangat polar), dan ikatan protein plasma maternal yang sangat tinggi (> 90%)",
+          "text": "Berat molekul sangat besar (>1.000 Da), derajat ionisasi tinggi pada pH darah (sangat polar), dan ikatan protein plasma maternal tinggi (>90%); molekul besar dan terionisasi sangat sulit menembus plasenta",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Kelarutan lemak tinggi dan afinitas rendah terhadap transporter efflux plasenta",
+          "text": "Kelarutan lemak membran yang sangat tinggi disertai afinitas pengikatan rendah terhadap transporter efluks plasenta P-glikoprotein; senyawa ditolak secara selektif oleh sawar mikrovili sinsitiotrofoblas",
           "correct": false
         }
       ],
@@ -1781,22 +1781,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Sistem huruf terlalu menyederhanakan risiko secara keliru (oversimplified), menyesatkan klinisi seolah risiko bertingkat linier dari A ke X, dan Kategori C menjadi 'tempat sampah' yang membingungkan karena mencakup > 65% seluruh obat tanpa data manusia yang memadai; PLLR menggantikannya dengan narasi evaluasi risiko berbasis bukti ilmiah mendalam",
+          "text": "Sistem huruf terlalu menyederhanakan risiko seolah linier A ke X dan Kategori C jadi tempat sampah membingungkan (>65% obat); PLLR menggantikannya dengan narasi evaluasi risiko klinis berbasis bukti mendalam",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Karena huruf A dan B dinilai mendiskriminasi huruf abjad lainnya",
+          "text": "Penggunaan huruf abjad A dan B dinilai diskriminatif terhadap produsen obat generik; regulator mewajibkan sistem penomoran angka desimal biner untuk menyamakan persepsi komersial antar industri farmasi",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Karena seluruh obat di dunia saat ini telah terbukti 100% aman bagi ibu hamil",
+          "text": "Seluruh molekul obat modern yang beredar saat ini telah terbukti secara ilmiah 100% aman bagi kehamilan manusia; sistem klasifikasi bahaya tidak lagi relevan diterapkan pada protokol keselamatan klinis",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Sistem lama dihapus agar pabrik farmasi tidak perlu mencantumkan efek samping kehamilan pada kemasan",
+          "text": "Regulasi baru bertujuan menghapus kewajiban pabrik farmasi mencantumkan peringatan efek samping kehamilan pada brosur; beban litigasi hukum industri obat dapat ditekan secara signifikan di pengadilan perdata",
           "correct": false
         }
       ],
@@ -1809,22 +1809,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Kandesartan memicu penutupan tuba falopi ibu secara permanen",
+          "text": "Kandesartan memicu oklusi lumen tuba falopi maternal secara bilateral; kontraksi spasme miometrium akut memicu terminasi kehamilan spontan tanpa mempengaruhi perkembangan morfologi organ intraluminal janin",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Kandesartan menyebabkan kenaikan berat badan janin berlebih hingga > 6 kg",
+          "text": "Kandesartan merangsang hipersekresi hormon somatotropin janin secara berlebih; pertumbuhan somatik raksasa makrosomia (>6 kg) memicu distosia bahu mekanik saat inisiasi proses persalinan pervaginam aterm",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Kandesartan menginaktivasi hormon prolaktin ibu sejak masa awal kehamilan",
+          "text": "Kandesartan menginaktivasi biosintesis hormon prolaktin maternal di adenohipofisis; kegagalan laktogenesis sejak awal gestasi memicu penghentian dini suplai nutrisi plasenta menuju ruang sirkulasi janin",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Blokade sistem RAAS pada janin menurunkan perfusi ginjal janin secara drastis, memicu anuria janin, oligohidramnion (cairan ketuban habis total), hipoplasia paru janin, hipokalvaria (tengkorak tidak menutup), gagal ginjal anurik neonatal, dan kematian janin intrauterin (ACEI/ARB Fetopathy)",
+          "text": "Blokade RAAS janin menurunkan perfusi ginjal janin drastis, memicu anuria janin, oligohidramnion, hipoplasia paru, hipokalvaria cacat tengkorak, dan kematian janin intrauterin (ACEI/ARB Fetopathy Syndrome)",
           "correct": true
         }
       ],
@@ -1837,22 +1837,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Spironolakton atau Furosemid dosis tinggi",
+          "text": "Spironolakton atau Furosemid dosis tinggi; deplesi volume cairan intravaskular secara cepat merupakan strategi lini pertama untuk menurunkan beban hemodinamik ventrikel kiri maternal selama kehamilan",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Metildopa oral, Labetalol oral, atau Nifedipin lepas lambat (extended-release)",
+          "text": "Metildopa oral, Labetalol oral, atau Nifedipin lepas lambat; ketiga agen ini memiliki profil keamanan jangka panjang teruji pada sirkulasi uteroplasenta tanpa memicu efek teratogenik pada perkembangan janin",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Atenolol atau Aliskiren",
+          "text": "Atenolol atau Aliskiren tablet oral; penghambatan langsung enzim renin dan blokade selektif reseptor beta kardiak memberikan kontrol resistensi vaskular yang superior tanpa mempengaruhi perfusi plasenta",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Kombinasi Natrium Nitroprusid dan Diltiazem IV",
+          "text": "Natrium Nitroprusid IV kontinu dikombinasikan dengan Diltiazem tablet; titrasi cepat vasodilatasi nitrat oksida direkomendasikan oleh pedoman obstetri untuk seluruh derajat hipertensi gestasional ringan",
           "correct": false
         }
       ],
@@ -1865,22 +1865,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Warfarin diserap di lambung sedangkan janin bernapas dengan plasenta",
+          "text": "Warfarin diserap di mukosa gaster maternal sedangkan janin bernapas murni via cairan amnion; perbedaan rute fisiologis meniadakan interaksi zat aktif terhadap diferensiasi primordial organ embrional janin",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Enoksaparin adalah antikoagulan berbentuk sirup yang mudah diminum",
+          "text": "Enoksaparin merupakan antikoagulan oral bebas ion yang mudah diekskresi via keringat ibu; sediaan cair ini tidak memerlukan pemantauan dosis karena secara alami terdegradasi sebelum mencapai sawar plasenta",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Warfarin memiliki berat molekul kecil yang bebas menembus plasenta dan memicu 'Warfarin Embryopathy' (hipoplasia tulang hidung, kondrodisplasia pungtata, mikrosefali, dan perdarahan janin); sedangkan LMWH (Enoksaparin) memiliki molekul besar bermuatan negatif yang TIDAK MENEMBUS plasenta sehingga aman bagi janin",
+          "text": "Warfarin bermolekul kecil menembus plasenta memicu Warfarin Embryopathy (hipoplasia hidung, kondrodisplasia, mikrosefali); LMWH bermolekul besar bermuatan negatif sehingga TIDAK MENEMBUS sawar plasenta",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Warfarin meningkatkan produksi hormon insulin janin memicu makrosomia",
+          "text": "Warfarin menstimulasi proliferasi sel beta pankreas janin secara berlebih; hiperinsulinemia janin memicu sindrom makrosomia metabolik dan hipoglikemia neonatal persisten pasca persalinan obstetrik aterm",
           "correct": false
         }
       ],
@@ -1893,22 +1893,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Asam Valproat memiliki risiko teratogenisitas tertinggi di antara seluruh antiepilepsi (~10% malformasi kongenital mayor: defek tabung saraf / spina bifida, kelainan kraniofasial, defek jantung) serta penurunan IQ dan autisme pada anak; pasien harus dialihkan ke alternatif lebih aman (Lamotrigin atau Levetirasetam) sebelum hamil dan diberikan suplementasi Asam Folat dosis tinggi (4-5 mg/hari)",
+          "text": "Valproat memiliki risiko teratogenik tertinggi (~10% malformasi mayor: spina bifida, defek kognitif/autisme); harus dialihkan ke Lamotrigin atau Levetirasetam sebelum hamil dan diberi Asam Folat 4-5 mg/hari",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Asam Valproat memicu kehamilan kembar siam pada 90% kasus",
+          "text": "Asam Valproat memicu poliovulasi simultan pada ovarium maternal; peningkatan insidensi kehamilan kembar monozigotik dempet (kembar siam) mencapai 90% pada seluruh wanita usia subur yang mengonsumsinya",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Asam Valproat harus diganti dengan Fenitoin dosis tinggi tanpa asam folat",
+          "text": "Asam Valproat harus segera diganti dengan Fenitoin dosis tinggi tanpa suplementasi folat; hidantoin merupakan antikonvulsan teraman bagi organogenesis dan tidak memerlukan pemantauan kadar serum maternal",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Asam Valproat aman dilanjutkan asalkan diminum bersama susu sapi murni",
+          "text": "Asam Valproat aman dilanjutkan selama kehamilan asalkan diminum bersamaan dengan susu sapi murni; kalsium kaseinat mengikat metabolit toksik asam valproat di lumen usus sebelum berdifusi ke sirkulasi darah",
           "correct": false
         }
       ],
@@ -1921,22 +1921,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "NSAID memicu penutupan plasenta prematur sehingga janin lahir seketika",
+          "text": "NSAID memicu lepasnya perlekatan membran plasenta dari dinding endometrium secara instan; solusio plasenta akut memicu kontraksi persalinan prematur sebelum pematangan organ janin terbentuk sempurna",
           "correct": false
         },
         {
           "label": "B",
-          "text": "NSAID memicu diabetes gestasional akut dalam waktu 24 jam",
+          "text": "NSAID menginduksi resistensi insulin maternal yang memicu diabetes melitus gestasional akut; peningkatan kadar glukosa darah maternal dalam 24 jam menyebabkan lonjakan ketonemia dan asidosis metabolik janin",
           "correct": false
         },
         {
           "label": "C",
-          "text": "NSAID menginduksi kebotakan permanen pada rambut janin",
+          "text": "Molekul metabolit NSAID berikatan dengan folikel rambut janin intrauterin; supresi pertumbuhan folikuler menyebabkan alopesia kongenital total permanen dan gangguan diferensiasi kelenjar sebasea janin",
           "correct": false
         },
         {
           "label": "D",
-          "text": "NSAID menghambat sintesis prostaglandin janin yang bertugas menjaga patensi duktus arteriosus dan perfusi ginjal janin; paparan pada trimester 3 memicu Penutupan Prematur Duktus Arteriosus (Premature Closure of Ductus Arteriosus) yang memicu hipertensi pulmonal persisten neonatal serta Oligohidramnion berat akibat disfungsi ginjal janin",
+          "text": "NSAID menghambat sintesis prostaglandin pelindung janin memicu Penutupan Prematur Duktus Arteriosus (hipertensi pulmonal persisten bayi) serta Oligohidramnion berat akibat disfungsi perfusi ginjal janin",
           "correct": true
         }
       ],
@@ -1949,22 +1949,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Dosis bayi = 6.0 mg/kg/hari; RID = 45.1%; Obat sangat berbahaya dan menyusui harus disetop",
+          "text": "Dosis bayi = 6.0 mg/kg/hari; RID = 45.1%; obat melampaui batas ambang keamanan laktasi sepuluh persen sehingga pemberian ASI harus segera dihentikan total dan bayi dialihkan ke susu formula hipoalergenik",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Dosis bayi = 0.6 mg/kg/hari; RID = 4.51%; Karena RID < 10%, obat diklasifikasikan RELATIF AMAN dan ibu dapat terus menyusui bayinya",
+          "text": "Dosis bayi = 0.6 mg/kg/hari; RID = 4.51%; karena nilai RID < 10% obat diklasifikasikan RELATIF AMAN kompatibel laktasi, sehingga ibu sangat didukung untuk melanjutkan pemberian air susu ibu secara eksklusif",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Dosis bayi = 0.04 mg/kg/hari; RID = 0.45%; Obat tidak masuk ke ASI sama sekali",
+          "text": "Dosis bayi = 0.04 mg/kg/hari; RID = 0.45%; transfer obat ke kompartemen kelenjar mamae diabaikan secara analitis sehingga pemantauan efek samping klinis pada feses atau pola tidur bayi tidak diperlukan sama sekali",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Dosis bayi = 1.2 mg/kg/hari; RID = 18.2%; Menyusui hanya boleh dilakukan jika bayi berusia di atas 5 tahun",
+          "text": "Dosis bayi = 1.2 mg/kg/hari; RID = 18.2%; obat hanya boleh dikonsumsi apabila bayi telah berusia di atas dua tahun dan saluran cerna bayi memiliki enzim pemecah racun xenobiotik yang setara orang dewasa",
           "correct": false
         }
       ],
@@ -1977,22 +1977,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Kategori L5 adalah obat herbal yang belum memiliki izin edar BPOM",
+          "text": "Kategori L5 merupakan sediaan herbal dan suplemen galaktagog yang belum mengantongi sertifikat uji klinis acak fase 3 dari otoritas pengawas obat; ibu menyusui disarankan berkonsultasi sebelum membeli bebas",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Kategori L5 adalah obat bebas yang aman diminum tanpa batas oleh ibu menyusui",
+          "text": "Kategori L5 adalah golongan obat bebas dan analgesik antipiretik non-narkotik yang telah terbukti aman diminum tanpa batasan dosis maksimum oleh seluruh kelompok ibu menyusui tanpa memerlukan resep dokter",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Kategori L5 adalah KONTRAINDIKASI MUTLAK; obat terbukti memiliki risiko destruktif terdokumentasi pada bayi atau merupakan zat dengan potensi toksisitas tinggi (seperti agen kemoterapi sitotoksik antineoplastik, isotop radioaktif, dan imunosupresif kuat); ibu WAJIB menghentikan pemberian ASI",
+          "text": "Kategori L5 adalah KONTRAINDIKASI MUTLAK; obat terbukti toksik destruktif bagi bayi (seperti kemoterapi sitotoksik, isotop radioaktif, imunosupresif kuat) sehingga ibu menyusui WAJIB menghentikan pemberian ASI",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Kategori L5 adalah suplemen multivitamin penambah nafsu makan bayi",
+          "text": "Kategori L5 adalah sediaan mikronutrien multivitamin dan mineral esensial yang diformulasikan khusus untuk merangsang nafsu makan dan mempercepat laju pertumbuhan kurva berat badan bayi menyusui di posyandu",
           "correct": false
         }
       ],
@@ -2005,22 +2005,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Kodein adalah prodrug yang diubah menjadi Morfin oleh enzim CYP2D6; jika ibu memiliki polimorfisme genetik sebagai CYP2D6 Ultra-Rapid Metabolizer (UM), kodein diubah menjadi morfin dalam jumlah masif dan cepat, melonjakkan kadar morfin bebas dalam ASI hingga memicu depresi pernapasan fatal, henti napas, dan kematian mendadak pada bayi",
+          "text": "Kodein diubah ke Morfin oleh CYP2D6; jika ibu CYP2D6 Ultra-Rapid Metabolizer (UM), pembentukan morfin melonjak masif ke ASI memicu depresi susunan saraf pusat, henti napas, dan kematian mendadak pada bayi",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Kodein merusak kelenjar mamae sehingga ASI berubah menjadi asam klorida pekat",
+          "text": "Senyawa kodein merusak sel asinar kelenjar mamae maternal; penguraian molekul obat memicu pembentukan asam klorida pekat di duktus laktiferus yang menyebabkan nekrosis jaringan payudara dan perdarahan puting",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Kodein memicu penutupan fontanel tengkorak bayi secara instan dalam 2 jam",
+          "text": "Kodein menginduksi osifikasi prematur pada sutura kranii bayi melalui ASI; penutupan fontanel anterior dalam 24 jam memicu peningkatan tekanan intrakranial akut dan hidrosefalus non-komunikan sekunder neonatal",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Kodein menyebabkan bayi mengalami pubertas prekoks pada usia 1 bulan",
+          "text": "Kodein menstimulasi sekresi hormon gonadotropin di kelenjar hipofisis bayi; stimulasi endokrin prematur memicu pubertas prekoks genital dan percepatan penutupan lempeng epifisis tulang panjang bayi usia muda",
           "correct": false
         }
       ],
@@ -2033,22 +2033,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Fluoksetin menyebabkan ASI berbusa dan asam",
+          "text": "Fluoksetin memicu dekomposisi enzimatik protein kasein di kelenjar payudara; perubahan rasa ASI menjadi asam dan berbusa menyebabkan penolakan minum ASI total oleh bayi yang memicu dehidrasi hiperosmolar",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Sertralin memicu peningkatan produksi ASI hingga 5 liter sehari",
+          "text": "Sertralin secara langsung merangsang sintesis hormon prolaktin dan oksitosin di adenohipofisis; produksi ASI terstimulasi hingga melimpah melebihi kapasitas pengosongan payudara harian bayi menyusui",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Fluoksetin hanya bekerja pada sistem saraf pria dewasa",
+          "text": "Fluoksetin merupakan senyawa antidepresan spesifik androgen yang hanya memiliki afinitas ikatan reseptor serotonin pada fisiologi pria dewasa, sehingga tidak efektif mengobati depresi klinis postpartum ibu",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Sertralin dan Paroksetin memiliki ikatan protein plasma sangat tinggi (~98%) dan nilai Relative Infant Dose sangat rendah (RID 0.4 - 2.2%), sehingga kadar dalam darah bayi hampir tidak terdeteksi; sebaliknya Fluoksetin memiliki metabolit aktif (Norfluoksetin) berwaktu paruh sangat panjang (1-2 minggu) yang berakumulasi pada bayi memicu iritabilitas, kolik, sedasi, dan penurunan berat badan",
+          "text": "Sertralin berikatan protein tinggi (98%) dengan RID minimal (0.4-2.2%) sehingga kadar di ASI rendah; sebaliknya Fluoksetin memiliki metabolit aktif berwaktu paruh 2 minggu yang berakumulasi toksik pada bayi",
           "correct": true
         }
       ],
@@ -2061,22 +2061,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "ASI harus segera dibuang dan payudara kanan diikat kencang tanpa boleh dipompa",
+          "text": "Pemberian ASI harus segera dihentikan total dan payudara kanan diikat bebat kencang tanpa boleh diperah; penekanan mekanik kelenjar bertujuan menghentikan suplai darah agar bakteri stafilokokus mati kelaparan",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Ibu sangat dianjurkan untuk TETAP MENYUSUI secara rutin dari kedua payudara (atau memompa ASI hingga tuntas), karena pengosongan payudara secara teratur adalah pilar utama penyembuhan mastitis, dan Kloksasilin adalah antibiotik beta-laktam yang aman bagi bayi (Hale L1/L2, kadar di ASI minimal)",
+          "text": "Ibu dianjurkan TETAP MENYUSUI dari kedua payudara secara teratur karena pengosongan tuntas adalah pilar kesembuhan mastitis; Kloksasilin aman bagi laktasi (Hale L1/L2) dengan kadar minimal di dalam cairan ASI",
           "correct": true
         },
         {
           "label": "C",
-          "text": "Pemberian ASI harus disetop permanen dan bayi langsung dialihkan ke susu kental manis",
+          "text": "Ibu wajib menyapih bayi secara permanen dan segera mengganti asupan nutrisi dengan larutan susu kental manis kaleng; bakteri mastitis terbukti menular melalui ASI dan memicu sepsis enterik berat pada bayi",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Menyusui hanya boleh dimulai kembali 1 bulan setelah terapi antibiotik selesai tuntas",
+          "text": "Pemberian ASI dari payudara yang terinfeksi hanya boleh dilanjutkan satu bulan setelah regimen terapi antibiotik kloksasilin selesai tuntas, untuk memastikan seluruh jejak residu obat tereliminasi dari tubuh",
           "correct": false
         }
       ],
@@ -2089,22 +2089,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Hanya berlaku untuk sediaan topikal salep kulit dan tetes mata",
+          "text": "Strategi penyesuaian waktu minum obat hanya relevan dan efektif diterapkan untuk sediaan topikal salep kulit kortikosteroid dan sediaan tetes mata, di mana absorpsi sistemik obat maternal diabaikan klinisi",
           "correct": false
         },
         {
           "label": "B",
-          "text": "Untuk obat-obatan sustained-release dengan waktu paruh eliminasi sangat panjang > 72 jam",
+          "text": "Strategi ini secara khusus dirancang untuk obat-obatan sediaan pelepasan termodifikasi (sustained-release) dengan profil waktu paruh eliminasi sangat panjang melampaui 72 jam di dalam sirkulasi darah ibu",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Untuk obat-obatan dengan waktu paruh eliminasi pendek (t1/2 singkat < 2-3 jam); meminum obat segera setelah selesai menyusui atau sebelum periode tidur terpanjang bayi memberi jeda waktu eliminasi sehingga saat sesi menyusui berikutnya tiba, konsentrasi obat dalam darah ibu telah melewati puncak (Cmax) dan turun ke kadar terendah (trough level)",
+          "text": "Strategi waktu minum paling efektif untuk obat berwaktu paruh pendek (<2-3 jam); meminum obat tepat setelah menyusui memberi jeda eliminasi sehingga kadar plasma ibu telah turun ke palung saat sesi berikutnya",
           "correct": true
         },
         {
           "label": "D",
-          "text": "Obat harus diminum tepat 1 menit sebelum bayi melekat ke puting susu",
+          "text": "Seluruh obat oral wajib diminum tepat satu menit sebelum perlekatan mulut bayi ke puting susu; perbedaan laju transit lambung menjamin obat baru mencapai sirkulasi ibu setelah proses menyusui selesai tuntas",
           "correct": false
         }
       ],
@@ -2117,22 +2117,22 @@ window.LECTURE_DATA = {
       "options": [
         {
           "label": "A",
-          "text": "Pseudoefedrin bekerja sebagai simpatomimetik yang secara akut menekan sekresi hormon Prolaktin hipofisis anterior, menyebabkan penurunan volume produksi ASI hingga 25% - 40% hanya dalam satu kali konsumsi; apoteker merekomendasikan semprot hidung salin isotonik atau oksimetazolin topikal jangka pendek",
+          "text": "Pseudoefedrin menekan sekresi hormon Prolaktin di hipofisis anterior sehingga memicu penurunan produksi ASI tajam (24-40%) dalam satu dosis; apoteker menyarankan semprot hidung salin atau oksimetazolin topikal",
           "correct": true
         },
         {
           "label": "B",
-          "text": "Pseudoefedrin mengubah warna ASI menjadi merah muda menyala",
+          "text": "Pseudoefedrin berikatan kovalen dengan pigmen melanin kelenjar mamae; reaksi biokimiawi mengubah warna cairan ASI menjadi merah keunguan menyala yang memicu kecemasan visual berat pada keluarga pasien di rumah",
           "correct": false
         },
         {
           "label": "C",
-          "text": "Pseudoefedrin memicu fermentasi asam laktat di duktus laktifereus",
+          "text": "Pseudoefedrin mengkatalisis fermentasi glukosa menjadi asam laktat di duktus laktiferus; penumpukan asam organik memicu mastitis kimiawi non-bakterial yang merusak integritas epitel alveoli payudara maternal",
           "correct": false
         },
         {
           "label": "D",
-          "text": "Pseudoefedrin memicu gigi bayi tumbuh sebelum waktunya",
+          "text": "Pseudoefedrin merangsang differensiasi odontoblas gigi janin secara prematur melalui ASI; kalsifikasi dini memicu erupsi gigi kaninus neonatal sebelum bayi genap berusia empat bulan di masa menyusui eksklusif",
           "correct": false
         }
       ],
